@@ -1,3 +1,4 @@
+import { routes } from "@/app/routes";
 import {
   Avatar,
   Box,
@@ -8,36 +9,20 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import Link from "next/link";
 import React from "react";
 
-interface IRequestCard {
-  id: string;
-  companyName: string;
-  date: string;
-  requestTitle: string;
-  imageUrl: string
-}
-
-export const RequestCard: React.FC<IRequestCard> = ({
+export const RequestCard: React.FC<IRequest> = ({
   companyName,
   date,
   requestTitle,
-  imageUrl
+  imageUrl,
+  id,
 }) => {
   return (
-    <Card
-      shadow="sm"
-      withBorder
-      radius="md"
-      style={{ borderWidth: "2px" }}
-    >
+    <Card shadow="sm" withBorder radius="md" style={{ borderWidth: "2px" }}>
       <Flex gap={10} align={"center"} direction={{ md: "row", base: "column" }}>
-        <Avatar
-          src={
-            imageUrl
-          }
-          size={"lg"}
-        />
+        <Avatar src={imageUrl} size={"lg"} />
         <Flex
           direction={"column"}
           gap={2}
@@ -55,12 +40,13 @@ export const RequestCard: React.FC<IRequestCard> = ({
           <Title order={4}>{requestTitle}</Title>
         </Box>
 
-
         <Button
           variant="gradient"
+          component={Link}
+          href={routes.request + "/" + id}
           radius={"md"}
           size="lg"
-          style={{ flexShrink: "0" }}
+          style={{ flexShrink: "0", color: 'white' }}
           visibleFrom="md"
         >
           Look
@@ -68,8 +54,10 @@ export const RequestCard: React.FC<IRequestCard> = ({
         <Button
           variant="gradient"
           radius={"md"}
+          component={Link}
+          href={routes.request + "/" + id}
           size="lg"
-          style={{ flexShrink: "0" }}
+          style={{ flexShrink: "0", color: 'white' }}
           hiddenFrom="md"
           fullWidth
         >
