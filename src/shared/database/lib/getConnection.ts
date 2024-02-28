@@ -1,4 +1,5 @@
 import "server-only";
+import * as schema from "@/shared/database/schema";
 
 import {
   MYSQL_HOST,
@@ -20,5 +21,5 @@ export async function getConnection() {
     database: MYSQL_DATABASE,
   });
 
-  return drizzle(connection);
+  return drizzle(connection, { schema, mode: "default" });
 }
