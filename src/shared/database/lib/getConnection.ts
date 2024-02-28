@@ -19,6 +19,9 @@ export async function getConnection() {
     user: MYSQL_USER,
     password: MYSQL_PASSWORD,
     database: MYSQL_DATABASE,
+    ssl: {
+      rejectUnauthorized: true,
+    },
   });
 
   return drizzle(connection, { schema, mode: "default" });
