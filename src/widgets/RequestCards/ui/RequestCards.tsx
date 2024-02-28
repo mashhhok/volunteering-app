@@ -1,6 +1,5 @@
-// "use client";
 import React from "react";
-import { RequestCard } from "@/shared/ui/RequestCard";
+import { RequestCard } from "@/entities/RequestCard";
 import { Container, SimpleGrid } from "@mantine/core";
 
 const RequestCards = () => {
