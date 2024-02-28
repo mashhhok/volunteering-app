@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  database:
+    image: mysql
+    container_name: volunteering-app-db
+
+    env_file:
+      - .env
+
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+
+    volumes:
+      - volunteering-app-db:/var/lib/mysql
+
+    ports:
+      - 3306:3306
+
+volumes:
+  volunteering-app-db:
