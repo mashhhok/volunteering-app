@@ -1,5 +1,7 @@
 export enum routes {
   main = "/",
   profile = "/profile",
-  settings = '/settings'
+  settings = '/settings',
+  request = '/request',
+  add_request = '/addRequest'
 }
