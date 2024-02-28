@@ -36,6 +36,7 @@ export const Search = () => {
   return (
     <Box>
       <TextInput
+        radius={"sm"}
         leftSection={<IoSearch />}
         leftSectionPointerEvents="none"
         onFocus={onSearchFocus}
