@@ -5,10 +5,10 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 const validateName = (value: string) => /^(?:[a-zA-Z]+|[а-яА-Я]+)$/.test(value);
 
 export const insertUserValidator = createInsertSchema(users, {
-  email: (schema) => schema.email.email().trim().toLowerCase(),
+  email: (schema) => schema.email.trim().toLowerCase().email(),
   firstName: (schema) => schema.firstName.trim().min(2).refine(validateName),
   lastName: (schema) => schema.lastName.trim().min(2).refine(validateName),
-  avatar: (schema) => schema.avatar.url().trim(),
+  avatar: (schema) => schema.avatar.trim().url(),
 }).omit({ id: true, createdAt: true });
 
 export const selectUserValidator = createSelectSchema(users).omit({
