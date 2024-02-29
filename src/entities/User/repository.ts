@@ -12,18 +12,23 @@ import { getConnection, extractColumns } from "@/shared/database/lib";
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 
-export async function register(insertUser: InsertUser): Promise<SelectUser> {
+export async function register(
+  insertUser: InsertUser
+): Promise<SelectUser | null> {
   insertUser.password = await hash(insertUser.password, 10);
 
   const connection = await getConnection();
   const insertResult = await connection.insert(users).values(insertUser);
 
-  const createdUser = await connection.query.users.findFirst({
-    where: eq(users.id, insertResult[0].insertId),
-    columns: extractColumns(selectUserValidator),
-  });
-
-  return selectUserValidator.parse(createdUser);
+  try {
+    const createdUser = await connection.query.users.findFirst({
+      where: eq(users.id, insertResult[0].insertId),
+      columns: extractColumns(selectUserValidator),
+    });
+    return selectUserValidator.parse(createdUser);
+  } catch {
+    return null;
+  }
 }
 
 export async function getFullUserByEmail(
