@@ -20,6 +20,7 @@ export const insertUserValidator = createInsertSchema(users)
       email: z.string().email().toLowerCase(),
       firstName: nameValidator,
       lastName: nameValidator,
+      avatar: z.string().url().optional(),
     })
   );
 
