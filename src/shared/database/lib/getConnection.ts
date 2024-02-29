@@ -7,6 +7,7 @@ import {
   MYSQL_USER,
   MYSQL_DATABASE,
   MYSQL_PASSWORD,
+  MYSQL_SSL,
 } from "@/shared/config/database.config";
 
 import mysql from "mysql2/promise";
@@ -20,7 +21,7 @@ export async function getConnection() {
     password: MYSQL_PASSWORD,
     database: MYSQL_DATABASE,
     ssl: {
-      rejectUnauthorized: true,
+      rejectUnauthorized: MYSQL_SSL,
     },
   });
 
