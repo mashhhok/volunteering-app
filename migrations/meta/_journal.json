@@ -8,6 +8,13 @@
       "when": 1709135416460,
       "tag": "0000_colorful_eternity",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709221025333,
+      "tag": "0001_easy_chamber",
+      "breakpoints": true
     }
   ]
 }
