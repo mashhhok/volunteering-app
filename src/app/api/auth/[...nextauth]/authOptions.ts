@@ -1,8 +1,14 @@
 import type { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+import { z } from "zod";
 import { compare } from "bcryptjs";
 import { getFullUserByEmail } from "@/entities/User/repository";
+
+const credentialsValidator = z.object({
+  email: z.string().trim().toLowerCase().email(),
+  password: z.string(),
+});
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -15,11 +21,14 @@ export const authOptions: AuthOptions = {
       async authorize(credentials, req) {
         if (!credentials) return null;
 
-        const user = await getFullUserByEmail(credentials.email);
+        const cleanCredentials = credentialsValidator.safeParse(credentials);
+        if (!cleanCredentials.success) return null;
+
+        const user = await getFullUserByEmail(cleanCredentials.data.email);
         if (!user) return null;
 
         const passwordsMatch = await compare(
-          credentials.password,
+          cleanCredentials.data.password,
           user.password
         );
 
