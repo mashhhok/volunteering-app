@@ -7,7 +7,7 @@ import {
 } from "./schema";
 
 import { users } from "@/shared/database/schema";
-import { getConnection } from "@/shared/database/lib";
+import { getConnection, extractColumns } from "@/shared/database/lib";
 
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
@@ -23,6 +23,7 @@ export async function register(
   try {
     const createdUser = await connection.query.users.findFirst({
       where: eq(users.id, insertResult[0].insertId),
+      columns: extractColumns(selectUserValidator),
     });
     return selectUserValidator.parse(createdUser);
   } catch {
@@ -37,6 +38,7 @@ export async function getFullUserByEmail(
 
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
+    columns: extractColumns(selectUserValidator),
   });
 
   if (user) {
@@ -51,6 +53,7 @@ export async function getByEmail(email: string): Promise<SelectUser | null> {
 
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
+    columns: extractColumns(selectUserValidator),
   });
 
   if (user) {
