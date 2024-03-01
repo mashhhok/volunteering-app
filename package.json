@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "migrations:generate": "drizzle-kit generate:mysql",
-    "migrations:push": "drizzle-kit push:mysql"
+    "migrations:push": "drizzle-kit push:mysql",
+    "studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@mantine/core": "^7.6.0",
