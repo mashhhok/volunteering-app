@@ -17,14 +17,15 @@ export async function register(
 ): Promise<SelectUser | null> {
   insertUser.password = await hash(insertUser.password, 10);
 
-  const connection = await getConnection();
-  const insertResult = await connection.insert(users).values(insertUser);
-
   try {
+    const connection = await getConnection();
+    const insertResult = await connection.insert(users).values(insertUser);
+
     const createdUser = await connection.query.users.findFirst({
       where: eq(users.id, insertResult[0].insertId),
       columns: extractColumns(selectUserValidator),
     });
+
     return selectUserValidator.parse(createdUser);
   } catch {
     return null;
