@@ -5,7 +5,7 @@ import { IoMdSettings } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
-import { routes } from "@/app/routes";
+import { routes } from "@/shared/config/routes";
 
 interface IUserInfoMenu {
   userInfo: JSX.Element;

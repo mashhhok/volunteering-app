@@ -1,4 +1,4 @@
-import { routes } from "@/app/routes";
+import { routes } from "@/shared/config/routes";
 import { Anchor, Box, Button, Title } from "@mantine/core";
 import Link from "next/link";
 import React from "react";

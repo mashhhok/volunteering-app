@@ -1,4 +1,4 @@
-import { routes } from "@/app/routes";
+import { routes } from "@/shared/config/routes";
 import {
   Avatar,
   Box,
@@ -46,7 +46,7 @@ export const RequestCard: React.FC<IRequest> = ({
           href={routes.request + "/" + id}
           radius={"md"}
           size="lg"
-          style={{ flexShrink: "0", color: 'white' }}
+          style={{ flexShrink: "0", color: "white" }}
           visibleFrom="md"
         >
           Look
@@ -57,7 +57,7 @@ export const RequestCard: React.FC<IRequest> = ({
           component={Link}
           href={routes.request + "/" + id}
           size="lg"
-          style={{ flexShrink: "0", color: 'white' }}
+          style={{ flexShrink: "0", color: "white" }}
           hiddenFrom="md"
           fullWidth
         >

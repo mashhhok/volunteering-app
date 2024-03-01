@@ -12,7 +12,6 @@ interface IRequest {
   imageUrl: string;
 }
 
-
 interface IFullRequest {
   id: string;
   companyName: string;

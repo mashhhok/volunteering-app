@@ -4,14 +4,11 @@ import {
   Container,
   Divider,
   Flex,
-  Progress,
-  Text,
   Title,
 } from "@mantine/core";
 import React from "react";
 import { InterBtns } from "./InterBtns";
 import { PercentProgress } from "./PercentProgress";
-import { SpendHistory } from "./SpendHistory";
 import { CompanyInfo } from "@/entities/CompanyInfo";
 
 export const RequestFullCard: React.FC<IFullRequest> = ({
@@ -22,7 +19,6 @@ export const RequestFullCard: React.FC<IFullRequest> = ({
   requestTitle,
   collectedMoney,
   needMoney,
-  spendHistory,
 }) => {
   return (
     <Container size={"xl"}>
@@ -47,10 +43,7 @@ export const RequestFullCard: React.FC<IFullRequest> = ({
           maw={200}
           color="teal"
         />
-        {spendHistory.map((item) => (
-          <SpendHistory key={item.id} mdx={item.mdx} />
-        ))}
-        <Box h={30}/>
+        <Box h={30} />
       </Flex>
     </Container>
   );
