@@ -48,13 +48,13 @@ export const Search = () => {
         onChange={onSearchChange}
         rightSection={
           <Flex w={70} h={"80%"} align={"center"}>
-            <Menu radius={"md"} position="bottom-end">
+            <Menu radius={"md"} position="bottom-end" offset={12}>
               <Menu.Target>
                 <Flex>
                   <VscSettings size={20} style={{ cursor: "pointer" }} />
                 </Flex>
               </Menu.Target>
-              <Menu.Dropdown>
+              <Menu.Dropdown pr={15}>
                 <Menu.Label>Select one of</Menu.Label>
                 <Divider mb={3} />
                 <Menu.Item
