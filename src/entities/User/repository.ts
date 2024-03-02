@@ -56,9 +56,18 @@ export async function getByEmail(email: string): Promise<SelectUser | null> {
     columns: extractColumns(selectUserValidator),
   });
 
-  if (user) {
-    return selectUserValidator.parse(user);
-  }
+  if (!user) return null;
+  return selectUserValidator.parse(user);
+}
 
-  return null;
+export async function getById(id: number): Promise<SelectUser | null> {
+  const connection = await getConnection();
+
+  const user = await connection.query.users.findFirst({
+    where: eq(users.id, id),
+    columns: extractColumns(selectUserValidator),
+  });
+
+  if (!user) return null;
+  return selectUserValidator.parse(user);
 }
