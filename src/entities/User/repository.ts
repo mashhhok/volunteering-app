@@ -9,8 +9,11 @@ import {
 import { users } from "@/shared/database/schema";
 import { getConnection, extractColumns } from "@/shared/database/lib";
 
+import { z } from "zod";
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
+
+const emailValidator = z.string().trim().toLowerCase().email();
 
 export async function register(
   insertUser: InsertUser
@@ -37,6 +40,10 @@ export async function getFullUserByEmail(
 ): Promise<typeof users.$inferSelect | null> {
   const connection = await getConnection();
 
+  const parsedEmail = emailValidator.safeParse(email);
+  if (!parsedEmail.success) return null;
+  email = parsedEmail.data;
+
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
   });
@@ -51,14 +58,27 @@ export async function getFullUserByEmail(
 export async function getByEmail(email: string): Promise<SelectUser | null> {
   const connection = await getConnection();
 
+  const parsedEmail = emailValidator.safeParse(email);
+  if (!parsedEmail.success) return null;
+  email = parsedEmail.data;
+
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
     columns: extractColumns(selectUserValidator),
   });
 
-  if (user) {
-    return selectUserValidator.parse(user);
-  }
+  if (!user) return null;
+  return selectUserValidator.parse(user);
+}
 
-  return null;
+export async function getById(id: number): Promise<SelectUser | null> {
+  const connection = await getConnection();
+
+  const user = await connection.query.users.findFirst({
+    where: eq(users.id, id),
+    columns: extractColumns(selectUserValidator),
+  });
+
+  if (!user) return null;
+  return selectUserValidator.parse(user);
 }
