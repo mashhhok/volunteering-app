@@ -1,3 +1,4 @@
-import {registerValidate} from './registerValidate'
+import {registerAction} from './registerAction'
+import { authAction } from './authAction'
 
-export {registerValidate}
+export {registerAction, authAction}

@@ -30,21 +30,18 @@ export interface IRegisterAction {
   issues: IIssues;
 }
 
-export type IRegisterValidateResponse = IRegisterAction | null;
+export type IregisterActionResponse = IRegisterAction | null;
 
-export async function registerValidate(
+export async function registerAction(
   previousState: any,
   formData: FormData
-): Promise<IRegisterValidateResponse> {
+): Promise<IregisterActionResponse> {
   "use server";
 
   try {
-    const formDataValidate = insertUserValidator.parse({
-      email: formData.get("email"),
-      password: formData.get("password"),
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-    });
+    const formDataValidate = insertUserValidator.parse(
+      Object.fromEntries(formData)
+    );
     const res = await register(formDataValidate);
     if (res === null) return { issues: { isExist: true } };
     return null;

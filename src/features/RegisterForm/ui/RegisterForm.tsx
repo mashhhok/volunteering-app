@@ -1,21 +1,17 @@
 "use client";
 import {
   Box,
-  ComboboxItem,
   Fieldset,
   Flex,
-  Select,
   Text,
   TextInput,
-  Title,
 } from "@mantine/core";
 import { SubmitBtn } from "./SubmitBtn";
 import { useFormState } from "react-dom";
 import React from "react";
 import {
-  IRegisterAction,
-  IRegisterValidateResponse,
-} from "@/actions/registerValidate";
+  IregisterActionResponse,
+} from "@/actions/registerAction";
 
 export const RegisterForm = ({
   action,
@@ -23,7 +19,7 @@ export const RegisterForm = ({
   action: (
     previousState: unknown,
     formData: FormData
-  ) => Promise<IRegisterValidateResponse>;
+  ) => Promise<IregisterActionResponse>;
 }) => {
   const [state, formAction] = useFormState(action, null);
   return (

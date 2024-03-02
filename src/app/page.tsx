@@ -1,11 +1,14 @@
+import { getSession, login } from "@/shared/auth";
 import { RequestCards } from "@/widgets/RequestCards";
 import { Box } from "@mantine/core";
 
-const HomePage = () => {
+const HomePage = async () => {
+
+  
   return (
     <div>
-      <Box h={10}/>
-      <RequestCards/>
+      <Box h={10} />
+      <RequestCards />
     </div>
   );
 };
