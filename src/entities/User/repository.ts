@@ -39,7 +39,10 @@ export async function getFullUserByEmail(
   email: string
 ): Promise<typeof users.$inferSelect | null> {
   const connection = await getConnection();
-  email = emailValidator.parse(email);
+
+  const parsedEmail = emailValidator.safeParse(email);
+  if (!parsedEmail.success) return null;
+  email = parsedEmail.data;
 
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
@@ -54,7 +57,10 @@ export async function getFullUserByEmail(
 
 export async function getByEmail(email: string): Promise<SelectUser | null> {
   const connection = await getConnection();
-  email = emailValidator.parse(email);
+
+  const parsedEmail = emailValidator.safeParse(email);
+  if (!parsedEmail.success) return null;
+  email = parsedEmail.data;
 
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
