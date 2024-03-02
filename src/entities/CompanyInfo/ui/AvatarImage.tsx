@@ -8,15 +8,13 @@ interface IAvatar {
 
 export const AvatarImage: React.FC<IAvatar> = ({ imageUrl, companyName }) => {
   return (
-    <>
-      <Avatar
-        src={imageUrl}
-        h={{ base: 150, xs: 200 }}
-        w={{ base: 150, xs: 200 }}
-        bg={"teal"}
-      >
-        {companyName}
-      </Avatar>
-    </>
+    <Avatar
+      src={imageUrl}
+      h={{ base: 150, xs: 200 }}
+      w={{ base: 150, xs: 200 }}
+      bg={"teal"}
+    >
+      {companyName}
+    </Avatar>
   );
 };

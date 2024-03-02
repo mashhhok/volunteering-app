@@ -10,6 +10,7 @@ import React from "react";
 import { InterBtns } from "./InterBtns";
 import { PercentProgress } from "./PercentProgress";
 import { CompanyInfo } from "@/entities/CompanyInfo";
+import { SpendHistories } from "./SpendHistories";
 
 export const RequestFullCard: React.FC<IFullRequest> = ({
   imageUrl,
@@ -35,14 +36,8 @@ export const RequestFullCard: React.FC<IFullRequest> = ({
           collectedMoney={collectedMoney}
           needMoney={needMoney}
         />
-        <Title>Spend History</Title>
-        <Divider
-          orientation="horizontal"
-          size={5}
-          w={"100%"}
-          maw={200}
-          color="teal"
-        />
+        <SpendHistories/>
+        
         <Box h={30} />
       </Flex>
     </Container>

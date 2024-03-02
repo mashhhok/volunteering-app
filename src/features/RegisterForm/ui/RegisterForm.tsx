@@ -30,7 +30,9 @@ export const RegisterForm = ({
     <Box>
       <form action={formAction} method="post">
         <Fieldset legend="Register Form" mx={15}>
-          <Text color="red" fz='xl' fw={500} >{state?.issues.isExist && "User already exist!"}</Text>
+          <Text color="red" fz="xl" fw={500}>
+            {state?.issues.isExist && "User already exist!"}
+          </Text>
           <Flex gap={15} direction={"column"}>
             <TextInput
               label="Input your email"
@@ -62,8 +64,7 @@ export const RegisterForm = ({
           </Flex>
           <Box h={15} />
           <Flex justify={"flex-end"}>
-            
-            <SubmitBtn/>
+            <SubmitBtn />
           </Flex>
         </Fieldset>
       </form>

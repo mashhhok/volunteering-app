@@ -1,7 +1,6 @@
 "use client";
 import { Box, Divider, Flex, Menu, TextInput } from "@mantine/core";
 import React, { ChangeEvent } from "react";
-import search_icon from "@/public/search.svg";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineClear } from "react-icons/md";
 import { VscSettings } from "react-icons/vsc";

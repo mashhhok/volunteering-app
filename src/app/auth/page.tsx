@@ -1,14 +1,17 @@
 import { AuthForm } from "@/features/AuthForm";
-import { Box } from "@mantine/core";
+import { Box, Flex } from "@mantine/core";
 
 import React from "react";
 
-
 const AuthPage = async () => {
-  
   return (
     <Box>
-      <AuthForm />
+      <Box h={15} />
+      <Flex justify={"center"}>
+        <Box maw={500} w="100%">
+          <AuthForm />
+        </Box>
+      </Flex>
     </Box>
   );
 };

@@ -9,7 +9,7 @@ interface IRequest {
   companyName: string;
   date: string;
   requestTitle: string;
-  imageUrl: string;
+  avatarUrl: string;
 }
 
 interface IFullRequest {
