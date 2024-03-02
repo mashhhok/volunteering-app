@@ -39,7 +39,6 @@ export async function getFullUserByEmail(
 
   const user = await connection.query.users.findFirst({
     where: eq(users.email, email),
-    columns: extractColumns(selectUserValidator),
   });
 
   if (user) {

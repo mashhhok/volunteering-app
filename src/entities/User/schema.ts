@@ -15,5 +15,13 @@ export const selectUserValidator = createSelectSchema(users).omit({
   password: true,
 });
 
+export const JWTUserValidator = selectUserValidator.pick({
+  id: true,
+  email: true,
+  firstName: true,
+  lastName: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserValidator>;
 export type SelectUser = z.infer<typeof selectUserValidator>;
+export type JWTUser = z.infer<typeof JWTUserValidator>;
