@@ -12,7 +12,7 @@ import { PercentProgress } from "./PercentProgress";
 import { CompanyInfo } from "@/entities/CompanyInfo";
 import { SpendHistories } from "./SpendHistories";
 
-export const RequestFullCard: React.FC<IFullRequest> = ({
+export const RequestFullCard: React.FC<any> = ({
   imageUrl,
   id,
   companyName,

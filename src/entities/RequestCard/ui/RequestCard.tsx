@@ -15,7 +15,7 @@ import { RequestInfo } from "./RequestInfo";
 import { RequestTitle } from "./RequestTitle";
 import { LookBtn } from "./LookBtn";
 
-export const RequestCard: React.FC<IRequest> = ({
+export const RequestCard: React.FC<any> = ({
   companyName,
   date,
   requestTitle,

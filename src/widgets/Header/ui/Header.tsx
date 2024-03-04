@@ -1,5 +1,5 @@
-import { Box, Button, Container, Flex } from "@mantine/core";
-import React, { createRef, useRef } from "react";
+import { Box,Container, Flex } from "@mantine/core";
+import React from "react";
 import { Logo } from "./Logo";
 import { Search } from "./Search";
 import { UserInfo } from "@/entities/UserInfo";

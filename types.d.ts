@@ -1,15 +1,7 @@
 interface SpendHistoryItem {
   id: string;
   mdx: string;
-}
-
-
-interface IRequest {
-  id: string;
-  companyName: string;
-  date: string;
-  requestTitle: string;
-  avatarUrl: string;
+  media: FileList
 }
 
 interface IFullRequest {
@@ -20,5 +12,20 @@ interface IFullRequest {
   imageUrl: string;
   collectedMoney: number;
   needMoney: number;
+  donateCategory: string;
   spendHistory: SpendHistoryItem[];
+  isCompleted: boolean
 }
+
+
+interface IRequest {
+  id: string;
+  date: string;
+  requestTitle: string;
+  isCompleted: boolean
+
+  // данные юзера
+  companyName: string;
+  avatarUrl: string;
+}
+
