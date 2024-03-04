@@ -1,3 +1,6 @@
+import { organizations } from "./organizations";
+
+import { relations } from "drizzle-orm";
 import { mysqlTable, int, varchar, timestamp } from "drizzle-orm/mysql-core";
 
 export const users = mysqlTable("users", {
@@ -9,3 +12,7 @@ export const users = mysqlTable("users", {
   avatar: varchar("avatar", { length: 255 }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const usersRelations = relations(users, ({ one }) => ({
+  organization: one(organizations),
+}));
