@@ -2,9 +2,9 @@ import { Box,Container, Flex } from "@mantine/core";
 import React from "react";
 import { Logo } from "./Logo";
 import { Search } from "./Search";
-import { UserInfo } from "@/entities/UserInfo";
 import { getSession } from "@/shared/auth";
 import { capitalizeStr } from "@/shared/lib/utils";
+import { UserInfoRow } from "@/entities/User";
 
 export const Header = async () => {
   const user = await getSession();
@@ -27,7 +27,7 @@ export const Header = async () => {
                   xl: 80,
                 }}
               />
-              <UserInfo
+              <UserInfoRow
                 firstName={firstName}
                 lastName={lastName}
                 avatar={null}

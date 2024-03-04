@@ -7,14 +7,12 @@ interface SpendHistoryItem {
 interface IFullRequest {
   id: string;
   companyName: string;
-  date: string;
+  createdAt: string;
   requestTitle: string;
   imageUrl: string;
   collectedMoney: number;
   needMoney: number;
   donateCategory: string;
-  spendHistory: SpendHistoryItem[];
-  isCompleted: boolean
 }
 
 

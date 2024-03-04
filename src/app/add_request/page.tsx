@@ -1,4 +1,4 @@
-import { CompanyInfo } from "@/entities/CompanyInfo";
+import { CompanyInfo } from "@/entities/User/ui/UserInfoColumn";
 import { RequestForm } from "@/widgets/RequestForm";
 import { Box, Flex } from "@mantine/core";
 

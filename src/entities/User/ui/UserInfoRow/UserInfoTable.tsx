@@ -19,7 +19,7 @@ export const UserInfoTable = ({
       align={"center"}
       style={{ cursor: "pointer", userSelect: "none" }}
     >
-      <Avatar radius={"md"} bg={"teal"} color="inherit">
+      <Avatar radius={"md"} bg={"teal"} color="inherit" src={avatar}>
         {firstLetsOfNames(firstName, lastName)}
       </Avatar>
       <Title order={5} style={{ whiteSpace: "nowrap" }} visibleFrom="xs">

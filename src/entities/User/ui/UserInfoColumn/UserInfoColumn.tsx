@@ -2,20 +2,20 @@ import { Box, Divider, Flex, Title } from "@mantine/core";
 import React from "react";
 import { AvatarImage } from "./AvatarImage";
 
-interface ICompanyInfo {
+interface IUserInfoColumn {
   imageUrl: string;
-  companyName: string;
+  name: string;
 }
 
-export const CompanyInfo: React.FC<ICompanyInfo> = ({
+export const UserInfoColumn: React.FC<IUserInfoColumn> = ({
   imageUrl,
-  companyName,
+  name,
 }) => {
   return (
     <Flex display={'inline-flex'} direction={'column'} align={'center'}>
-      <AvatarImage imageUrl={imageUrl} companyName={companyName} />
+      <AvatarImage imageUrl={imageUrl} companyName={name} />
       <Title order={1} style={{ textAlign: "center" }} display={"inline-block"}>
-        {companyName}
+        {name}
       </Title>
       <Divider
         orientation="horizontal"
