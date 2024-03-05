@@ -32,3 +32,17 @@ export async function createDonationRequest(
     throw error;
   }
 }
+
+export async function getDonationRequestById(
+  id: number
+): Promise<SelectDonationRequest | null> {
+  const connection = await getConnection();
+
+  const donationRequest = await connection.query.donationRequests.findFirst({
+    where: eq(donationRequests.id, id),
+    columns: extractColumns(selectDonationRequestValidator),
+  });
+
+  if (!donationRequest) return null;
+  return selectDonationRequestValidator.parse(donationRequest);
+}
