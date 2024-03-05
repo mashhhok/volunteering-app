@@ -8,6 +8,20 @@
       "when": 1709540725135,
       "tag": "0000_gray_raza",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709663564844,
+      "tag": "0001_naive_mantis",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709663593324,
+      "tag": "0002_flaky_morlocks",
+      "breakpoints": true
     }
   ]
 }
