@@ -1,4 +1,3 @@
-import { getSession, login } from "@/shared/auth";
 import { RequestCards } from "@/widgets/RequestCards";
 import { Box } from "@mantine/core";
 

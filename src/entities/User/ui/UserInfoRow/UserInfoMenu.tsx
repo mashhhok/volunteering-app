@@ -2,17 +2,18 @@
 import { Avatar, Divider, Flex, Menu, Text } from "@mantine/core";
 import React from "react";
 import { IoMdSettings } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
 import { routes } from "@/shared/config/routes";
-import { firstLetsOfNames } from "@/shared/lib/utils";
+import { firstLetsOfNames } from "../../lib/utils/firstLetsOfNames";
+import { MdLogout } from "react-icons/md";
 
 interface IUserInfoMenu {
   userInfo: JSX.Element;
   firstName: string;
   lastName: string;
-  avatar: string | null;
+  avatar: string | null | undefined;
+  logOutFn: () => any;
 }
 
 export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
@@ -20,7 +21,14 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
   firstName,
   lastName,
   avatar,
+  logOutFn,
 }) => {
+  const [logOutCount, setLogoutCount] = React.useState<number>(0);
+  React.useEffect(() => {
+    if (logOutCount < 1) return;
+    logOutFn();
+  }, [logOutCount]);
+
   return (
     <Menu shadow="xl" width={200} radius="md">
       <Menu.Target>{userInfo}</Menu.Target>
@@ -47,6 +55,14 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
         </Menu.Item>
         <Menu.Item fz={"lg"} fw={500} leftSection={<IoMdSettings />}>
           <Link href="/settings">Settings</Link>
+        </Menu.Item>
+        <Menu.Item
+          fz={"lg"}
+          fw={500}
+          leftSection={<MdLogout />}
+          onClick={() => setLogoutCount((prev) => prev + 1)}
+        >
+          Log Out
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

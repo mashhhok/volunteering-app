@@ -1,4 +1,3 @@
-import { registerAction } from "@/actions";
 import { RegisterForm } from "@/features/RegisterForm";
 import { Box, Flex } from "@mantine/core";
 import React from "react";
@@ -9,7 +8,7 @@ const RegisterPage = () => {
       <Box h={15} />
       <Flex justify={"center"}>
         <Box maw={500} w="100%">
-          <RegisterForm action={registerAction}/>
+          <RegisterForm />
         </Box>
       </Flex>
     </div>

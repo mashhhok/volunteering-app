@@ -1,15 +1,13 @@
-import { Box,Container, Flex } from "@mantine/core";
+import { Box, Container, Flex } from "@mantine/core";
 import React from "react";
 import { Logo } from "./Logo";
 import { Search } from "./Search";
 import { getSession } from "@/shared/auth";
-import { capitalizeStr } from "@/shared/lib/utils";
 import { UserInfoRow } from "@/entities/User";
+import { AuthBtns } from "./AuthBtns";
 
 export const Header = async () => {
-  const user = await getSession();
-  const firstName = user?.firstName ? capitalizeStr(user?.firstName) : "Name";
-  const lastName = user?.lastName ? capitalizeStr(user?.lastName) : "Name";
+  const session = await getSession();
 
   return (
     <Box h={60}>
@@ -27,11 +25,15 @@ export const Header = async () => {
                   xl: 80,
                 }}
               />
-              <UserInfoRow
-                firstName={firstName}
-                lastName={lastName}
-                avatar={null}
-              />
+              {session ? (
+                <UserInfoRow
+                  firstName={session?.firstName}
+                  lastName={session?.lastName}
+                  avatar={null}
+                />
+              ) : (
+                <AuthBtns />
+              )}
             </Flex>
           </Flex>
         </Container>

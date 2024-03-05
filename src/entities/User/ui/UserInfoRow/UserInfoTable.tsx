@@ -1,11 +1,11 @@
-import { firstLetsOfNames } from "@/shared/lib/utils";
 import { Avatar, Box, Flex, Menu, MenuTarget, Title } from "@mantine/core";
 import React from "react";
+import { firstLetsOfNames } from "../../lib/utils/firstLetsOfNames";
 
 interface IUserInfoTable {
   firstName: string;
   lastName: string;
-  avatar: string | null;
+  avatar: string | null | undefined;
 }
 
 export const UserInfoTable = ({
