@@ -29,6 +29,13 @@
       "when": 1709664098739,
       "tag": "0003_silly_changeling",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1709665347053,
+      "tag": "0004_early_silver_sable",
+      "breakpoints": true
     }
   ]
 }
