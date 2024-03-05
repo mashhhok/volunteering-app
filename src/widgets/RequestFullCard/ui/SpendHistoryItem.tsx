@@ -8,11 +8,11 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 
-interface ISpendHistory {
-  mdx: string;
+interface ISpendHistoryItem {
+  text: string;
 }
 
-export const SpendHistory: React.FC<ISpendHistory> = ({ mdx }) => {
+export const SpendHistoryItem: React.FC<ISpendHistoryItem> = ({ text }) => {
   const { colorScheme } = useMantineColorScheme();
 
   return (
@@ -21,7 +21,12 @@ export const SpendHistory: React.FC<ISpendHistory> = ({ mdx }) => {
       shadow="xl"
       radius={"md"}
     >
-      <Title order={2} style={{color:colorScheme === "dark" ? "white" : "inherit"}} >{mdx}</Title>
+      <Title
+        order={2}
+        style={{ color: colorScheme === "dark" ? "white" : "inherit" }}
+      >
+        {text}
+      </Title>
     </Card>
   );
 };

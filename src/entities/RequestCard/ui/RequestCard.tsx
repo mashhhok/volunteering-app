@@ -1,4 +1,4 @@
-import { routes } from "@/app/routes";
+import { routes } from "@/shared/config/routes";
 import {
   Avatar,
   Box,
@@ -11,58 +11,30 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
+import { RequestInfo } from "./RequestInfo";
+import { RequestTitle } from "./RequestTitle";
+import { LookBtn } from "./LookBtn";
 
-export const RequestCard: React.FC<IRequest> = ({
+export const RequestCard: React.FC<any> = ({
   companyName,
   date,
   requestTitle,
-  imageUrl,
+  avatarUrl,
   id,
 }) => {
   return (
     <Card shadow="sm" withBorder radius="md" style={{ borderWidth: "2px" }}>
       <Flex gap={10} align={"center"} direction={{ md: "row", base: "column" }}>
-        <Avatar src={imageUrl} size={"lg"} />
-        <Flex
-          direction={"column"}
-          gap={2}
-          style={{ whiteSpace: "nowrap" }}
-          align={"center"}
-        >
-          <Title order={4}>{companyName}</Title>
-          <Text fw={500} fz="md">
-            {date}
-          </Text>
-        </Flex>
+        <RequestInfo
+          companyName={companyName}
+          date={date}
+          avatarUrl={avatarUrl}
+        />
         <Divider orientation="vertical" visibleFrom="md" size={3} />
 
-        <Box flex="1 1 auto">
-          <Title order={4}>{requestTitle}</Title>
-        </Box>
+        <RequestTitle title={requestTitle} />
 
-        <Button
-          variant="gradient"
-          component={Link}
-          href={routes.request + "/" + id}
-          radius={"md"}
-          size="lg"
-          style={{ flexShrink: "0", color: 'white' }}
-          visibleFrom="md"
-        >
-          Look
-        </Button>
-        <Button
-          variant="gradient"
-          radius={"md"}
-          component={Link}
-          href={routes.request + "/" + id}
-          size="lg"
-          style={{ flexShrink: "0", color: 'white' }}
-          hiddenFrom="md"
-          fullWidth
-        >
-          Look
-        </Button>
+        <LookBtn requestId={id} />
       </Flex>
     </Card>
   );

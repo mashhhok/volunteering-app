@@ -1,11 +1,14 @@
-import { Box, Button, Container, Flex } from "@mantine/core";
-import React, { createRef, useRef } from "react";
+import { Box, Container, Flex } from "@mantine/core";
+import React from "react";
 import { Logo } from "./Logo";
 import { Search } from "./Search";
-import { UserInfo } from "./UserInfo";
-import { UserInfoMenu } from "./UserInfoMenu";
+import { getSession } from "@/shared/auth";
+import { UserInfoRow } from "@/entities/User";
+import { AuthBtns } from "./AuthBtns";
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await getSession();
+
   return (
     <Box h={60}>
       <Box pos={"fixed"} bg="teal.5" py={10} w="100%" style={{ zIndex: 10 }}>
@@ -22,7 +25,15 @@ export const Header = () => {
                   xl: 80,
                 }}
               />
-              <UserInfoMenu userInfo={<UserInfo />} />
+              {session ? (
+                <UserInfoRow
+                  firstName={session?.firstName}
+                  lastName={session?.lastName}
+                  avatar={null}
+                />
+              ) : (
+                <AuthBtns />
+              )}
             </Flex>
           </Flex>
         </Container>

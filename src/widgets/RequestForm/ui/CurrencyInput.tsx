@@ -10,14 +10,15 @@ import { FaEuroSign } from "react-icons/fa";
 export const CurrencyInput = () => {
   const input_icon_size = 24;
   const [currency, setCurrency] = React.useState(1);
-  let SelectedCurrencyIcon;
-  switch (currency) {
-    case 1:
-      SelectedCurrencyIcon = <FaDollarSign size={input_icon_size} />;
-    case 2:
-      SelectedCurrencyIcon = <FaEuroSign size={input_icon_size} />;
-    case 3:
-      SelectedCurrencyIcon = <FaHryvniaSign size={input_icon_size} />;
+  function SelectedCurrencyIcon() {
+    switch (currency) {
+      case 1:
+        return <FaDollarSign size={input_icon_size} />;
+      case 2:
+        return <FaEuroSign size={input_icon_size} />;
+      case 3:
+        return <FaHryvniaSign size={input_icon_size} />;
+    }
   }
 
   return (
@@ -31,7 +32,7 @@ export const CurrencyInput = () => {
         <Menu>
           <Menu.Target>
             <Flex align={"center"}>
-              {SelectedCurrencyIcon}
+              <SelectedCurrencyIcon/>
               <IoMdArrowRoundDown style={{ marginLeft: "-3px" }} />
             </Flex>
           </Menu.Target>
