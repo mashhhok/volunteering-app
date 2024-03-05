@@ -23,7 +23,7 @@ export const selectUserValidator = createSelectSchema(users)
   })
   .merge(
     z.object({
-      organization: selectOrganizationValidator.optional(),
+      organization: selectOrganizationValidator.nullable(),
     })
   );
 
