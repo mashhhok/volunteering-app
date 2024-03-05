@@ -1,10 +1,9 @@
 import { organizations } from "./organizations";
-import { spendHistoryItems } from "./spendHistoryItem";
 
 import { relations } from "drizzle-orm";
 import { mysqlTable, int, varchar, timestamp } from "drizzle-orm/mysql-core";
 
-export const fullRequests = mysqlTable("full_requests", {
+export const donationRequests = mysqlTable("donation_requests", {
   id: int("id").primaryKey().autoincrement(),
   organizationId: int("organization_id").notNull(),
   requestTitle: varchar("request_title", { length: 255 }).notNull(),
@@ -15,13 +14,12 @@ export const fullRequests = mysqlTable("full_requests", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const fullRequestsRelations = relations(
-  fullRequests,
-  ({ one, many }) => ({
+export const donationRequestsRelations = relations(
+  donationRequests,
+  ({ one }) => ({
     organization: one(organizations, {
-      fields: [fullRequests.organizationId],
+      fields: [donationRequests.organizationId],
       references: [organizations.id],
     }),
-    spendHistoryItems: many(spendHistoryItems),
   })
 );

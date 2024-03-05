@@ -1,5 +1,5 @@
 import { users } from "./users";
-import { fullRequests } from "./fullRequests";
+import { donationRequests } from "./donationRequests";
 
 import { relations } from "drizzle-orm";
 import { mysqlTable, varchar, int, timestamp } from "drizzle-orm/mysql-core";
@@ -13,6 +13,6 @@ export const organizations = mysqlTable("organizations", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-const organizationsRelations = relations(organizations, ({ many }) => ({
-  fullRequests: many(fullRequests),
+export const organizationsRelations = relations(organizations, ({ many }) => ({
+  donationRequests: many(donationRequests),
 }));
