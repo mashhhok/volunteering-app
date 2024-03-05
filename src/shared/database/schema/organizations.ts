@@ -7,6 +7,7 @@ import { mysqlTable, varchar, int, timestamp } from "drizzle-orm/mysql-core";
 export const organizations = mysqlTable("organizations", {
   id: int("id").primaryKey().autoincrement(),
   userId: int("user_id")
+    .notNull()
     .unique()
     .references(() => users.id),
   companyName: varchar("company_name", { length: 20 }).notNull(),
