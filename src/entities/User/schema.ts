@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { users } from "@/shared/database/schema";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { selectOrganizationValidator } from "../Organization/schema";
 
 const validateName = (value: string) => /^(?:[a-zA-Z]+|[а-яА-Я]+)$/.test(value);
 
@@ -16,9 +17,15 @@ export const insertUserValidator = createInsertSchema(users, {
   avatar: (schema) => schema.avatar.trim().url(),
 }).omit({ id: true, createdAt: true });
 
-export const selectUserValidator = createSelectSchema(users).omit({
-  password: true,
-});
+export const selectUserValidator = createSelectSchema(users)
+  .omit({
+    password: true,
+  })
+  .merge(
+    z.object({
+      organization: selectOrganizationValidator.nullable(),
+    })
+  );
 
 export const JWTUserValidator = selectUserValidator.pick({
   id: true,

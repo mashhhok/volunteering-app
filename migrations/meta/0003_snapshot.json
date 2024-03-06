@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "fa4721d3-7a4e-4367-847a-96f55b57c6bb",
-  "prevId": "6465be1e-d033-4210-807d-6148083c72da",
+  "id": "26f6fb14-05e5-49bc-a9c5-4ad5222355c3",
+  "prevId": "72f4aeb1-ce08-47c6-b984-98821fe1f422",
   "tables": {
     "donation_requests": {
       "name": "donation_requests",
@@ -150,58 +150,6 @@
         }
       }
     },
-    "requests": {
-      "name": "requests",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "company_name": {
-          "name": "company_name",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "request_title": {
-          "name": "request_title",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "image_url": {
-          "name": "image_url",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "(now())"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "requests_id": {
-          "name": "requests_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "uniqueConstraints": {}
-    },
     "organizations": {
       "name": "organizations",
       "columns": {
@@ -216,7 +164,7 @@
           "name": "user_id",
           "type": "int",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "company_name": {
