@@ -16,6 +16,8 @@ export const FullRequest = ({
   collectedMoney,
   needMoney,
 }: IFullRequest) => {
+  
+
   return (
     <Flex align={"center"} justify={"center"} direction={"column"} gap={20}>
       <Button radius={"xl"} px={15} fz="lg" lh={0.7} color="teal.8">

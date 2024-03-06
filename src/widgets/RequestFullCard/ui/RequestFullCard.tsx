@@ -1,10 +1,8 @@
 import { Box, Button, Container, Divider, Flex, Title } from "@mantine/core";
 import React from "react";
-import { InterBtns } from "../../../entities/FullRequest/ui/InterBtns";
-import { PercentProgress } from "../../../entities/FullRequest/ui/PercentProgress";
 import { SpendHistories } from "./SpendHistories";
 import { UserInfoColumn } from "@/entities/User";
-import { FullRequest } from "@/entities/FullRequest";
+import { FullRequest } from "@/entities/Requests";
 
 export const RequestFullCard: React.FC<any> = ({ imageUrl, companyName }) => {
   return (

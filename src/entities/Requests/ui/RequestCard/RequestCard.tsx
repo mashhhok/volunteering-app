@@ -1,15 +1,8 @@
-import { routes } from "@/shared/config/routes";
 import {
-  Avatar,
-  Box,
-  Button,
   Card,
   Divider,
   Flex,
-  Text,
-  Title,
 } from "@mantine/core";
-import Link from "next/link";
 import React from "react";
 import { RequestInfo } from "./RequestInfo";
 import { RequestTitle } from "./RequestTitle";

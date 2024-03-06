@@ -1,6 +1,6 @@
 import React from "react";
-import { RequestCard } from "@/entities/RequestCard";
 import { Container, SimpleGrid } from "@mantine/core";
+import { RequestCard } from "@/entities/Requests";
 
 const RequestCards = async () => {
   // const {data} = fetch('URL')
