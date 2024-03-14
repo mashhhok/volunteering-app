@@ -2,13 +2,13 @@ import { Box, Button, Container, Divider, Flex, Title } from "@mantine/core";
 import React from "react";
 import { SpendHistories } from "./SpendHistories";
 import { UserInfoColumn } from "@/entities/User";
-import { FullRequest } from "@/entities/Requests";
+import { FullRequest } from "@/entities/DonationRequest";
 
 export const RequestFullCard: React.FC<any> = ({ imageUrl, companyName }) => {
   return (
     <Container size={"xl"}>
       <Flex align={"center"} justify={"center"} direction={"column"} gap={20}>
-        <UserInfoColumn imageUrl={imageUrl} name={companyName} />
+        <UserInfoColumn avatarUrl={imageUrl} name={companyName} />
         <FullRequest
           createdAt={"20.20.20"}
           requestTitle={

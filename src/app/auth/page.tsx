@@ -6,7 +6,7 @@ import React from "react";
 const AuthPage = async () => {
   return (
     <Box>
-      <Box h={15} />
+      <Box h={30} />
       <Flex justify={"center"}>
         <Box maw={500} w="100%">
           <AuthForm />

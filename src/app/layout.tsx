@@ -5,9 +5,10 @@ import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { theme } from "@/shared/config/mantine.config";
 import "@mantine/core/styles.css";
 import { Header } from "@/widgets/Header";
-import {Montserrat} from 'next/font/google'
+import { Montserrat } from "next/font/google";
+import { Cursor } from "./Cursor";
 
-const mont = Montserrat({subsets: ['cyrillic', 'latin']})
+const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
 export const metadata: Metadata = {
   title: "Home page",
@@ -19,6 +20,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <head>
@@ -30,9 +32,10 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={mont.className}>
+      <body className={mont.className}> 
         <MantineProvider theme={theme} defaultColorScheme="light">
           <Header />
+          <Cursor />
           {children}
         </MantineProvider>
       </body>

@@ -1,4 +1,5 @@
 "use client";
+import { colors } from "@/shared/enums";
 import {
   Box,
   Button,
@@ -8,6 +9,7 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
+import Link from "next/link";
 import { useFormState } from "react-dom";
 
 export default function AuthFormClient({
@@ -25,9 +27,24 @@ export default function AuthFormClient({
             {state}
           </Text>
           <Flex gap={15} direction={"column"}>
-            <TextInput label="Input email address" name="login" />
-            <TextInput label="Input Password" name="password" type="password" />
-            <Flex justify={"flex-end"}>
+            <TextInput
+              label="Input email address"
+              name="login"
+              placeholder="test@outlook.com"
+            />
+            <TextInput
+              label="Input Password"
+              name="password"
+              type="password"
+              placeholder="password..."
+            />
+            <Flex justify={"space-between"}>
+              <Link
+                href="/register"
+                style={{ color: colors.blue, textDecoration: "underline", cursor: 'pointer', zIndex: 1 }}
+              >
+                create account
+              </Link>
               <Button type="submit" variant="gradient">
                 Submit
               </Button>

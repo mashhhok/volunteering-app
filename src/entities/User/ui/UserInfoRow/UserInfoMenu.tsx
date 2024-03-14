@@ -1,5 +1,5 @@
 "use client";
-import { Avatar, Divider, Flex, Menu, Text } from "@mantine/core";
+import { Avatar, Divider, Flex, Menu, Text, Title } from "@mantine/core";
 import React from "react";
 import { IoMdSettings } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
@@ -14,6 +14,7 @@ interface IUserInfoMenu {
   lastName: string;
   avatar: string | null | undefined;
   logOutFn: () => any;
+  profilLink: string;
 }
 
 export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
@@ -22,18 +23,19 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
   lastName,
   avatar,
   logOutFn,
+  profilLink,
 }) => {
   const [logOutCount, setLogoutCount] = React.useState<number>(0);
   React.useEffect(() => {
     if (logOutCount < 1) return;
     logOutFn();
-  }, [logOutCount]);
+  }, [logOutCount, logOutFn]);
 
   return (
     <Menu shadow="xl" width={200} radius="md">
       <Menu.Target>{userInfo}</Menu.Target>
       <Menu.Dropdown>
-        <Menu.Label>
+        <Menu.Item>
           <Flex gap={5} align={"center"}>
             <Avatar
               src={avatar}
@@ -42,16 +44,27 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
               color="inherit"
               size="sm"
             >
-              {firstLetsOfNames(firstName, lastName)}
+              <Title size="13px" fw={500}>
+                {firstLetsOfNames(firstName, lastName)}
+              </Title>
             </Avatar>{" "}
-            <Text fz={"md"} fw={500}>
+            <Text
+              fz={"lg"}
+              fw={500}
+              style={{
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                width: "46%",
+              }}
+            >
               {firstName} {lastName}
             </Text>
           </Flex>
-        </Menu.Label>
+        </Menu.Item>
         <Divider mb={3} />
         <Menu.Item fz={"lg"} fw={500} leftSection={<CgProfile />}>
-          <Link href={routes.profile}>Profile</Link>
+          <Link href={profilLink}>Profile</Link>
         </Menu.Item>
         <Menu.Item fz={"lg"} fw={500} leftSection={<IoMdSettings />}>
           <Link href="/settings">Settings</Link>

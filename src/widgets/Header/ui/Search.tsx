@@ -1,91 +1,56 @@
 "use client";
+import { colors } from "@/shared/enums";
 import { Box, Divider, Flex, Menu, TextInput } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
 import React, { ChangeEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineClear } from "react-icons/md";
-import { VscSettings } from "react-icons/vsc";
-import { IoLogoClosedCaptioning } from "react-icons/io";
-import { FaCodePullRequest } from "react-icons/fa6";
-import { IoMdDoneAll } from "react-icons/io";
 
 export const Search = () => {
-  const [searchValue, setSearchValue] = React.useState("");
-  const searchRef = React.useRef<HTMLInputElement>(null);
-  const [isFocus, setIsFocus] = React.useState(false);
+  const [isFirstClick, setIsFirstClick] = React.useState(false);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const { hovered, ref } = useHover<HTMLDivElement>();
 
-  function onSearchChange(e: ChangeEvent<HTMLInputElement>) {
-    setSearchValue(e.target.value);
-  }
-
-  function onClearClick() {
-    setSearchValue("");
-    searchRef.current?.focus();
+  function onSearchClick() {
+    setIsFirstClick(true);
+    inputRef.current?.focus();
   }
 
-  function filterItemClick() {
-    searchRef.current?.focus();
-  }
-
-  function onSearchFocus() {
-    setIsFocus(true);
-  }
-  function onSearchBlur() {
-    setIsFocus(false);
-  }
   return (
-    <Box>
+    <Box maw={200} w={'100%'}>
+      {/* <IoSearch  /> */}
+      {/* <MdOutlineClear/> */}
       <TextInput
-        radius={"sm"}
-        leftSection={<IoSearch />}
-        leftSectionPointerEvents="none"
-        onFocus={onSearchFocus}
-        placeholder="Search..."
-        onBlur={onSearchBlur}
-        ref={searchRef}
-        w={{ base: "100%", xs: isFocus ? "300px" : "270px" }}
-        style={{ transition: ".3s" }}
-        value={searchValue}
-        onChange={onSearchChange}
-        rightSection={
-          <Flex w={70} h={"80%"} align={"center"}>
-            <Menu radius={"md"} position="bottom-end" offset={12}>
-              <Menu.Target>
-                <Flex>
-                  <VscSettings size={20} style={{ cursor: "pointer" }} />
-                </Flex>
-              </Menu.Target>
-              <Menu.Dropdown pr={15}>
-                <Menu.Label>Select one of</Menu.Label>
-                <Divider mb={3} />
-                <Menu.Item
-                  onClick={filterItemClick}
-                  leftSection={<IoMdDoneAll />}
-                >
-                  All
-                </Menu.Item>
-                <Menu.Item
-                  onClick={filterItemClick}
-                  leftSection={<IoLogoClosedCaptioning />}
-                >
-                  By Company Name
-                </Menu.Item>
-                <Menu.Item
-                  onClick={filterItemClick}
-                  leftSection={<FaCodePullRequest />}
-                >
-                  By Request Name
-                </Menu.Item>
-              </Menu.Dropdown>
-            </Menu>
-            <Divider orientation="vertical" size={2} mx={3} />
-            <MdOutlineClear
-              size={20}
-              onClick={onClearClick}
-              style={{ cursor: "pointer" }}
+        leftSection={
+          <Flex ref={ref} justify={'center'} align={'center'}>
+            <IoSearch
+              style={{
+                transform: isFirstClick ? "scale(1)" : "scale(1.7)",
+                cursor: "pointer",
+                transition: "0.3s",
+              }}
+              color={hovered ? colors.violet : ""}
+              onClick={onSearchClick}
             />
-            <Box w={20} />
           </Flex>
         }
+        ref={inputRef}
+        leftSectionPointerEvents={isFirstClick ? "none" : "all"}
+        w={isFirstClick ? "100%" : 0}
+        radius={"md"}
+        placeholder="Search..."
+        styles={{
+          root: {
+            transition: ".5s",
+          },
+          input: {
+            backgroundColor: "transparent",
+            border: isFirstClick
+              ? "calc(0.0625rem* var(--mantine-scale)) solid var(--input-bd)"
+              : "0px solid var(--input-bd)",
+            pointerEvents: isFirstClick ? "all" : "none",
+          },
+        }}
       />
     </Box>
   );

@@ -1,28 +1,53 @@
 import React from "react";
-import { Container, SimpleGrid } from "@mantine/core";
-import { RequestCard } from "@/entities/Requests";
+import { Container, Flex, SimpleGrid } from "@mantine/core";
+import { RequestCard } from "@/entities/DonationRequest";
 
 const RequestCards = async () => {
   // const {data} = fetch('URL')
 
   return (
-    <Container size="xl">
-      <SimpleGrid cols={{ xs: 1, sm: 2, md: 1 }}>
+    <Container size="90em">
+      <Flex wrap={"wrap"} gap={10} justify={"center"}>
         <RequestCard
-          id="1"
           companyName="Company Name"
-          date="27.02.2024 7:00"
-          requestTitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum ea fugiat eum accusamus pariatur in error est suscipit excepturi quasi ipsam atque voluptate molestiae sunt ut, quae, qui, aut a."
+          requestTitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum ea fugiat eum accusamus pariatur"
           avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
+          requestDescription={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque modi voluptas ipsam velit provident voluptate quod facilis nisi, amet adipisci. Dicta, consequatur repudiandae. Consequuntur fugiat, qui eligendi error libero recusandae."}
+          requestStatus={"closed"}
+          needMoney={10000}
+          collectedMoney={3200}
+          imageUrl={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"} verifiedAndTrusted={true}        />
+        <RequestCard
+          companyName="Company Name"
+          requestTitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum ea fugiat eum accusamus pariatur"
+          avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
+          requestDescription={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque modi voluptas ipsam velit provident voluptate quod facilis nisi, amet adipisci. Dicta, consequatur repudiandae. Consequuntur fugiat, qui eligendi error libero recusandae."
+          }
+          requestStatus={"pending"}
+          needMoney={10000}
+          collectedMoney={3200}
+          imageUrl={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
+          }
+          verifiedAndTrusted={false}
         />
         <RequestCard
-          id="2"
           companyName="Company Name"
-          date="27.02.2024 7:00"
-          requestTitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum ea fugiat eum accusamus pariatur in error est suscipit excepturi quasi ipsam atque voluptate molestiae sunt ut, quae, qui, aut a."
+          requestTitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum ea fugiat eum accusamus pariatur"
           avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
+          requestDescription={
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque modi voluptas ipsam velit provident voluptate quod facilis nisi, amet adipisci. Dicta, consequatur repudiandae. Consequuntur fugiat, qui eligendi error libero recusandae."
+          }
+          requestStatus={"open"}
+          needMoney={10000}
+          collectedMoney={10000}
+          imageUrl={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
+          }
+          verifiedAndTrusted={true}
         />
-      </SimpleGrid>
+      </Flex>
     </Container>
   );
 };
