@@ -57,3 +57,17 @@ export async function updateOrganizationById(
     return null;
   }
 }
+
+export async function getOrganizationById(
+  organizationId: number
+): Promise<SelectOrganization | null> {
+  const connection = await getConnection();
+
+  const organization = await connection.query.organizations.findFirst({
+    where: eq(organizations.id, organizationId),
+    columns: extractColumns(selectOrganizationValidator),
+  });
+
+  if (!organization) return null;
+  return selectOrganizationValidator.parse(organization);
+}
