@@ -9,11 +9,17 @@
     "lint": "next lint",
     "migrations:generate": "drizzle-kit generate:mysql",
     "migrations:push": "drizzle-kit push:mysql",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "email:dev": "email dev"
   },
   "dependencies": {
     "@mantine/core": "^7.6.0",
     "@mantine/hooks": "^7.6.0",
+    "@react-email/container": "^0.0.11",
+    "@react-email/html": "^0.0.7",
+    "@react-email/section": "^0.0.11",
+    "@react-email/tailwind": "^0.0.14",
+    "@react-email/text": "^0.0.7",
     "bcryptjs": "^2.4.3",
     "drizzle-kit": "^0.20.14",
     "drizzle-orm": "^0.29.4",
@@ -23,6 +29,7 @@
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18",
+    "react-email": "^2.1.0",
     "react-icons": "^5.0.1",
     "server-only": "^0.0.1"
   },
