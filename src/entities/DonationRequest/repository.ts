@@ -9,7 +9,8 @@ import {
 import { donationRequests } from "@/shared/database/schema";
 import { getConnection, extractColumns } from "@/shared/database/lib";
 
-import { eq } from "drizzle-orm";
+import type { SQL } from "drizzle-orm";
+import { eq, count, and } from "drizzle-orm";
 
 export async function createDonationRequest(
   insertDonationRequest: InsertDonationRequest
@@ -45,4 +46,22 @@ export async function getDonationRequestById(
 
   if (!donationRequest) return null;
   return selectDonationRequestValidator.parse(donationRequest);
+}
+
+export async function getDonationRequestsCount(
+  params: { organizationId?: number } = {}
+) {
+  const connection = await getConnection();
+
+  const filters: SQL[] = [];
+
+  if (params.organizationId)
+    filters.push(eq(donationRequests.organizationId, params.organizationId));
+
+  const donationRequestsCount = await connection
+    .select({ count: count() })
+    .from(donationRequests)
+    .where(and(...filters));
+
+  return donationRequestsCount[0].count;
 }
