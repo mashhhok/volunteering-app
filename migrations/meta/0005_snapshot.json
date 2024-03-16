@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "fa4721d3-7a4e-4367-847a-96f55b57c6bb",
-  "prevId": "6465be1e-d033-4210-807d-6148083c72da",
+  "id": "45213c8e-7d17-4fdb-b3e5-fe4aebe6ad01",
+  "prevId": "fe19fe08-12d1-43d8-a72c-84157df413b7",
   "tables": {
     "donation_requests": {
       "name": "donation_requests",
@@ -150,8 +150,8 @@
         }
       }
     },
-    "requests": {
-      "name": "requests",
+    "organizations": {
+      "name": "organizations",
       "columns": {
         "id": {
           "name": "id",
@@ -160,6 +160,13 @@
           "notNull": true,
           "autoincrement": true
         },
+        "user_id": {
+          "name": "user_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "company_name": {
           "name": "company_name",
           "type": "varchar(20)",
@@ -167,16 +174,9 @@
           "notNull": true,
           "autoincrement": false
         },
-        "request_title": {
-          "name": "request_title",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "image_url": {
-          "name": "image_url",
-          "type": "varchar(255)",
+        "description": {
+          "name": "description",
+          "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -192,65 +192,6 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "requests_id": {
-          "name": "requests_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "uniqueConstraints": {}
-    },
-    "organizations": {
-      "name": "organizations",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "company_name": {
-          "name": "company_name",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "(now())"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "organizations_user_id_users_id_fk": {
-          "name": "organizations_user_id_users_id_fk",
-          "tableFrom": "organizations",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
       "compositePrimaryKeys": {
         "organizations_id": {
           "name": "organizations_id",
