@@ -12,7 +12,10 @@ import {
 
 export const organizations = mysqlTable("organizations", {
   id: int("id").primaryKey().autoincrement(),
-  userId: int("user_id").unique().notNull(),
+  userId: int("user_id")
+    .unique()
+    .notNull()
+    .references(() => users.id),
   site: varchar("site", { length: 255 }),
   companyName: varchar("company_name", { length: 20 }).notNull(),
   description: text("description").notNull(),

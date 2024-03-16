@@ -50,6 +50,20 @@
       "when": 1710611231081,
       "tag": "0006_closed_ghost_rider",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1710611956993,
+      "tag": "0007_red_reavers",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1710612003822,
+      "tag": "0008_massive_marrow",
+      "breakpoints": true
     }
   ]
 }
