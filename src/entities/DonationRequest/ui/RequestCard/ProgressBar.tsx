@@ -19,7 +19,7 @@ export const ProgressBar = ({
       />
       <Box h={12} />
       <Flex justify={"space-between"}>
-        <Title order={5}>{moneyPercent}% UAH</Title>
+        <Title order={5}>{moneyPercent}%</Title>
         <Title order={5}>100% UAH</Title>
       </Flex>
     </Box>

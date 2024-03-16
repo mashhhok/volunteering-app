@@ -23,7 +23,7 @@ export const LanguageSelect = () => {
   return (
     <Select
       wrapperProps={{ width: "auto" }}
-      w={"80px"}
+      w={"90px"}
       data={[
         { label: "укр", value: "ua" },
         { label: "анг", value: "en" },

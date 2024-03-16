@@ -47,6 +47,11 @@ export const RequestCard: React.FC<IRequestCard> = ({
   verifiedAndTrusted,
 }) => {
   const [clicked, setClicked] = React.useState(false);
+  const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
+
+  const blurOption = {
+    filter: moneyPercent === 100 ? "blur(3.5px)" : "blur(0px)",
+  };
 
   return (
     <Card
@@ -55,6 +60,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
       maw={440}
       w={"100%"}
       h={555}
+      bg={'transparent'}
       onClick={() => setClicked((prev) => !prev)}
       style={{ border: `2px solid ${colors.black}` }}
     >
@@ -62,17 +68,25 @@ export const RequestCard: React.FC<IRequestCard> = ({
         <Flex gap={12} direction={"column"}>
           {/* FRONT CARD */}
           <Flex direction={"column"} gap={4}>
-            <CardImg imageUrl={imageUrl} />
-            <Location>Kyiv, Ukraine</Location>
+            <Box style={blurOption}>
+              <CardImg imageUrl={imageUrl} />
+            </Box>
+            <Box style={blurOption}>
+              <Location>Kyiv, Ukraine</Location>
+            </Box>
 
             <CardTitle>{requestTitle}</CardTitle>
           </Flex>
 
-          <CompanyInfo
-            companyName={companyName}
-            verifiedAndTrusted={verifiedAndTrusted}
-          />
-          <ProgressBar collected={collectedMoney} need={needMoney} />
+          <Box style={blurOption}>
+            <CompanyInfo
+              companyName={companyName}
+              verifiedAndTrusted={verifiedAndTrusted}
+            />
+          </Box>
+          <Box style={blurOption}>
+            <ProgressBar collected={collectedMoney} need={needMoney} />
+          </Box>
 
           <CardStatus
             status={requestStatus}
@@ -80,7 +94,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
           />
         </Flex>
       ) : (
-        <Flex gap={15} direction={"column"} h={'100%'}>
+        <Flex gap={15} direction={"column"} h={"100%"}>
           {/* BACK CARD */}
           <Flex gap={4} direction={"column"}>
             <Location>Kyiv, Ukraine</Location>
@@ -90,16 +104,14 @@ export const RequestCard: React.FC<IRequestCard> = ({
             companyName={companyName}
             verifiedAndTrusted={verifiedAndTrusted}
           />
-          <CardDescription>
-            {requestDescription}
-          </CardDescription>
+          <CardDescription>{requestDescription}</CardDescription>
           <ProgressBar collected={collectedMoney} need={needMoney} />
           <CardStatus
             status={requestStatus}
             isTextHidden={true}
             tags={["🎖 Military", "🥾 Equipment"]}
           />
-          <Box style={{flexGrow: '1'}} />
+          <Box style={{ flexGrow: "1" }} />
           <Flex justify="flex-end" align={"center"} gap={16}>
             <BlurButton size="xl" color={colors.violet}>
               Donate

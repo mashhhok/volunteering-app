@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
 import "./globals.css";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { Box, ColorSchemeScript, Flex, MantineProvider } from "@mantine/core";
 import { theme } from "@/shared/config/mantine.config";
 import "@mantine/core/styles.css";
 import { Header } from "@/widgets/Header";
 import { Montserrat } from "next/font/google";
 import { Cursor } from "./Cursor";
+import { Footer } from "@/widgets/Footer";
+import { Wrapper } from "./Wrapper";
+import { colors } from "@/shared/enums";
 
 const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
@@ -20,7 +23,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
     <html lang="en">
       <head>
@@ -32,11 +34,14 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={mont.className}> 
+      <body className={mont.className}>
         <MantineProvider theme={theme} defaultColorScheme="light">
-          <Header />
-          <Cursor />
-          {children}
+          <Flex mih={"100vmin"} direction={"column"}>
+            <Header />
+            <Cursor />
+            <Box flex={"1 1 auto"}>{children}</Box>
+            <Footer />
+          </Flex>
         </MantineProvider>
       </body>
     </html>

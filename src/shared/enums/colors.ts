@@ -5,6 +5,8 @@ export enum colors {
   white = "#F4F4F4",
   black = "#121212",
   gray = "rgba(125, 125, 125, 1)",
+  lightGray = "rgba(206, 206, 206, 1)",
   green = "rgba(0, 100, 55, 1)",
   blue = "rgba(22, 121, 211, 1)",
+  neutral = 'rgba(243, 244, 252, 1)',
 }

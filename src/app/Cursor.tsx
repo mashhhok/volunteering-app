@@ -25,9 +25,9 @@ export const Cursor = () => {
       pos="absolute"
       top={0}
       left={0}
-      w={"100vw"}
+      w={"100%"}
       h={document.documentElement.scrollHeight}
-      style={{ overflow: "hidden", userSelect: "none" }}
+      style={{ overflow: "hidden", userSelect: "none", zIndex: -1 }}
     >
       <Box
         pos="relative"
