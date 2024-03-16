@@ -3,6 +3,7 @@ import "server-only";
 import {
   type InsertOrganization,
   type SelectOrganization,
+  type UpdateOrganization,
   selectOrganizationValidator,
 } from "./schema";
 
@@ -34,7 +35,7 @@ export async function createOrganization(
 
 export async function updateOrganizationById(
   organizationId: number,
-  insertOrganization: Partial<InsertOrganization>
+  insertOrganization: UpdateOrganization
 ): Promise<SelectOrganization | null> {
   try {
     const connection = await getConnection();
