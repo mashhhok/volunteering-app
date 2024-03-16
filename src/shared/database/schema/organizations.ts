@@ -13,6 +13,7 @@ import {
 export const organizations = mysqlTable("organizations", {
   id: int("id").primaryKey().autoincrement(),
   userId: int("user_id").unique().notNull(),
+  site: varchar("site", { length: 255 }),
   companyName: varchar("company_name", { length: 20 }).notNull(),
   description: text("description").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),

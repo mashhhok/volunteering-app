@@ -43,6 +43,13 @@
       "when": 1709714196390,
       "tag": "0005_simple_johnny_blaze",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1710611231081,
+      "tag": "0006_closed_ghost_rider",
+      "breakpoints": true
     }
   ]
 }
