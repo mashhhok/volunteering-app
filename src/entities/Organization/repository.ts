@@ -31,3 +31,28 @@ export async function createOrganization(
     return null;
   }
 }
+
+export async function updateOrganizationById(
+  organizationId: number,
+  insertOrganization: Partial<InsertOrganization>
+): Promise<SelectOrganization | null> {
+  try {
+    const connection = await getConnection();
+
+    const updateResult = await connection
+      .update(organizations)
+      .set(insertOrganization)
+      .where(eq(organizations.id, organizationId));
+
+    if (updateResult[0].affectedRows === 0) return null;
+
+    const createdOrganization = await connection.query.organizations.findFirst({
+      where: eq(organizations.id, organizationId),
+      columns: extractColumns(selectOrganizationValidator),
+    });
+
+    return selectOrganizationValidator.parse(createdOrganization);
+  } catch {
+    return null;
+  }
+}
