@@ -13,8 +13,8 @@ export const AuthProcess = ({ pageId }: { pageId: number }) => {
   return (
     <>
       {pageId === 1 && <FirstPage action={isEmailExistAction} />}
-      {pageId === 2 && <SecondPage />}
-      {pageId === 3 && <ThirdPage />}
+      {pageId === 3 && <SecondPage />}
+      {pageId === 2 && <ThirdPage />}
       {pageId === 4 && <ForthPage/> }
     </>
   );

@@ -3,7 +3,6 @@ import { devtools } from "zustand/middleware";
 
 export interface AuthStoreState {
   email: string;
-  isUserExist: null | boolean;
   password: {
     text: string;
     isError: boolean;
@@ -12,7 +11,6 @@ export interface AuthStoreState {
   setEmail: (val: string) => void;
   setPassword: (text: string, isErr: boolean) => void;
   setConfirmPassword: (val: string) => void;
-  setIsUserExist: (val: boolean | null) => void;
 }
 export const useAuthStore = create<AuthStoreState>()(
   devtools((set) => ({
@@ -22,12 +20,6 @@ export const useAuthStore = create<AuthStoreState>()(
       isError: true,
     },
     confirmPassword: "",
-    isUserExist: null,
-
-    setIsUserExist: (val: null | boolean) =>
-      set((state) => ({
-        isUserExist: val,
-      })),
 
     setEmail: (val: string) =>
       set((state) => ({

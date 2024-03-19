@@ -11,7 +11,7 @@ export const HideWhen = ({
   routes: string[];
 }) => {
   const pathname = usePathname();
-  const [isHidden, setIsHidden] = React.useState(true);
+  const [isHidden, setIsHidden] = React.useState(false);
 
   React.useEffect(() => {
     let isHidden = false;
@@ -23,7 +23,7 @@ export const HideWhen = ({
     } else {
       setIsHidden(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   return <Box style={{ display: isHidden ? "none" : "block" }}>{children}</Box>;

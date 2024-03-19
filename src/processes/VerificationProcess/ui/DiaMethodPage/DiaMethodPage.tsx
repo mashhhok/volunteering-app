@@ -4,6 +4,7 @@ import { Bordered } from "../Bordered";
 import { colors } from "@/shared/enums";
 import { LeftSection } from "./LeftSection";
 import { HowWork } from "../HowWork";
+import { BackBtn } from "./BackBtn";
 
 export const DiaMethodPage = () => {
   return (
@@ -12,6 +13,7 @@ export const DiaMethodPage = () => {
         Authorizе with Дія.Підпис
       </Title>
       <Flex
+        mb={24}
         gap={10}
         justify={"space-between"}
         align={{ base: "flex-start", md: "flex-end" }}
@@ -24,6 +26,7 @@ export const DiaMethodPage = () => {
           <HowWork />
         </Box>
       </Flex>
+      <BackBtn />
     </Container>
   );
 };

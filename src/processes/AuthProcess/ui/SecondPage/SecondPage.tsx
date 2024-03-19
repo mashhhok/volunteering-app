@@ -11,22 +11,15 @@ import { useAuthStore } from "../../store";
 export const SecondPage = () => {
   const router = useRouter();
   const [isComplete, setIsComplete] = React.useState(false);
-  const email = useAuthStore(state => state.email)
-  const isUserExist = useAuthStore(state => state.isUserExist)
-
-  if(isUserExist === true) redirect('/auth/4')
+  const email = useAuthStore((state) => state.email);
 
   useConditionalRedirect();
   function onComplete() {
     setIsComplete(true);
-
-    setTimeout(() => {
-      router.push("/auth/3");
-    }, 3000);
   }
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
   }
 
   return (

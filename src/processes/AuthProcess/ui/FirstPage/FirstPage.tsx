@@ -13,7 +13,7 @@ import { redirect } from "next/navigation";
 export const FirstPage = ({
   action,
 }: {
-  action: (formData: FormData) => Promise<boolean>;
+  action: (formData: FormData) => Promise<any>;
 }) => {
   const email = useInput("", {
     isEmail: true,
@@ -21,27 +21,15 @@ export const FirstPage = ({
     withDebounce: false,
   });
   const setEmail = useAuthStore((state) => state.setEmail);
-  const setIsUserExist = useAuthStore((state) => state.setIsUserExist);
 
   React.useEffect(() => {
     setEmail(email.value);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email.value]);
 
-  async function formAction(formData: FormData) {
-    const isUserExist = await action(formData);
-    if (isUserExist) {
-      setIsUserExist(true);
-      redirect("/auth/4");
-    } else {
-      setIsUserExist(false);
-      redirect("/auth/2");
-    }
-  }
-
   return (
     <Box w={"100%"} maw={500}>
-      <form action={formAction}>
+      <form action={action}>
         <EmailInput email={email} />
 
         <ContinueWithBtns isContinueDisabled={!email.isValid} googleHref={""} />

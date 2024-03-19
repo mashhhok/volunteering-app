@@ -8,5 +8,6 @@ export async function isEmailExistAction(formData: FormData) {
   if (!email) redirect("/auth/1");
   const user = await getUserByEmail(email);
   const isExistUser = Boolean(user);
-  return isExistUser
+  if (isExistUser) redirect("/auth/4");
+  else redirect("/auth/2");
 }

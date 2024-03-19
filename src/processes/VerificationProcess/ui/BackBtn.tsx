@@ -12,9 +12,9 @@ export const BackBtn = () => {
   }
 
   return (
-    <Flex style={{ display: "inline-flex" }} gap={8} align={"center"} mt={10} onClick={click}>
+    <Flex style={{ display: "inline-flex", cursor: 'pointer' }} gap={8} align={"center"} mt={10} onClick={click}>
       <LeftArrowSVG />
-      <Text size="xs">Back to site</Text>
+      <Text size="xs">Go Back</Text>
     </Flex>
   );
 };

@@ -9,7 +9,7 @@ const LeftArrow = () => (
 
 export const BackBtn = () => {
   return (
-    <Flex gap={11} align={'center'}>
+    <Flex gap={11} align={'center'} style={{cursor: 'pointer'}}>
       <LeftArrow />
       <Text>Back</Text>
     </Flex>

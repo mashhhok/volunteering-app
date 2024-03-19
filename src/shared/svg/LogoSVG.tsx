@@ -4,7 +4,6 @@ import React from "react";
 import { colors } from "../enums";
 export const LogoSVG = (props: ISVG) => {
   const { colorScheme } = useMantineColorScheme();
-
   return (
     <svg
       width={props.width ? props.width : 35}
