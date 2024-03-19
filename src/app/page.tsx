@@ -47,7 +47,6 @@ const HomePage = async () => {
       <Container>
       <Chip>10%</Chip>
       <Chip selected>10%</Chip>
-
       </Container>
     </div>
   );

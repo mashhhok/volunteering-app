@@ -4,6 +4,7 @@ import React from "react";
 import logo from "@/public/logo.svg";
 import logo_dark from "@/public/logo_dark.svg";
 import { useMantineColorScheme } from "@mantine/core";
+import { LogoSVG } from "../svg";
 
 export const Logo = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -16,11 +17,8 @@ export const Logo = () => {
 
   return (
     <>
-      {scheme === "dark" ? (
-        <Image src={logo_dark} width={35} height={45} alt="logo" />
-      ) : (
-        <Image src={logo} width={35} height={45} alt="logo" />
-      )}
+    <LogoSVG />
+      
     </>
   );
 };

@@ -14,14 +14,12 @@ import React from "react";
 import { LinearDivider } from "@/shared/ui";
 import { colors } from "@/shared/enums";
 import { FiltersSVG } from "@/shared/svg/FiltersSVG";
-import qs from "qs";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useReplaceSearchParams } from "@/shared/lib/hooks";
 
 export const FilterOptions = () => {
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const replaceSearchParams = useReplaceSearchParams();
 
   const [emergency, setEmergency] = React.useState(false);
   const [militarCars, setMilitarCars] = React.useState(false);
@@ -94,11 +92,11 @@ export const FilterOptions = () => {
     setVolunteering(parseBool(searchParams.get("volunteering")));
     setLocation(searchParams.get("location"));
     setType(typeValidate(searchParams.get("type")));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
-    const str = qs.stringify({
-      ...qs.parse(window.location.search.substring(1)),
+    replaceSearchParams({
       emergency,
       militarCars,
       equipment,
@@ -114,7 +112,7 @@ export const FilterOptions = () => {
       location,
       type,
     });
-    router.push(`${pathname}?${str}`, { scroll: false });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, checkboxStateArray);
 
   return (

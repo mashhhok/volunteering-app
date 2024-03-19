@@ -10,6 +10,7 @@ import { Cursor } from "./Cursor";
 import { Footer } from "@/widgets/Footer";
 import { Wrapper } from "./Wrapper";
 import { colors } from "@/shared/enums";
+import { HideWhen } from "@/shared/ui";
 
 const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
@@ -37,10 +38,14 @@ export default async function RootLayout({
       <body className={mont.className}>
         <MantineProvider theme={theme} defaultColorScheme="light">
           <Flex mih={"100vmin"} direction={"column"}>
-            <Header />
+            <HideWhen routes={["auth"]}>
+              <Header />
+            </HideWhen>
             <Cursor />
             <Box flex={"1 1 auto"}>{children}</Box>
-            <Footer />
+            <HideWhen routes={["auth"]}>
+              <Footer />
+            </HideWhen>
           </Flex>
         </MantineProvider>
       </body>

@@ -1,15 +1,15 @@
 "use client";
 import { ShadowBtn } from "@/shared/ui";
 import { Box, Flex, Pagination } from "@mantine/core";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React from "react";
-import qs from "qs";
+import { useReplaceSearchParams } from "@/shared/lib/hooks";
 
 export const Footer = () => {
   const [page, setPage] = React.useState(0);
-  const router = useRouter();
-  const pathname = usePathname();
+
   const searchParams = useSearchParams();
+  const replaceSearchParams = useReplaceSearchParams();
 
   React.useEffect(() => {
     function pattern(val: string | null) {
@@ -18,16 +18,12 @@ export const Footer = () => {
     }
 
     setPage(pattern(searchParams.get("page")));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   React.useEffect(() => {
-    const qStr = qs.stringify({
-      ...qs.parse(window.location.search.substring(1)),
-      page,
-    });
-
-    router.push(`${pathname}?${qStr}`, { scroll: false });
+    replaceSearchParams({ page });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   return (

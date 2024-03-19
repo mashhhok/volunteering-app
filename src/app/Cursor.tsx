@@ -26,7 +26,7 @@ export const Cursor = () => {
       top={0}
       left={0}
       w={"100%"}
-      h={document.documentElement.scrollHeight}
+      h={"100vmin"}
       style={{ overflow: "hidden", userSelect: "none", zIndex: -1 }}
     >
       <Box

@@ -10,9 +10,10 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
 
-export const Header = async () => {
-  const session = await getSession();
 
+export const Header = async () => {
+
+  const session = await getSession();
 
   return (
     <Box h={70} pos={"relative"}>
