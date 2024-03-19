@@ -3,14 +3,14 @@ import { useInput } from "@/shared/lib/hooks";
 import { CrossSVG, RightSVG } from "@/shared/svg";
 import { Box, TextInput, Flex, Text } from "@mantine/core";
 import React, { ChangeEvent } from "react";
-import { useAuthStore } from "../../store";
+import { useAuthStore } from "../store";
 
 export const PasswordInput = () => {
   const password = useInput("", { minWidth: 10 });
   const setPassword = useAuthStore((state) => state.setPassword);
 
   React.useEffect(() => {
-    setPassword(password.value, password.isValid);
+    setPassword(password.value, !password.isValid);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [password.value, password.isValid]);
 

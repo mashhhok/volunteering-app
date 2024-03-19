@@ -14,6 +14,7 @@ export const EmailInput = ({
       radius={"md"}
       mb={24}
       autoFocus
+      name="email"
       placeholder={"Your Email"}
       {...email.handlers}
       {...(email.isValid && {

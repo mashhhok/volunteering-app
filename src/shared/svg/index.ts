@@ -5,3 +5,5 @@ export * from "./GoogleSVG";
 export * from "./RightSVG";
 export * from "./LoaderOvalSVG";
 export * from './CrossSVG'
+export * from './LeftArrowSVG'
+export * from './TopRightArrowSVG'

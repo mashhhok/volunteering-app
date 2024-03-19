@@ -1,20 +1,38 @@
 "use client";
-import { Box, ButtonCssVariables, Button as ButtonEl, darken } from "@mantine/core";
+import { Box, ButtonCssVariables, Button, darken } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import React from "react";
-import { Button } from "@mantine/core";
 
 export const BlurButton = (props: typeof Button.arguments) => {
   const { hovered, ref } = useHover();
+  const {
+    leftSection: LeftSection,
+    rightSection: RightSection,
+    ...rest
+  } = props;
 
   return (
-    <ButtonEl
+    <Button
       ref={ref}
       style={{
         overflow: "hidden",
       }}
       pos="relative"
-      {...props}
+      {...(LeftSection && {
+        leftSection: (
+          <Box style={{ zIndex: 5 }}>
+            {LeftSection}
+          </Box>
+        ),
+      })}
+      {...(RightSection && {
+        rightSection: (
+          <Box style={{ zIndex: 5 }}>
+            {RightSection}
+          </Box>
+        ),
+      })}
+      {...rest}
     >
       <Box
         pos={"absolute"}
@@ -31,6 +49,6 @@ export const BlurButton = (props: typeof Button.arguments) => {
         }}
       />
       <Box style={{ zIndex: 10000 }}>{props.children}</Box>
-    </ButtonEl>
+    </Button>
   );
 };

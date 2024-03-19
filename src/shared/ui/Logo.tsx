@@ -17,8 +17,7 @@ export const Logo = () => {
 
   return (
     <>
-    <LogoSVG />
-      
+      <LogoSVG />
     </>
   );
 };

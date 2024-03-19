@@ -55,6 +55,8 @@ interface IRules {
   specialChars?: string;
   onlyEnglish?: boolean;
   match?: string;
+  debounceTimeout?: number;
+  withDebounce?: boolean;
 }
 
 export const useInput = (defValue: string, rules: IRules) => {
@@ -67,7 +69,7 @@ export const useInput = (defValue: string, rules: IRules) => {
 
   React.useEffect(() => {
     isValidCheck();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function isValidCheck() {
@@ -81,8 +83,20 @@ export const useInput = (defValue: string, rules: IRules) => {
 
   function onChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setValue(e.target.value);
-
-    debounce(() => {
+    if (rules.withDebounce) {
+      debounce(
+        () => {
+          const errorText = validRules(rules, e.target.value);
+          if (errorText) {
+            setErrorText(errorText);
+            setIsValid(false);
+          } else {
+            setIsValid(true);
+          }
+        },
+        rules.debounceTimeout ? rules.debounceTimeout : 300
+      );
+    } else {
       const errorText = validRules(rules, e.target.value);
       if (errorText) {
         setErrorText(errorText);
@@ -90,7 +104,7 @@ export const useInput = (defValue: string, rules: IRules) => {
       } else {
         setIsValid(true);
       }
-    }, 300);
+    }
   }
 
   React.useEffect(() => {
@@ -99,7 +113,7 @@ export const useInput = (defValue: string, rules: IRules) => {
     } as ChangeEvent<HTMLInputElement>;
 
     onChange(_e);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rules.match]);
   function onFocus() {
     setIsShowError(false);
