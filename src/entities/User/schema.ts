@@ -10,6 +10,7 @@ const capitalize = (value: string) =>
 
 export const insertUserValidator = createInsertSchema(users, {
   email: (schema) => schema.email.trim().toLowerCase().email(),
+  password: (schema) => schema.password.min(10),
   firstName: (schema) =>
     schema.firstName.trim().min(2).refine(validateName).transform(capitalize),
   lastName: (schema) =>

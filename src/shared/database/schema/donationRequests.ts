@@ -5,7 +5,9 @@ import { mysqlTable, int, varchar, timestamp } from "drizzle-orm/mysql-core";
 
 export const donationRequests = mysqlTable("donation_requests", {
   id: int("id").primaryKey().autoincrement(),
-  organizationId: int("organization_id").notNull(),
+  organizationId: int("organization_id")
+    .notNull()
+    .references(() => organizations.id),
   requestTitle: varchar("request_title", { length: 255 }).notNull(),
   imageUrl: varchar("image_url", { length: 255 }).notNull(),
   needMoney: int("need_money").notNull(),
