@@ -46,7 +46,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
   imageUrl,
   verifiedAndTrusted,
 }) => {
-  const [clicked, setClicked] = React.useState(false);
+  const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
 
   const blurOption = {
@@ -55,76 +55,84 @@ export const RequestCard: React.FC<IRequestCard> = ({
 
   return (
     <Card
-      p={24}
+      // p={24}
       radius={"xl"}
       maw={440}
       w={"100%"}
       h={555}
-      bg={'transparent'}
-      onClick={() => setClicked((prev) => !prev)}
+      bg={"transparent"}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{ border: `2px solid ${colors.black}` }}
     >
-      {!clicked ? (
-        <Flex gap={12} direction={"column"}>
-          {/* FRONT CARD */}
-          <Flex direction={"column"} gap={4}>
-            <Box style={blurOption}>
-              <CardImg imageUrl={imageUrl} />
-            </Box>
-            <Box style={blurOption}>
-              <Location>Kyiv, Ukraine</Location>
-            </Box>
-
-            <CardTitle>{requestTitle}</CardTitle>
-          </Flex>
-
+      <Flex
+        gap={12}
+        direction={"column"}
+        style={{ position: "absolute", top: 0, left: 0, opacity: hovered ? '0' : '1', transition: '0.3s' }}
+        w={"100%"}
+        p={24}
+        h={"100%"}
+      >
+        {/* FRONT CARD */}
+        <Flex direction={"column"} gap={4}>
           <Box style={blurOption}>
-            <CompanyInfo
-              companyName={companyName}
-              verifiedAndTrusted={verifiedAndTrusted}
-            />
+            <CardImg imageUrl={imageUrl} />
           </Box>
           <Box style={blurOption}>
-            <ProgressBar collected={collectedMoney} need={needMoney} />
-          </Box>
-
-          <CardStatus
-            status={requestStatus}
-            tags={["🎖 Military", "🥾 Equipment"]}
-          />
-        </Flex>
-      ) : (
-        <Flex gap={15} direction={"column"} h={"100%"}>
-          {/* BACK CARD */}
-          <Flex gap={4} direction={"column"}>
             <Location>Kyiv, Ukraine</Location>
-            <CardTitle>{requestTitle}</CardTitle>
-          </Flex>
+          </Box>
+
+          <CardTitle>{requestTitle}</CardTitle>
+        </Flex>
+
+        <Box style={blurOption}>
           <CompanyInfo
             companyName={companyName}
             verifiedAndTrusted={verifiedAndTrusted}
           />
-          <CardDescription>{requestDescription}</CardDescription>
+        </Box>
+        <Box style={blurOption}>
           <ProgressBar collected={collectedMoney} need={needMoney} />
-          <CardStatus
-            status={requestStatus}
-            isTextHidden={true}
-            tags={["🎖 Military", "🥾 Equipment"]}
-          />
-          <Box style={{ flexGrow: "1" }} />
-          <Flex justify="flex-end" align={"center"} gap={16}>
-            <BlurButton size="xl" color={colors.violet}>
-              Donate
-            </BlurButton>
-            <Image
-              src={arrow_top_right_violet}
-              width={30}
-              height={30}
-              alt={""}
-            />
-          </Flex>
+        </Box>
+
+        <CardStatus
+          status={requestStatus}
+          tags={["🎖 Military", "🥾 Equipment"]}
+        />
+      </Flex>
+      <Flex
+        gap={15}
+        direction={"column"}
+        style={{ position: "absolute", top: 0, left: 0, opacity: hovered ? '1' : '0', transition: '0.3s' }}
+        w={"100%"}
+        // p={24}
+        p={24}
+        h={"100%"}
+      >
+        {/* BACK CARD */}
+        <Flex gap={4} direction={"column"}>
+          <Location>Kyiv, Ukraine</Location>
+          <CardTitle>{requestTitle}</CardTitle>
         </Flex>
-      )}
+        <CompanyInfo
+          companyName={companyName}
+          verifiedAndTrusted={verifiedAndTrusted}
+        />
+        <CardDescription>{requestDescription}</CardDescription>
+        <ProgressBar collected={collectedMoney} need={needMoney} />
+        <CardStatus
+          status={requestStatus}
+          isTextHidden={true}
+          tags={["🎖 Military", "🥾 Equipment"]}
+        />
+        <Box style={{ flexGrow: "1" }} />
+        <Flex justify="flex-end" align={"center"} gap={16}>
+          <BlurButton size="xl" color={colors.violet}>
+            Donate
+          </BlurButton>
+          <Image src={arrow_top_right_violet} width={30} height={30} alt={""} />
+        </Flex>
+      </Flex>
     </Card>
   );
 };

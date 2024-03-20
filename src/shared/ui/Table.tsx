@@ -24,8 +24,15 @@ export const Table = ({ elements }: ITable) => {
           <TableEl
             p={"24px 40px"}
             withRowBorders
+            styles={{
+              tbody: {
+                borderColor: "black",
+              },
+            }}
             horizontalSpacing={"24px"}
             verticalSpacing={"16px"}
+            highlightOnHover
+            style={{ cursor: "pointer" }}
           >
             {elements.map((item, index) => {
               if (index === 0)
@@ -50,11 +57,11 @@ export const Table = ({ elements }: ITable) => {
               else
                 return (
                   <TableEl.Tbody>
-                    <TableEl.Tr style={{ borderWidth: "2px" }}>
+                    <TableEl.Tr style={{ borderWidth: "2px", borderTop:`1px solid ${colors.neutral}` }} >
                       {item.map((item2, index) => (
-                        <TableEl.Th maw={330} key={index}>
+                        <TableEl.Td maw={330} key={index}>
                           {item2}
-                        </TableEl.Th>
+                        </TableEl.Td>
                       ))}
                     </TableEl.Tr>
                   </TableEl.Tbody>

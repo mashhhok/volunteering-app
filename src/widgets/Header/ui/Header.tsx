@@ -9,6 +9,7 @@ import { Logo } from "@/shared/ui";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
+import { LogoSVG } from "@/shared/svg";
 
 
 export const Header = async () => {
@@ -42,7 +43,7 @@ export const Header = async () => {
               <Search />
             </Flex>
 
-            <Logo />
+            <LogoSVG />
             <Flex
               gap={40}
               align={"center"}

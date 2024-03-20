@@ -92,7 +92,7 @@ export async function authAction(
 
     userLogin = userLogin.toString();
     userPassword = userPassword.toString();
-    if (!!false) {
+    if (true) {
       setSession = await login(userLogin, userPassword);
     } else {
       setSession = "confirm_mail";
@@ -100,7 +100,7 @@ export async function authAction(
   } catch (err) {
     return "Не удалось авторизоваться!";
   }
-  if (setSession === "confirm_mail") redirect("/auth/3");
+  // if (setSession === "confirm_mail") redirect("/auth/3");
   if (setSession) redirect("/");
   return "Не удалось авторизоваться!";
 }

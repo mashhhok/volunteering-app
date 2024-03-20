@@ -7,7 +7,7 @@ import {
   authAction,
   isEmailExistAction,
   registerAction,
-} from "./actions";
+} from "../actions";
 import { ForthPage } from "./ForthPage/ForthPage";
 import { redirect } from "next/navigation";
 

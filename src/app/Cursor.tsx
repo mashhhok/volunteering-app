@@ -44,16 +44,16 @@ export const Cursor = () => {
       >
         <Image
           src={cursor_bg}
-          width={50}
-          height={50}
+          // width={20}
+          // height={20}
           alt=""
           style={{
             position: "absolute",
             zIndex: -1,
             top: posY,
             left: posX,
-            width: 300,
-            height: 300,
+            width: 150,
+            height: 150,
             transform: "translate(-50%, -50%)",
             pointerEvents: "none",
           }}

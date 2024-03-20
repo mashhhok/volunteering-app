@@ -5,8 +5,8 @@ import { capitalizeStr } from "../../lib/utils/capitalizeStr";
 import { getSession, logout } from "@/shared/auth";
 
 interface IUserInfoRow {
-  firstName: string | undefined;
-  lastName: string | undefined;
+  firstName: string | null;
+  lastName: string | null;
   avatar: string | null | undefined;
 }
 

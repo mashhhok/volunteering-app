@@ -12,7 +12,7 @@ import { ContinueBtn } from "../ContinueBtn";
 import { useRouter } from "next/navigation";
 import { HiddenInput } from "@/shared/ui";
 import { useFormState } from "react-dom";
-import { IregisterActionResponse } from "../actions";
+import { IregisterActionResponse } from "../../actions";
 
 export const ThirdPage = ({
   action,
