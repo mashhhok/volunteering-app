@@ -6,9 +6,10 @@ import React, { ChangeEvent } from "react";
 import { useAuthStore } from "../../store";
 
 export const ConfirmInput = () => {
-  const password_1 = useAuthStore((state) => state.password);
-  const password = useInput("", { match: password_1.text, minWidth: 1 });
+  const password_first = useAuthStore((state) => state.password);
+  const password = useInput("", { match: password_first.text, minWidth: 1 });
   const setPassword = useAuthStore((state) => state.setConfirmPassword);
+  
 
   React.useEffect(() => {
     setPassword(password.value);

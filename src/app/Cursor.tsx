@@ -15,18 +15,25 @@ export const Cursor = () => {
   }, []);
 
   React.useEffect(() => {
-    document.addEventListener("mousemove", (e) => {
-      setPosY(e.pageY);
-      setPosX(e.pageX);
-    });
+    const func = (e: MouseEvent) => {
+      setPosY(e.clientY);
+      setPosX(e.clientX);
+      console.log('CURSOR')
+    };
+
+    document.addEventListener("mousemove", func);
+
+    return () => {
+      document.removeEventListener("mousemove", func);
+    };
   }, []);
   return (
     <Box
-      pos="absolute"
+      pos="fixed"
       top={0}
       left={0}
       w={"100%"}
-      h={document.documentElement.scrollHeight}
+      h={'100vh'}
       style={{ overflow: "hidden", userSelect: "none", zIndex: -1 }}
     >
       <Box

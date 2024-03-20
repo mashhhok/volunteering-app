@@ -14,7 +14,7 @@ export const CardsFilters = () => {
         <FilterOptions />
         <Box flex="1 1 auto">
           <Flex mih="100%" direction={"column"}>
-            <Box flex="1 1 auto">
+            <Box flex="1 1 auto" mb={24}>
               <CardsList />
             </Box>
             <Footer />

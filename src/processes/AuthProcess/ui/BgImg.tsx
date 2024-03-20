@@ -22,8 +22,8 @@ export const BgImg = () => {
           animationName: "rotating",
           animationDuration: "25s",
           animationIterationCount: "infinite",
-          width: "1600px",
-          height: "1180px",
+          width: "1440px",
+          height: "1024px",
         }}
       />
     </Flex>

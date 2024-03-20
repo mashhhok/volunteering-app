@@ -37,16 +37,18 @@ export default async function RootLayout({
       </head>
       <body className={mont.className}>
         <MantineProvider theme={theme} defaultColorScheme="light">
-          <Flex mih={"100vmin"} direction={"column"}>
-            <HideWhen routes={["auth"]}>
-              <Header />
-            </HideWhen>
-            <Cursor />
-            <Box flex={"1 1 auto"}>{children}</Box>
-            <HideWhen routes={["auth"]}>
-              <Footer />
-            </HideWhen>
-          </Flex>
+          <Wrapper>
+            <Flex mih={"100vmin"} direction={"column"}>
+              <HideWhen routes={["auth"]}>
+                <Header />
+              </HideWhen>
+              <Cursor />
+              <Box flex={"1 1 auto"}>{children}</Box>
+              <HideWhen routes={["auth"]}>
+                <Footer />
+              </HideWhen>
+            </Flex>
+          </Wrapper>
         </MantineProvider>
       </body>
     </html>

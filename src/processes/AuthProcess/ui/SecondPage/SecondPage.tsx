@@ -20,6 +20,7 @@ export const SecondPage = () => {
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    
   }
 
   return (

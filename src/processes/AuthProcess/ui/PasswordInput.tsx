@@ -31,6 +31,7 @@ export const PasswordInput = () => {
             },
           },
         })}
+        name='password'
         autoFocus
         placeholder="Enter password"
         w={"100%"}

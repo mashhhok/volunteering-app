@@ -6,9 +6,6 @@ import React, { FormEvent, FormHTMLAttributes } from "react";
 import { EmailInput } from "./EmailInput";
 import { ContinueWithBtns } from "./ContinueWithBtns";
 import { useAuthStore } from "../../store";
-import { useFormState } from "react-dom";
-import { getUserByEmail } from "@/entities/User/repository";
-import { redirect } from "next/navigation";
 
 export const FirstPage = ({
   action,
@@ -27,9 +24,15 @@ export const FirstPage = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email.value]);
 
+  function onSubmit(e: FormEvent) {
+    if (!email.isValid) {
+      e.preventDefault();
+    }
+  }
+
   return (
     <Box w={"100%"} maw={500}>
-      <form action={action}>
+      <form action={action} onSubmit={onSubmit}>
         <EmailInput email={email} />
 
         <ContinueWithBtns isContinueDisabled={!email.isValid} googleHref={""} />
