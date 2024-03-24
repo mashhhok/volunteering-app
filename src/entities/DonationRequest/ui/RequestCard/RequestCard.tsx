@@ -16,7 +16,7 @@ import { CardTitle } from "./CardTitle";
 import { ProgressBar } from "./ProgressBar";
 import { Location } from "./Location";
 import { CardStatus } from "./CardStatus";
-import { CompanyInfo } from "./CompanyInfo";
+import { CompanyInfo } from "../CompanyInfo";
 import { BlurButton } from "@/shared/ui";
 import arrow_top_right_violet from "@/public/arrow_top_right_violet.svg";
 import Image from "next/image";

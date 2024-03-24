@@ -11,7 +11,7 @@ const BankIdImg = () => <Image src={bank_id_img} alt={""} />;
 
 export const LeftSection = () => {
   return (
-    <Flex >
+    <Flex>
       <Bordered>
         <Flex gap={18} mb={30} align={"center"} wrap={"wrap"}>
           <Title order={2}>Authorization with</Title>

@@ -15,6 +15,7 @@ export const Logo = ({ avatarUrl, companyName }: ILogo) => {
     <Flex
       justify={"space-between"}
       align={"center"}
+      wrap={'wrap'}
       gap={20}
       // style={{ borderBottom: "3px dashed" }}
     >

@@ -16,7 +16,7 @@ export const CompanyInfo = ({
   verifiedAndTrusted,
 }: ICompanyInfo) => {
   return (
-    <Flex gap={16} justify={"space-between"}>
+    <Flex gap={16} justify={"space-between"} wrap={'wrap'}> 
       <Flex gap={2} align={'center'}>
         <UserSVG />
         <Title order={6}>{companyName}</Title>

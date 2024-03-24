@@ -12,7 +12,7 @@ export const ScrollCards = async () => {
     <Box>
       <Title />
       <Box h={26} />
-      <CardList noCards={true} cards={cards} />
+      <CardList noCards={false} cards={cards} />
     </Box>
   );
 };

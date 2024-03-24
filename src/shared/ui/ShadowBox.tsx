@@ -26,7 +26,7 @@ export const ShadowBox = ({ title, subtitle }: { title: string; subtitle: string
         p={16}
       >
         <Title order={3}>{title}</Title>
-        <Text>{subtitle}</Text>
+        <Text size='xs' >{subtitle}</Text>
       </Card>
     </Card>
   );

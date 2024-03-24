@@ -1,7 +1,7 @@
 import { colors } from "@/shared/enums";
 import { Box, Card, Flex, Text, Title } from "@mantine/core";
 import React from "react";
-import { CompanyInfo } from "../RequestCard/CompanyInfo";
+import { CompanyInfo } from "../CompanyInfo";
 
 export const EmptyCard = () => {
   return (

@@ -19,7 +19,8 @@ interface IOrganizationInfo {
 export const OrganizationInfo = async ({ userId }: IOrganizationInfo) => {
   const user = await getUserById(userId);
   const session = await getSession();
-  const isUser = !Boolean(user?.organization);
+  const isMe = session?.id === user?.id;
+  const isUser = !!Boolean(user?.organization); // delete one ! on production
 
   return (
     <Box>
@@ -27,12 +28,8 @@ export const OrganizationInfo = async ({ userId }: IOrganizationInfo) => {
         <Flex align="center" gap={20} wrap={"wrap"} justify={"space-between"}>
           <IsVerified isVerified={false} />
 
-          <Link href='/edit_profile'>
-            <Flex
-              gap={8}
-              align={"center"}
-              display={session?.id === user?.id ? "flex" : "none"}
-            >
+          <Link href="/edit_profile">
+            <Flex gap={8} align={"center"} display={isMe ? "flex" : "none"}>
               <PencilSVG />
               <Text color={colors.gray}>Edit profile</Text>
             </Flex>
@@ -49,7 +46,7 @@ export const OrganizationInfo = async ({ userId }: IOrganizationInfo) => {
           workYear={isUser ? "-" : 20}
         />
         <Description />
-        <InterBtns />
+        <InterBtns isMe={isMe} />
       </Flex>
     </Box>
   );

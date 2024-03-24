@@ -37,7 +37,7 @@ export const DonateInfo = ({
   }
 
   return (
-    <Flex gap={19} >
+    <Flex gap={19} wrap={'wrap'} >
       <Box flex={"1 1 auto"}>
         <ShadowBox
           title={correctNum(donors)}

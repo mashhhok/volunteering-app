@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 const VerificationPage = () => {
-  redirect("/verification/1");
+  redirect("/verification/home");
 };
 
 export default VerificationPage;
