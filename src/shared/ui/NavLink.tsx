@@ -21,6 +21,7 @@ export const NavLink = ({
     if (pathname === href) {
       setActive(true);
     } else setActive(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   return (
