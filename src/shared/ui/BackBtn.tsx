@@ -1,17 +1,13 @@
-import Image from "next/image";
 import React from "react";
-import arrow_left from "@/public/arrow_left.svg";
 import { Flex, Text } from "@mantine/core";
+import { LeftArrowSVG } from "../svg";
 
-const LeftArrow = () => (
-  <Image src={arrow_left} width={18} height={17} alt="" />
-);
 
-export const BackBtn = () => {
+export const BackBtn = ({children}: {children: React.ReactNode}) => {
   return (
     <Flex gap={11} align={'center'} style={{cursor: 'pointer'}}>
-      <LeftArrow />
-      <Text>Back</Text>
+      <LeftArrowSVG />
+      <Text>{children}</Text>
     </Flex>
   );
 };

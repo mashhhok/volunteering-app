@@ -92,7 +92,7 @@ export const FilterOptions = () => {
     setVolunteering(parseBool(searchParams.get("volunteering")));
     setLocation(searchParams.get("location"));
     setType(typeValidate(searchParams.get("type")));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
@@ -112,7 +112,7 @@ export const FilterOptions = () => {
       location,
       type,
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, checkboxStateArray);
 
   return (
@@ -122,7 +122,7 @@ export const FilterOptions = () => {
         maw={300}
         w={"100%"}
         flex="0 0 auto"
-        visibleFrom="sm"
+        visibleFrom="md"
       >
         <Box w={"100%"}>
           <Flex gap={12} align={"center"} mb={40}>
@@ -153,7 +153,11 @@ export const FilterOptions = () => {
                 align={"center"}
                 key={index}
                 onClick={() => item.setValue((prev) => !prev)}
-                style={{ cursor: "pointer", userSelect: "none" }}
+                style={{
+                  cursor: "pointer",
+                  userSelect: "none",
+                  fontWeight: "lighter",
+                }}
               >
                 <Checkbox radius={"xs"} checked={item.value} />
                 <Text fz="16px">{item.text}</Text>
@@ -179,7 +183,7 @@ export const FilterOptions = () => {
           color={colors.lightGray}
         />
       </Flex>
-      <Flex hiddenFrom="sm" justify={"center"}>
+      <Flex hiddenFrom="md" justify={"center"}>
         <Menu width={"300px"} shadow="xl">
           <Menu.Target>
             <Button>Filter Options</Button>

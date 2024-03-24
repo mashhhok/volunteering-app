@@ -2,9 +2,9 @@ import { Button, Flex, Title as TitleMant } from "@mantine/core";
 import React from "react";
 
 interface IRequestInfo {
-  pending: number;
-  waitReport: number;
-  closed: number;
+  pending: number | '';
+  waitReport: number | '';
+  closed: number | '';
 }
 
 export const Title = ({ pending, waitReport, closed }: IRequestInfo) => {

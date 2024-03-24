@@ -7,3 +7,5 @@ export * from "./LoaderOvalSVG";
 export * from './CrossSVG'
 export * from './LeftArrowSVG'
 export * from './TopRightArrowSVG'
+export * from './InfoSVG'
+export * from './FaceSVG'

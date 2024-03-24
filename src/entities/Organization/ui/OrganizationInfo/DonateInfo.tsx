@@ -1,33 +1,30 @@
-import { Box, Card, Flex, Text, Title } from "@mantine/core";
+"use client";
+import { colors } from "@/shared/enums";
+import { ShadowBox } from "@/shared/ui";
+import {
+  Box,
+  Card,
+  Flex,
+  Text,
+  Title,
+  rgba,
+  useMantineColorScheme,
+} from "@mantine/core";
 import React from "react";
-
-const Item = ({ title, subtitle }: { title: string; subtitle: string }) => (
-  <Card
-    radius={"lg"}
-    p={0}
-    style={{ boxShadow: "0px 4px 4px rgba(18, 18, 18, 0.04)" }}
-  >
-    <Card
-      radius={"lg"}
-      style={{ boxShadow: "inset 0px 4px 4px rgba(18, 18, 18, 0.04)" }}
-      p={16}
-    >
-      <Title order={3}>{title}</Title>
-      <Text>{subtitle}</Text>
-    </Card>
-  </Card>
-);
 
 export const DonateInfo = ({
   donors,
   funds,
   workYear,
 }: {
-  donors: number;
-  funds: number;
-  workYear: number;
+  donors: number | "-";
+  funds: number | "-";
+  workYear: number | "-";
 }) => {
-  function correctNum(num: number) {
+  const { colorScheme } = useMantineColorScheme();
+
+  function correctNum(num: number | string) {
+    if (typeof num !== "number") return num;
     if (num > 1000) {
       const res = Math.round(num / 1000);
       return res + "K+";
@@ -40,10 +37,21 @@ export const DonateInfo = ({
   }
 
   return (
-    <Flex gap={19}>
-      <Item title={correctNum(donors)} subtitle={"Donors and volunteers"} />
-      <Item title={correctNum(funds)} subtitle={"Funds"} />
-      <Item title={`${workYear}`} subtitle={"Years of work"} />
+    <Flex gap={19} >
+      <Box flex={"1 1 auto"}>
+        <ShadowBox
+          title={correctNum(donors)}
+          subtitle={"Donors and volunteers"}
+        />
+      </Box>
+
+      <Box flex={"1 1 auto"}>
+        <ShadowBox title={correctNum(funds)} subtitle={"Funds"} />
+      </Box>
+
+      <Box flex={"1 1 auto"}>
+        <ShadowBox title={`${workYear}`} subtitle={"Years of work"} />
+      </Box>
     </Flex>
   );
 };

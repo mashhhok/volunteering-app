@@ -1,3 +1,4 @@
+'use client'
 import { useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";

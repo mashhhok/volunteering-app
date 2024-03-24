@@ -18,7 +18,6 @@ export const Cursor = () => {
     const func = (e: MouseEvent) => {
       setPosY(e.clientY);
       setPosX(e.clientX);
-      console.log('CURSOR')
     };
 
     document.addEventListener("mousemove", func);
@@ -33,7 +32,7 @@ export const Cursor = () => {
       top={0}
       left={0}
       w={"100%"}
-      h={'100vh'}
+      h={"100vh"}
       style={{ overflow: "hidden", userSelect: "none", zIndex: -1 }}
     >
       <Box
@@ -52,8 +51,8 @@ export const Cursor = () => {
             zIndex: -1,
             top: posY,
             left: posX,
-            width: 150,
-            height: 150,
+            width: 0,
+            height: 0,
             transform: "translate(-50%, -50%)",
             pointerEvents: "none",
           }}

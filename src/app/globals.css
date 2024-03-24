@@ -1,3 +1,26 @@
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("../shared/fonts/e-ukrainehead-regular_w.eot") format("eot");
+  font-weight: 400;
+  font-style: normal;
+  src: local("e-Ukraine"),
+    url("../shared/fonts/e-ukrainehead-regular_w.woff") format("woff"),
+    url("../shared/fonts/e-ukrainehead-regular_w.woff2") format("woff2"),
+    url("../shared/fonts/e-ukrainehead-regular_w.ttf") format("ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("../shared/fonts/e-ukrainehead-medium_w.eot") format("eot");
+  font-weight: 500;
+  font-style: normal;
+  src: local("e-Ukraine"),
+    url("../shared/fonts/e-ukrainehead-medium_w.woff") format("woff"),
+    url("../shared/fonts/e-ukrainehead-medium_w.woff2") format("woff2"),
+    url("../shared/fonts/e-ukrainehead-medium_w.ttf") format("ttf");
+  font-display: swap;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -36,6 +59,9 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  font-family: "e-Ukraine";
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
 input,
@@ -112,3 +138,9 @@ h6 {
     transform: rotate(360deg);
   }
 }
+/* 
+*,
+html,
+body {
+  scroll-behavior: smooth !important;
+} */

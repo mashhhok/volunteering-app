@@ -49,5 +49,5 @@ export const theme = createTheme({
       },
     },
   },
-  fontFamily: "Montserrat",
+  fontFamily: "e-Ukraine",
 });

@@ -1,7 +1,11 @@
 import { OrganizationInfo } from "@/entities/Organization";
 import { UserInfoColumn } from "@/entities/User";
 import { getUserById } from "@/entities/User/repository";
+import { colors } from "@/shared/enums";
+import { BackBtn } from "@/shared/ui";
 import { LinearDivider } from "@/shared/ui/LinearDivider";
+import { CardsFilters } from "@/widgets/CardsFilters";
+import { ScrollCards } from "@/widgets/ScrollCards";
 import { Box, Container, Flex } from "@mantine/core";
 import React from "react";
 
@@ -12,29 +16,28 @@ interface IProps {
 }
 
 const ProfilePage = async ({ params }: IProps) => {
-  const user = await getUserById(parseInt(params.id));
-  const name = user?.organization
-    ? user.organization.companyName
-    : user?.firstName + " " + user?.lastName;
 
-  const a = new Date(user?.createdAt ? user?.createdAt : "");
-  var accCreatedAt = [
-    addLeadZero(a.getDate()),
-    addLeadZero(a.getMonth() + 1),
-    a.getFullYear(),
-  ].join(".");
-
-  function addLeadZero(val: any) {
-    if (+val < 10) return "0" + val;
-    return val;
-  }
-
+  
   return (
     <Container size={"xl"}>
-      <Box h={10} />
-      {/* <Flex direction={"column"} align={"center"}> */}
-      <OrganizationInfo userId={parseInt(params.id)} />
-      {/* </Flex> */}
+      <BackBtn>Back</BackBtn>
+      <Box h={24} />
+      <Flex
+        align={"flex-start"}
+        direction={{ base: "column", lg: "row" }}
+        justify={"center"}
+        gap={{ base: 20, lg: 0 }}
+      >
+        <Flex gap={60}>
+          <OrganizationInfo userId={parseInt(params.id)} />
+          <LinearDivider h={"auto"} w={2} color={colors.violet} deg={180} />
+        </Flex>
+        <Box flex="1 0 auto" w='100%' maw={640}>
+          <ScrollCards  />
+        </Box>
+      </Flex>
+      <Box h={100} />
+      <CardsFilters companyId={null} />
     </Container>
   );
 };

@@ -11,7 +11,7 @@ const OutBoxImg = () => (
 
 export const InterBtns = () => {
   return (
-    <Flex justify={"space-between"} wrap="wrap">
+    <Flex wrap="wrap" gap={20}>
       <ShadowBtn
         rightSection={<OutBoxImg />}
         size="lg"

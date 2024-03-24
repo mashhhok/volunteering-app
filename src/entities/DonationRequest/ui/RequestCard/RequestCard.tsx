@@ -22,7 +22,7 @@ import arrow_top_right_violet from "@/public/arrow_top_right_violet.svg";
 import Image from "next/image";
 import { CardDescription } from "./CardDescription";
 
-interface IRequestCard {
+export interface IRequestCard {
   companyName: string;
   avatarUrl: string;
   requestTitle: string;
