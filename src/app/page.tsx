@@ -2,6 +2,7 @@ import { Chip, Table, Warning } from "@/shared/ui";
 import { CardsFilters } from "@/widgets/CardsFilters";
 import { RequestCards } from "@/widgets/RequestCards";
 import { Box, Container } from "@mantine/core";
+import { Suspense } from "react";
 
 const HomePage = async () => {
   return (
@@ -9,7 +10,9 @@ const HomePage = async () => {
       <Box h={10} />
       <RequestCards />
       <Box h={100} />
-      <CardsFilters />
+      <Suspense>
+        <CardsFilters />
+      </Suspense>
       <Box h={100} />
       <Warning
         title="THE SPREADSHEET DATA SERVES AN INFORMATIVE PURPOSE"
@@ -45,8 +48,8 @@ const HomePage = async () => {
         ]}
       />
       <Container>
-      <Chip>10%</Chip>
-      <Chip selected>10%</Chip>
+        <Chip>10%</Chip>
+        <Chip selected>10%</Chip>
       </Container>
     </div>
   );

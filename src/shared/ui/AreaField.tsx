@@ -2,8 +2,6 @@
 import {
   Box,
   Text,
-  TextInput,
-  TextInputProps,
   Textarea,
   TextareaProps,
 } from "@mantine/core";

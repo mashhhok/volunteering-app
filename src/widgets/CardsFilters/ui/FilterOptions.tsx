@@ -166,9 +166,9 @@ export const FilterOptions = () => {
           </Flex>
 
           <Select
-            label={<Title order={4}>Location</Title>}
+            label={<Title order={4} mb={5}>Location</Title>}
             radius={"md"}
-            description={<Text size="sm">Choose the city</Text>}
+            description={'Choose the city'}
             placeholder="Input location"
             maw={280}
             w={"100%"}

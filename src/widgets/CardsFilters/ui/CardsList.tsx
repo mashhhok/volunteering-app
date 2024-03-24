@@ -17,7 +17,7 @@ export const CardsList = () => {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae repudiandae voluptas doloremque eius provident inventore aut vel deleniti at a obcaecati voluptatum dolores, quos, asperiores dignissimos ipsa consectetur magnam. Nesciunt!"
           }
           requestStatus={"pending"}
-          imageUrl={""}
+          imageUrl={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"}
           verifiedAndTrusted={false}
           needMoney={1000}
           collectedMoney={1000}

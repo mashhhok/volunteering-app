@@ -38,6 +38,7 @@ export const Table = ({ elements }: ITable) => {
               if (index === 0)
                 return (
                   <TableEl.Thead
+                    key={index}
                     bg={
                       colorScheme === "dark"
                         ? darken(colors.gray, 0.3)
@@ -56,7 +57,7 @@ export const Table = ({ elements }: ITable) => {
                 );
               else
                 return (
-                  <TableEl.Tbody>
+                  <TableEl.Tbody key={index}>
                     <TableEl.Tr style={{ borderWidth: "2px", borderTop:`1px solid ${colors.neutral}` }} >
                       {item.map((item2, index) => (
                         <TableEl.Td maw={330} key={index}>

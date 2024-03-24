@@ -1,14 +1,13 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
-import "./globals.css";
+import "../shared/styles/globals.css";
 import { Box, ColorSchemeScript, Flex, MantineProvider } from "@mantine/core";
 import { theme } from "@/shared/config/mantine.config";
 import "@mantine/core/styles.css";
 import { Header } from "@/widgets/Header";
 import { Montserrat } from "next/font/google";
-import { Cursor } from "./Cursor";
+import { Cursor } from "../shared/ui/Cursor";
 import { Footer } from "@/widgets/Footer";
-import { Wrapper } from "./Wrapper";
 import { HideWhen } from "@/shared/ui";
 
 const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
@@ -32,7 +31,7 @@ export default async function RootLayout({
       </head>
       <body>
         <MantineProvider theme={theme} defaultColorScheme="light">
-          <Wrapper>
+          <Box maw={"100%"} w={"100%"} style={{ overflow: "hidden" }}>
             <Flex mih={"100vmin"} direction={"column"}>
               <HideWhen routes={["auth"]}>
                 <Header />
@@ -43,7 +42,7 @@ export default async function RootLayout({
                 <Footer />
               </HideWhen>
             </Flex>
-          </Wrapper>
+          </Box>
         </MantineProvider>
       </body>
     </html>
