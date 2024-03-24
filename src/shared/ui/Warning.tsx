@@ -24,7 +24,7 @@ export const Warning = (props: { title: string; subtitle: string }) => {
             <Title order={3} style={{ textTransform: "uppercase" }} mb={8}>
               {props.title}
             </Title>
-            <Text fz="16px">{props.subtitle}</Text>
+            <Text>{props.subtitle}</Text>
           </Box>
         </Flex>
       </Card>

@@ -5,7 +5,7 @@ import React from "react";
 export const RecieveEmails = () => {
   return (
     <Box>
-      <Text fw={500} color={colors.black}>
+      <Text fw={500} >
         Receive emails from UnitaryAid
       </Text>
       <Text fz="sm" color={colors.gray} mb={8}>

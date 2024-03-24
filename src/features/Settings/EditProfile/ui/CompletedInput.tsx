@@ -5,7 +5,7 @@ import React from "react";
 export const CompletedInput = () => {
   return (
     <Box>
-      <Text fw={500} mb={24} color={colors.black}>
+      <Text fw={500} mb={24} >
         Show in my public profile
       </Text>
       <Checkbox label="Fundraiser edit" />

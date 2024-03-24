@@ -1,5 +1,5 @@
 import { AreaField, TextField } from "@/shared/ui";
-import { Box, Flex, Text, TextInput, Title } from "@mantine/core";
+import { Box, Flex, Text } from "@mantine/core";
 import React from "react";
 
 export const DetailsInputs = () => {

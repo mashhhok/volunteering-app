@@ -9,7 +9,6 @@ import { Montserrat } from "next/font/google";
 import { Cursor } from "./Cursor";
 import { Footer } from "@/widgets/Footer";
 import { Wrapper } from "./Wrapper";
-import { colors } from "@/shared/enums";
 import { HideWhen } from "@/shared/ui";
 
 const mont = Montserrat({ subsets: ["cyrillic", "latin"] });

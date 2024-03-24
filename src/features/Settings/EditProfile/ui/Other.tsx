@@ -5,7 +5,7 @@ import React from "react";
 export const Other = () => {
   return (
     <Box>
-      <Text fw={500} mb={24} color={colors.black}>
+      <Text fw={500} mb={24} >
         Other
       </Text>
       <Flex direction={'column'} gap={8}>
