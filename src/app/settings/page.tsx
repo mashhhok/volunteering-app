@@ -1,7 +1,8 @@
-import React from "react";
+import { redirect } from 'next/navigation'
+import React from 'react'
 
-const SettingsPage = () => {
-  return <div>SettingsPage</div>;
-};
+const page = () => {
+  redirect('/settings/details')
+}
 
-export default SettingsPage;
+export default page

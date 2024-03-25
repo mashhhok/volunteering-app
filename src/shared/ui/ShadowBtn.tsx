@@ -1,0 +1,24 @@
+"use client";
+import { Button, rgba, useMantineColorScheme } from "@mantine/core";
+import React from "react";
+import { colors } from "../enums";
+
+export const ShadowBtn = (props: typeof Button.arguments ) => {
+  const { color, bg, variant, ...rest } = props;
+  const { colorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === "dark";
+
+  return (
+    <Button
+      {...rest}
+      color="transparent"
+      style={{
+        color: isDark ? colors.white : colors.black,
+        boxShadow: `0px 4px 4px 0px ${
+          isDark ? rgba(colors.white, 0.04) : rgba(colors.fullBlack, 0.04)
+        }`,
+        backgroundColor: "transparent",
+      }}
+    />
+  );
+};

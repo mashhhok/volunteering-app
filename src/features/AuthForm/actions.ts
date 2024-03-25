@@ -8,7 +8,7 @@ export async function authAction(
   "use server";
   let setSession;
   try {
-    let userLogin = formData.get("login");
+    let userLogin = formData.get("email");
     let userPassword = formData.get("password");
 
     if (userLogin === null || userPassword === null) return "Ошибка валидации!";

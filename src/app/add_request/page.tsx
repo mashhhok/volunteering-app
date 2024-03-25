@@ -15,7 +15,7 @@ const AddRequestPage = async () => {
       <Box h={10} />
       <Flex direction={"column"} align="center" gap={15}>
         <UserInfoColumn
-          imageUrl={
+          avatarUrl={
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
           }
           name={companyName}

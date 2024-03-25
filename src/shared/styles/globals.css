@@ -1,0 +1,146 @@
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("../fonts/e-ukrainehead-regular_w.eot") format("eot");
+  font-weight: 400;
+  font-style: normal;
+  src: local("e-Ukraine"),
+    url("../fonts/e-ukrainehead-regular_w.woff") format("woff"),
+    url("../fonts/e-ukrainehead-regular_w.woff2") format("woff2"),
+    url("../fonts/e-ukrainehead-regular_w.ttf") format("ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("../fonts/e-ukrainehead-medium_w.eot") format("eot");
+  font-weight: 500;
+  font-style: normal;
+  src: local("e-Ukraine"),
+    url("../fonts/e-ukrainehead-medium_w.woff") format("woff"),
+    url("../fonts/e-ukrainehead-medium_w.woff2") format("woff2"),
+    url("../fonts/e-ukrainehead-medium_w.ttf") format("ttf");
+  font-display: swap;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-style: 100%;
+  line-height: 1;
+  font-style: 16px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: "e-Ukraine";
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+ul li {
+  list-style-type: none;
+}
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: inherit;
+  font-weight: 400;
+}
+
+@keyframes rotating {
+  10% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(60deg);
+  }
+  30% {
+    transform: rotate(80deg);
+  }
+  40% {
+    transform: rotate(130deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(240deg);
+  }
+  70% {
+    transform: rotate(270deg);
+  }
+  80% {
+    transform: rotate(300deg);
+  }
+  90% {
+    transform: rotate(330deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* 
+*,
+html,
+body {
+  scroll-behavior: smooth !important;
+} */

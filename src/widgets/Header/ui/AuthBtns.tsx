@@ -1,3 +1,5 @@
+import { colors } from "@/shared/enums";
+import { BlurButton } from "@/shared/ui";
 import { Button, Flex } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
@@ -6,12 +8,12 @@ export const AuthBtns = () => {
   return (
     <Flex gap={15}>
       <Link href="/auth">
-        <Button variant="subtle" color="white" fw={700}>
+        <BlurButton visibleFrom="md" color={colors.violet}>
           Log In
-        </Button>
-      </Link>
-      <Link href="/register">
-        <Button variant="gradient">Sign Up</Button>
+        </BlurButton>
+        <BlurButton hiddenFrom="md" size="xs" color={colors.violet}>
+          Log In
+        </BlurButton>
       </Link>
     </Flex>
   );

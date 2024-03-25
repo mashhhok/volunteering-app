@@ -1,13 +1,16 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
-import "./globals.css";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import "../shared/styles/globals.css";
+import { Box, ColorSchemeScript, Flex, MantineProvider } from "@mantine/core";
 import { theme } from "@/shared/config/mantine.config";
 import "@mantine/core/styles.css";
 import { Header } from "@/widgets/Header";
-import {Montserrat} from 'next/font/google'
+import { Montserrat } from "next/font/google";
+import { Cursor } from "../shared/ui/Cursor";
+import { Footer } from "@/widgets/Footer";
+import { HideWhen } from "@/shared/ui";
 
-const mont = Montserrat({subsets: ['cyrillic', 'latin']})
+const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
 export const metadata: Metadata = {
   title: "Home page",
@@ -25,15 +28,21 @@ export default async function RootLayout({
         <ColorSchemeScript defaultColorScheme="light" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className={mont.className}>
+      <body>
         <MantineProvider theme={theme} defaultColorScheme="light">
-          <Header />
-          {children}
+          <Box maw={"100%"} w={"100%"} style={{ overflow: "hidden" }}>
+            <Flex mih={"100vmin"} direction={"column"}>
+              <HideWhen routes={["auth"]}>
+                <Header />
+              </HideWhen>
+              <Cursor />
+              <Box flex={"1 1 auto"}>{children}</Box>
+              <HideWhen routes={["auth"]}>
+                <Footer />
+              </HideWhen>
+            </Flex>
+          </Box>
         </MantineProvider>
       </body>
     </html>

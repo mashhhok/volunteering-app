@@ -1,11 +1,5 @@
 "use client";
-import {
-  Box,
-  Fieldset,
-  Flex,
-  Text,
-  TextInput,
-} from "@mantine/core";
+import { Box, Fieldset, Flex, Text, TextInput, Title } from "@mantine/core";
 import { SubmitBtn } from "./SubmitBtn";
 import { useFormState } from "react-dom";
 import React from "react";
@@ -23,7 +17,7 @@ export const RegisterFormClient = ({
   return (
     <Box>
       <form action={formAction} method="post">
-        <Fieldset legend="Register Form" mx={15}>
+        <Fieldset legend={<Title order={4}>Register Form</Title>} mx={15}>
           <Text color="red" fz="xl" fw={500}>
             {state?.issues.isExist && "User already exist!"}
           </Text>

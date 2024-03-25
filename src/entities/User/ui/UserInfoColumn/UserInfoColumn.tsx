@@ -3,18 +3,27 @@ import React from "react";
 import { AvatarImage } from "./AvatarImage";
 
 interface IUserInfoColumn {
-  imageUrl: string;
+  avatarUrl: string | null | undefined;
   name: string;
 }
 
 export const UserInfoColumn: React.FC<IUserInfoColumn> = ({
-  imageUrl,
+  avatarUrl,
   name,
 }) => {
   return (
-    <Flex display={'inline-flex'} direction={'column'} align={'center'}>
-      <AvatarImage imageUrl={imageUrl} companyName={name} />
-      <Title order={1} style={{ textAlign: "center" }} display={"inline-block"}>
+    <Flex
+      display={"inline-flex"}
+      direction={"column"}
+      align={"center"}
+      gap={10}
+    >
+      <AvatarImage imageUrl={avatarUrl} companyName={name} />
+      <Title
+        order={1}
+        style={{ textAlign: "center", textTransform: "capitalize" }}
+        display={"inline-block"}
+      >
         {name}
       </Title>
       <Divider
