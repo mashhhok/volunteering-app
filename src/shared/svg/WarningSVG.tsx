@@ -20,7 +20,7 @@ export const WarningSVG = ({ fill, width, height, bg }: ISVG) => {
         height="72"
         rx="19"
         stroke={fill ? fill : colorScheme === "dark" ? "white" : "black"}
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path
         d="M36.2031 44.2031L35.0859 18.4062H42.1953L41.0781 44.2031H36.2031ZM34.6797 57V49.0781H42.6016V57H34.6797Z"
