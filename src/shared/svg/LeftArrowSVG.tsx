@@ -2,9 +2,10 @@
 import { useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";
+import { useThemeStore } from "@/app/store";
 
 export const LeftArrowSVG = (props: ISVG) => {
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
   return (
     <svg
       width={props.width ? props.width : "19"}

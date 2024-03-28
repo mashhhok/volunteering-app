@@ -1,4 +1,5 @@
 "use client";
+import { useThemeStore } from "@/app/store";
 import { colors } from "@/shared/enums";
 import { ShadowBox } from "@/shared/ui";
 import {
@@ -21,7 +22,7 @@ export const DonateInfo = ({
   funds: number | "-";
   workYear: number | "-";
 }) => {
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
 
   function correctNum(num: number | string) {
     if (typeof num !== "number") return num;

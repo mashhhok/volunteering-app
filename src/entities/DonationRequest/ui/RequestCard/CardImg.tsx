@@ -12,7 +12,7 @@ export const CardImg = ({ imageUrl }: ICardImg) => {
       <Image
         width={392}
         height={244}
-        style={{ backgroundSize: "cover" }}
+        style={{ backgroundSize: "cover", maxWidth: "100%" }}
         src={imageUrl}
         loader={() => imageUrl}
         alt=""

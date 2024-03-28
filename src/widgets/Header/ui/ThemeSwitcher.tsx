@@ -1,17 +1,19 @@
 "use client";
+import { useThemeStore } from "@/app/store";
 import { colors } from "@/shared/enums";
 import { Box, Flex, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 
 export const ThemeSwitcher = () => {
-  const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore((state) => state.theme);
+  const setColorScheme = useThemeStore((state) => state.setTheme);
   const [isDark, setIsDark] = React.useState(false);
   const [isTimer, setIsTimer] = React.useState(false);
   const firstLoad = React.useRef(true);
 
   React.useEffect(() => {
     setIsDark(colorScheme === "dark");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function click() {

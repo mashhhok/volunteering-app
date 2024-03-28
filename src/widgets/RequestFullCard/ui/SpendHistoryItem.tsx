@@ -1,4 +1,5 @@
 "use client";
+import { useThemeStore } from "@/app/store";
 import {
   Box,
   Button,
@@ -13,7 +14,7 @@ interface ISpendHistoryItem {
 }
 
 export const SpendHistoryItem: React.FC<ISpendHistoryItem> = ({ text }) => {
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
 
   return (
     <Card

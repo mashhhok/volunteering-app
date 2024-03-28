@@ -9,6 +9,7 @@ import { Montserrat } from "next/font/google";
 import { Cursor } from "../shared/ui/Cursor";
 import { Footer } from "@/widgets/Footer";
 import { HideWhen } from "@/shared/ui";
+import { MantineHiddThemeSwitch } from "./MantineHiddThemeSwitch";
 
 const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
@@ -43,6 +44,7 @@ export default async function RootLayout({
               </HideWhen>
             </Flex>
           </Box>
+          <MantineHiddThemeSwitch/>
         </MantineProvider>
       </body>
     </html>

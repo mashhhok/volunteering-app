@@ -2,8 +2,10 @@
 import { useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";
+import { useThemeStore } from "@/app/store";
 export const LogoSVG = (props: ISVG) => {
-  const { colorScheme } = useMantineColorScheme();
+  const theme = useThemeStore(state => state.theme)
+
   return (
     <svg
       width={props.width ? props.width : 35}
@@ -19,7 +21,7 @@ export const LogoSVG = (props: ISVG) => {
         fill={
           props.fill
             ? props.fill
-            : colorScheme === "dark"
+            : theme === "dark"
             ? colors.lightGray
             : colors.black
         }
@@ -29,7 +31,7 @@ export const LogoSVG = (props: ISVG) => {
         fill={
           props.fill
             ? props.fill
-            : colorScheme === "dark"
+            : theme === "dark"
             ? colors.lightGray
             : colors.black
         }

@@ -1,9 +1,10 @@
 "use client";
+import { useThemeStore } from "@/app/store";
 import { useMantineColorScheme } from "@mantine/core";
 import React from "react";
 
 export const UserSVG = (props: ISVG) => {
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
   return (
     <svg
       width="14"
