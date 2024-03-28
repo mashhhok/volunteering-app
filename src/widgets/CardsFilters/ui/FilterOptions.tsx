@@ -35,7 +35,6 @@ export const FilterOptions = () => {
 
   const typeValues = ["All", "Verified"];
   const [location, setLocation] = React.useState<string | null>(null);
-  const [type, setType] = React.useState<string | null>("All");
 
   const checkboxStateArray = [
     emergency,
@@ -50,7 +49,6 @@ export const FilterOptions = () => {
     elderly,
     volunteering,
     location,
-    type,
   ];
 
   const fundraiseArray = [
@@ -91,7 +89,6 @@ export const FilterOptions = () => {
     setЕlderly(parseBool(searchParams.get("elderly")));
     setVolunteering(parseBool(searchParams.get("volunteering")));
     setLocation(searchParams.get("location"));
-    setType(typeValidate(searchParams.get("type")));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -110,7 +107,6 @@ export const FilterOptions = () => {
       volunteering,
 
       location,
-      type,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, checkboxStateArray);
@@ -129,19 +125,6 @@ export const FilterOptions = () => {
             <FiltersSVG />
             <Text fz="20px">Filters</Text>
           </Flex>
-          <Title order={4} mb={20}>
-            Type
-          </Title>
-          <Select
-            maw={280}
-            w={"100%"}
-            mb={40}
-            value={type}
-            defaultValue={typeValues[0]}
-            onChange={(value, option) => setType(value)}
-            data={typeValues}
-            allowDeselect={false}
-          />
 
           <Title order={4} mb={20}>
             Fundraise for
@@ -166,9 +149,13 @@ export const FilterOptions = () => {
           </Flex>
 
           <Select
-            label={<Title order={4} mb={5}>Location</Title>}
+            label={
+              <Title order={4} mb={5}>
+                Location
+              </Title>
+            }
             radius={"md"}
-            description={'Choose the city'}
+            description={"Choose the city"}
             placeholder="Input location"
             maw={280}
             w={"100%"}
@@ -202,19 +189,6 @@ export const FilterOptions = () => {
                     <FiltersSVG />
                     <Text fz="20px">Filters</Text>
                   </Flex>
-                  <Title order={4} mb={20}>
-                    Type
-                  </Title>
-                  <Select
-                    maw={280}
-                    w={"100%"}
-                    mb={40}
-                    value={type}
-                    defaultValue={typeValues[0]}
-                    onChange={(value, option) => setType(value)}
-                    data={typeValues}
-                    allowDeselect={false}
-                  />
 
                   <Title order={4} mb={20}>
                     Fundraise for

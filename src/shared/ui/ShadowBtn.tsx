@@ -2,10 +2,11 @@
 import { Button, rgba, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";
+import { useThemeStore } from "@/app/store";
 
 export const ShadowBtn = (props: typeof Button.arguments ) => {
   const { color, bg, variant, ...rest } = props;
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
   const isDark = colorScheme === "dark";
 
   return (

@@ -11,9 +11,7 @@ import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
 import { LogoSVG } from "@/shared/svg";
 
-
 export const Header = async () => {
-
   const session = await getSession();
 
   return (
@@ -22,7 +20,7 @@ export const Header = async () => {
         pos={"fixed"}
         style={{
           zIndex: 10,
-          backdropFilter: "blur(50px)",
+          backdropFilter: "blur(20px)",
         }}
         py={10}
         w="100%"
@@ -31,9 +29,8 @@ export const Header = async () => {
         <Container size={"xl"} h="100%">
           <Flex justify={"space-between"} h="100%" align={"center"} gap={15}>
             <Flex visibleFrom="lg" align="center  " gap={20} w={"47%"}>
-              {" "}
               <Flex gap={20} align={"center"}>
-                <Info />{" "}
+                <Info />
               </Flex>
               <Search />
             </Flex>
@@ -55,8 +52,7 @@ export const Header = async () => {
                 <ThemeSwitcher />
               </Box>
               <Box visibleFrom="lg">
-              <LanguageSelect/>
-
+                <LanguageSelect />
               </Box>
 
               {session ? (

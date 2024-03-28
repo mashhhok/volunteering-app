@@ -16,8 +16,6 @@ export const EditProfile = () => {
         <Flex gap={40} direction={"column"}>
           <ShowSettings />
           <LinearDivider h={2} w={"100%"} color={colors.violet} />
-          <CompletedInput />
-          <LinearDivider h={2} w={"100%"} color={colors.violet} />
           <Box>
             <Other />
             <Box h={24} />

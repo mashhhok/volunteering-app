@@ -1,15 +1,6 @@
 "use client";
 import { colors } from "@/shared/enums";
-import {
-  Box,
-  Button,
-  Card,
-  Divider,
-  Flex,
-  Progress,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Box, Card, Flex } from "@mantine/core";
 import React from "react";
 import { CardImg } from "./CardImg";
 import { CardTitle } from "./CardTitle";
@@ -21,6 +12,7 @@ import { BlurButton } from "@/shared/ui";
 import arrow_top_right_violet from "@/public/arrow_top_right_violet.svg";
 import Image from "next/image";
 import { CardDescription } from "./CardDescription";
+import { useMediaQuery } from "@mantine/hooks";
 
 export interface IRequestCard {
   companyName: string;
@@ -48,6 +40,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
 }) => {
   const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
+  const isPhone = useMediaQuery("(hover: none)");
 
   const blurOption = {
     filter: moneyPercent === 100 ? "blur(3.5px)" : "blur(0px)",
@@ -61,14 +54,26 @@ export const RequestCard: React.FC<IRequestCard> = ({
       w={"100%"}
       h={555}
       bg={"transparent"}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      {...(isPhone
+        ? {
+            onClick: () => setHovered((prev) => !prev),
+          }
+        : {
+            onMouseEnter: () => setHovered(true),
+            onMouseLeave: () => setHovered(false),
+          })}
       style={{ border: `2px solid ${colors.black}` }}
     >
       <Flex
         gap={12}
         direction={"column"}
-        style={{ position: "absolute", top: 0, left: 0, opacity: hovered ? '0' : '1', transition: '0.3s' }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          opacity: hovered ? "0" : "1",
+          transition: "0.3s",
+        }}
         w={"100%"}
         p={24}
         h={"100%"}
@@ -103,7 +108,13 @@ export const RequestCard: React.FC<IRequestCard> = ({
       <Flex
         gap={15}
         direction={"column"}
-        style={{ position: "absolute", top: 0, left: 0, opacity: hovered ? '1' : '0', transition: '0.3s' }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          opacity: hovered ? "1" : "0",
+          transition: "0.3s",
+        }}
         w={"100%"}
         // p={24}
         p={24}

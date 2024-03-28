@@ -9,13 +9,14 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { colors } from "../enums";
+import { useThemeStore } from "@/app/store";
 
 interface ITable {
   elements: string[][];
 }
 
 export const Table = ({ elements }: ITable) => {
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
 
   return (
     <Container size="xl">
