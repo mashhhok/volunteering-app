@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const RequestPage = async ({ params }: IProps) => {
-  // const data = (await fetch(`url/${params.id}`)).json()
 
   return (
     <div>

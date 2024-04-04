@@ -110,7 +110,7 @@ export const useInput = (defValue: string, rules: IRules) => {
   React.useEffect(() => {
     const _e = {
       target: { value: value },
-    } as ChangeEvent<HTMLInputElement>;
+    } as ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
     onChange(_e);
     // eslint-disable-next-line react-hooks/exhaustive-deps

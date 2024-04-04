@@ -10,6 +10,7 @@ import {
 } from "../actions";
 import { ForthPage } from "./ForthPage/ForthPage";
 import { redirect } from "next/navigation";
+import { Title } from "@mantine/core";
 
 export const AuthProcess = ({ pageId }: { pageId: number }) => {
   async function registerActionUpd(prevState: any, formData: FormData) {
@@ -24,6 +25,9 @@ export const AuthProcess = ({ pageId }: { pageId: number }) => {
 
   return (
     <>
+      <Title order={4} style={{ textAlign: "center" }} maw={500} mb={40}>
+        We`ll sign you in or create an account if you don`t have one yet
+      </Title>
       {pageId === 1 && <FirstPage action={isEmailExistAction} />}
       {pageId === 3 && <SecondPage />}
       {pageId === 2 && <ThirdPage action={registerActionUpd} />}
