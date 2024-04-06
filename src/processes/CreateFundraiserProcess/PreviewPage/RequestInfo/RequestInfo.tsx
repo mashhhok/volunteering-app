@@ -1,14 +1,10 @@
 "use client";
-import { PencilSVG } from "@/shared/svg/PencilSVG";
 import { Box, Flex, Text, Title } from "@mantine/core";
 import React from "react";
-import { useCreateFundraiserStore } from "../../store";
-import { colors } from "@/shared/enums";
 import { Tags } from "./Tags";
 import { InfoTitle } from "./InfoTitle";
 import { Published } from "./Published";
 import { LocationSelect } from "./LocationSelect";
-import { DateSelect } from "./DateSelect";
 import { ProfileInfo } from "./ProfileInfo";
 
 export const RequestInfo = () => {

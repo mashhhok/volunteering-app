@@ -69,7 +69,7 @@ export const IsVerified = ({
   if (!isVerified)
     return (
       <Flex align="center" gap={5}>
-        <FaceSVG {...(small && { width: 10, height: 10 })} />
+        <FaceSVG width={small ? 10 : 16} height={small ? 10 : 16} />
         <Text size="xs" color={colors.orange} {...(small && { fz: 10 })}>
           Not yet verified
         </Text>

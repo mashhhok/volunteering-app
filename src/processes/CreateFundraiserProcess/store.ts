@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { devtools } from "zustand/middleware";
 
 interface ICreateFundraiserStore {
   name: string;
@@ -8,6 +8,7 @@ interface ICreateFundraiserStore {
   currency: string;
   location: string | null;
   imagesUrls: string[];
+  description: string;
 }
 
 interface ICreateFundraiserActions {
@@ -17,6 +18,7 @@ interface ICreateFundraiserActions {
   setCurrency: (val: string) => void;
   setLocation: (val: string | null) => void;
   setImagesUrls: (val: string[]) => void;
+  setDescription: (val: string) => void;
 }
 
 export const useCreateFundraiserStore = create<
@@ -59,6 +61,12 @@ export const useCreateFundraiserStore = create<
         set((store) => ({
           imagesUrls: val,
         })),
+
+      description: "",
+      setDescription: (val: string) =>
+        set({
+          description: val,
+        }),
     }),
 
     { name: "createFundraiser" }

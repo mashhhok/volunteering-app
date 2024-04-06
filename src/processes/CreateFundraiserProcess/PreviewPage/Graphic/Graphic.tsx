@@ -8,7 +8,6 @@ import { Remains } from "./Remains";
 export const Graphic = () => {
   return (
     <Flex
-      maw={962}
       bg={colors.black}
       px={58}
       py={30}

@@ -93,7 +93,7 @@ export const Slider = () => {
               src={item}
               width={480}
               height={300}
-              style={{ backgroundSize: "cover" }}
+              style={{ backgroundSize: "cover", width: '100%' }}
               alt={""}
             />
           </Carousel.Slide>

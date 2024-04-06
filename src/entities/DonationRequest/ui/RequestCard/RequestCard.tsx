@@ -26,7 +26,7 @@ export interface IRequestCard {
   collectedMoney: number;
   small?: boolean;
   location: string;
-  categories: string[]
+  categories: string[];
 }
 
 export const RequestCard: React.FC<IRequestCard> = ({
@@ -40,7 +40,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
   verifiedAndTrusted,
   small,
   location,
-  categories
+  categories,
 }) => {
   const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
@@ -69,7 +69,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
       style={{ border: `2px solid ${colors.black}` }}
     >
       <Flex
-        gap={12}
+        gap={small ? 12 : 24}
         direction={"column"}
         style={{
           position: "absolute",
@@ -83,12 +83,12 @@ export const RequestCard: React.FC<IRequestCard> = ({
         h={"100%"}
       >
         {/* FRONT CARD */}
-        <Flex direction={"column"} gap={4}>
+        <Flex direction={"column"} gap={small ? 4 : 16}>
           <Box style={blurOption} mb={12}>
-            <CardImg />
+            <CardImg small={small} />
           </Box>
           <Box style={blurOption}>
-            <Location small>{location}</Location>
+            <Location small={small}>{location}</Location>
           </Box>
 
           <CardTitle small={small}>{requestTitle}</CardTitle>
@@ -103,18 +103,13 @@ export const RequestCard: React.FC<IRequestCard> = ({
         </Box>
         <Box style={blurOption}>
           <ProgressBar
-            withoutFinishPercent
-            small
+            small={small}
             collected={collectedMoney}
             need={needMoney}
           />
         </Box>
 
-        <CardStatus
-          small={small}
-          status={requestStatus}
-          tags={categories}
-        />
+        <CardStatus small={small} status={requestStatus} tags={categories} />
       </Flex>
       <Flex
         gap={15}
@@ -133,18 +128,17 @@ export const RequestCard: React.FC<IRequestCard> = ({
       >
         {/* BACK CARD */}
         <Flex gap={4} direction={"column"}>
-          <Location small>Kyiv, Ukraine</Location>
-          <CardTitle small>{requestTitle}</CardTitle>
+          <Location small={small}>{location}</Location>
+          <CardTitle small={small}>{requestTitle}</CardTitle>
         </Flex>
         <CompanyInfo
-          small
+          small={small}
           companyName={companyName}
           verifiedAndTrusted={verifiedAndTrusted}
         />
         <CardDescription>{requestDescription}</CardDescription>
         <ProgressBar
-          withoutFinishPercent
-          small
+          small={small}
           collected={collectedMoney}
           need={needMoney}
         />

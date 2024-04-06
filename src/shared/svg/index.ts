@@ -13,3 +13,4 @@ export * from "./OutBoxSVG";
 export * from "./EyeSVG";
 export * from "./EyeOffSVG";
 export * from './NoImgSVG'
+export * from './LocationSVG'

@@ -46,6 +46,7 @@ export const theme = createTheme({
     Button: {
       defaultProps: {
         radius: "xl",
+        fw: 500,
       },
     },
   },

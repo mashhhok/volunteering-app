@@ -5,12 +5,10 @@ export const ProgressBar = ({
   collected,
   need,
   small,
-  withoutFinishPercent
 }: {
   collected: number;
   need: number;
   small?:boolean;
-  withoutFinishPercent?:boolean
 }) => {
   const moneyPercent = Math.round((collected / need) * 100);
   return (
@@ -24,7 +22,7 @@ export const ProgressBar = ({
       <Box h={small?6:12} />
       <Flex justify={"space-between"}>
         <Title order={5} {...(small&&{fz: 10})}>{moneyPercent}%</Title>
-        <Title order={5} {...(small&&{fz: 10})} style={{display: withoutFinishPercent? 'none': 'block'}}>100% UAH</Title>
+        <Title order={5} {...(small&&{fz: 10})} >100%</Title>
       </Flex>
     </Box>
   );
