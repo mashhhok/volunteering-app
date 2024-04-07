@@ -1,5 +1,4 @@
 "use client";
-import { useInput } from "@/shared/lib/hooks";
 import { NumberInput } from "@mantine/core";
 import React from "react";
 import { useCreateFundraiserStore } from "../store";

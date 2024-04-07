@@ -1,26 +1,18 @@
-"use client";
-import { colors } from "@/shared/enums";
-import { ShadowBtn } from "@/shared/ui";
-import { NextBtn } from "@/shared/ui/NextBtn";
-import {
-  Box,
-  Flex,
-  NumberInput,
-  Select,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
-import React from "react";
-import { AmountInput } from "./AmountInput";
-import { useCreateFundraiserStore } from "../store";
-import { CurrencyInput } from "./CurrencyInput";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { RgbaBgLayout } from "@/shared/ui/RgbaBgLayout";
-import { BackBtn } from "../BackBtn";
+'use client'
+import { useCreateFundraiserStore } from '@/app/(fundraiser_request)/create_fundraiser/store';
+import { colors } from '@/shared/enums';
+import {  ShadowBtn } from '@/shared/ui';
+import { NextBtn } from '@/shared/ui/NextBtn';
+import { RgbaBgLayout } from '@/shared/ui/RgbaBgLayout';
+import { Box, Title, Flex, Text } from '@mantine/core';
+import Link from 'next/link';
+import React from 'react'
+import { AmountInput } from './AmountInput';
+import { CurrencyInput } from './CurrencyInput';
+import { BackBtn } from '../../BackBtn';
+import { useRouter } from 'next/navigation';
 
-export const AmountPage = () => {
+const AmountPage = () => {
   const { amount, currency } = useCreateFundraiserStore((store) => store);
   const isValid = amount.length > 0 && amount.length < 13 && currency;
   const router = useRouter();
@@ -54,6 +46,7 @@ export const AmountPage = () => {
           </Link>
         </Flex>
       </Box>
-    </RgbaBgLayout>
-  );
-};
+    </RgbaBgLayout>)
+}
+
+export default AmountPage

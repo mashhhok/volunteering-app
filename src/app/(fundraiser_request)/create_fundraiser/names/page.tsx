@@ -8,9 +8,9 @@ import { useCreateFundraiserStore } from "../store";
 import { NameInput } from "./NameInput";
 import { SelectInput } from "./SelectInput";
 import { RgbaBgLayout } from "@/shared/ui/RgbaBgLayout";
-import { BackBtn } from "../BackBtn";
+import { BackBtn } from "../../BackBtn";
 
-export const NamesPage = () => {
+const NamesPage = () => {
   const { name, categories } = useCreateFundraiserStore((store) => store);
   const isValid =
     name.length < 80 &&
@@ -35,3 +35,5 @@ export const NamesPage = () => {
     </RgbaBgLayout>
   );
 };
+
+export default NamesPage;

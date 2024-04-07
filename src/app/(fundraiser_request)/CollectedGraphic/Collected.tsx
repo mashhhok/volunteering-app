@@ -2,7 +2,7 @@ import { colors } from "@/shared/enums";
 import { Box, Center, Title } from "@mantine/core";
 import React from "react";
 
-export const Collected = () => {
+export const Collected = ({collected}: {collected: string}) => {
   return (
     <Box
       p={16}
@@ -40,7 +40,7 @@ export const Collected = () => {
               textAlign: "center",
             }}
           >
-            0 UAH
+            {collected}
           </Title>
         </Box>
       </Center>

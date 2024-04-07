@@ -1,20 +1,18 @@
-import { getFullUserByEmail } from "@/entities/User/repository";
-import { getSession } from "@/shared/auth";
-import { colors } from "@/shared/enums";
-import { Box, Container, Flex, Text } from "@mantine/core";
+'use client'
+import { Box, Container, Flex } from "@mantine/core";
 import React from "react";
-import { BackBtn } from "../BackBtn";
+import { BackBtn } from "../../BackBtn";
 import { NoVerifiedWarning } from "./NoVerifiedWarning";
-import { InfoSVG } from "@/shared/svg";
-import { RequestCard } from "@/entities/DonationRequest";
 import { CardPreview } from "./CardPreview";
 import { Slider } from "./Slider";
 import { RequestInfo } from "./RequestInfo/RequestInfo";
-import { Graphic } from "./Graphic/Graphic";
 import { AddDescription } from "./AddDescription/AddDescription";
+import { CollectedGraphic } from "../../CollectedGraphic/CollectedGraphic";
+import { useCreateFundraiserStore } from "../store";
 
-export const PreviewPage = async () => {
+const PreviewPage = () => {
   const isVerified = false;
+  const {amount, currency} = useCreateFundraiserStore()
 
   return (
     <Box>
@@ -42,12 +40,14 @@ export const PreviewPage = async () => {
               <RequestInfo />
             </Flex>
             <Box h={{ base: 40, md: 100 }} />
-            <Graphic />
+            <CollectedGraphic remains={amount} need={amount} collected={0} currency={currency} />
             <Box h={{ base: 40, md: 100 }} />
-            <AddDescription/>
+            <AddDescription />
           </Box>
         </Flex>
       </Container>
     </Box>
   );
 };
+
+export default PreviewPage;

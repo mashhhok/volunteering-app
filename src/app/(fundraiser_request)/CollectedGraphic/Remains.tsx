@@ -3,11 +3,11 @@ import { LinearDivider } from "@/shared/ui";
 import { Flex, Title, Box } from "@mantine/core";
 import React from "react";
 
-export const Remains = () => {
+export const Remains = ({ remains }: { remains: string }) => {
   return (
     <Flex direction={"column"} flex="1 1 auto" align={"flex-end"}>
       <Title mb={16} order={5} style={{ color: colors.lightGray }} mr={30}>
-        10 000 000 UAH
+        {remains}
       </Title>
       <LinearDivider h={"2"} w={"280px"} color={colors.violet} />
       <Box h={16} />
