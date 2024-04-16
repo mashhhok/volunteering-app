@@ -5,7 +5,7 @@ import { Tags } from "./Tags";
 import { InfoTitle } from "./InfoTitle";
 import { Published } from "./Published";
 import { LocationSelect } from "./LocationSelect";
-import { ProfileInfo } from "./ProfileInfo";
+import { ProfileInfo } from "../../../components/ProfileInfo";
 
 export const RequestInfo = () => {
   return (

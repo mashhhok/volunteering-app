@@ -12,6 +12,7 @@ import { LogoSVG } from "@/shared/svg";
 import { colors } from "@/shared/enums";
 import Image from "next/image";
 import auth_bg from "@/public/auth_bg/default.png";
+import { Logo } from "./Logo";
 
 export const RgbaBgLayout = ({
   children,
@@ -80,7 +81,7 @@ export const RgbaBgLayout = ({
             <Card maw={800} w={"100%"} radius={"md"} py={88}>
               <Flex direction={"column"} align={"center"}>
                 <Flex gap={16} mb={40}>
-                  <LogoSVG fill={colors.violet} />
+                  <Logo  fill={colors.violet} />
                   <Title order={2}>UnitaryAid</Title>
                 </Flex>
                 {/*  */}

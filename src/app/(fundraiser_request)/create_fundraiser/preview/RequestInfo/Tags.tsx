@@ -4,16 +4,8 @@ import React from "react";
 import { useCreateFundraiserStore } from "../../store";
 import { colors } from "@/shared/enums";
 import { useThemeStore } from "@/app/store";
+import { TagButton } from "@/app/(fundraiser_request)/components/TagButton";
 
-const TagButton = ({ children }: { children: React.ReactNode }) => {
-  const theme = useThemeStore(store => store.theme)
-
-  return (
-    <Button py={12} px={16} h={'auto'} fz={14} variant="outline" color={theme === 'light' ? colors.black : colors.white}>
-      {children}
-    </Button>
-  );
-};
 
 export const Tags = () => {
   const tags = useCreateFundraiserStore((store) => store.categories);

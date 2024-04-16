@@ -9,7 +9,7 @@ import Link from 'next/link';
 import React from 'react'
 import { AmountInput } from './AmountInput';
 import { CurrencyInput } from './CurrencyInput';
-import { BackBtn } from '../../BackBtn';
+import { BackBtn } from '../../components/BackBtn';
 import { useRouter } from 'next/navigation';
 
 const AmountPage = () => {

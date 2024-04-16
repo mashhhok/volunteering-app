@@ -7,7 +7,7 @@ import { Remains } from "./Remains";
 
 interface ICollectedGraphic {
   need: string;
-  collected: number;
+  collected: string;
   currency: string;
   remains: string;
 }

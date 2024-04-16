@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useThemeStore } from "./store";
+import { useThemeStore } from "../store";
 import { useMantineColorScheme } from "@mantine/core";
 
 export const MantineHiddThemeSwitch = () => {

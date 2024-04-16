@@ -8,7 +8,7 @@ import { useCreateFundraiserStore } from "../store";
 import { NameInput } from "./NameInput";
 import { SelectInput } from "./SelectInput";
 import { RgbaBgLayout } from "@/shared/ui/RgbaBgLayout";
-import { BackBtn } from "../../BackBtn";
+import { BackBtn } from "../../components/BackBtn";
 
 const NamesPage = () => {
   const { name, categories } = useCreateFundraiserStore((store) => store);
