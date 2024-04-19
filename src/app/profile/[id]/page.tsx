@@ -32,7 +32,7 @@ const ProfilePage = async ({ params }: IProps) => {
           <OrganizationInfo userId={parseInt(params.id)} />
           <LinearDivider h={"auto"} w={2} color={colors.violet} deg={180} />
         </Flex>
-        <Box flex="1 0 auto" w='100%' maw={640}>
+        <Box flex="1 0 auto" w='100%' maw={{base: '100%', lg: 640}}>
           <ScrollCards  />
         </Box>
       </Flex>

@@ -14,16 +14,7 @@ export const NavLink = ({
   props?: typeof Link.arguments;
   activeProps?: typeof Link.arguments;
 }) => {
-  const [active, setActive] = React.useState(false);
-  const pathname = usePathname();
-
-  React.useEffect(() => {
-    if (pathname === href) {
-      setActive(true);
-    } else setActive(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
-
+  
   return (
     <Link
       {...(!active && props)}

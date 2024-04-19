@@ -17,7 +17,7 @@ export const DropBox = () => {
         onClick={toggle}
       />
       <Drawer opened={opened} onClose={close} position="left">
-        <Flex gap={20} direction={"column"}>
+        <Flex gap={20} direction={"column"} onClick={close}>
           <Info />
           <ThemeSwitcher />
           <LanguageSelect/>

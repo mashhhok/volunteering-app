@@ -31,7 +31,7 @@ export const Header = async () => {
               <Flex gap={20} align={"center"}>
                 <Info />
               </Flex>
-              <Search />
+              {/* <Search /> */}
             </Flex>
 
             <Flex hiddenFrom="lg" align="center" gap={20} w={"47%"}>

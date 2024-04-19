@@ -5,8 +5,8 @@ export const RightSVG = (props: ISVG) => {
   return (
     <svg
       width={props.width ? props.width : 17}
-    height={props.height ? props.height : 13}
-    viewBox={`0 0 ${props.width ? props.width : 17} ${props.height ? props.height : 13}`}
+      height={props.height ? props.height : 13}
+      viewBox={`0 0 17 13`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

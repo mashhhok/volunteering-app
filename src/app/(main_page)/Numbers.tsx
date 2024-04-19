@@ -27,12 +27,12 @@ export const Numbers = () => {
       <Title mb={40} order={2} style={{ textTransform: "capitalize" }}>
         the numbers of our platform
       </Title>
-      <Flex gap={26}>
+      <Flex gap={26} wrap={'wrap'} direction={{base: 'column', xs: 'row'}} >
         {statistic.map((item) => (
           <Flex
             gap={15}
             direction={"column"}
-            w={"100%"}
+            w={{base: '100%', xs: 300}}
             key={item.title}
             p={40}
             mih={170}

@@ -5,8 +5,6 @@ import {
   Box,
   Center,
   Container,
-  Flex,
-  Grid,
   ScrollArea,
   Text,
   Title,
@@ -24,7 +22,7 @@ export const Because = () => {
       </SuperTitle>
       <ScrollArea>
         <Box
-        miw={1200}
+          miw={1200}
           bg={colors.black}
           p={64}
           style={{
@@ -33,7 +31,6 @@ export const Because = () => {
             gridTemplateRows: "repeat(2, 1fr)",
             borderRadius: 16,
           }}
-          
           display={"grid"}
         >
           <Box

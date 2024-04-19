@@ -4,7 +4,6 @@ import { Box, Flex, Title as TitleEl } from "@mantine/core";
 import { LeftArrowSVG } from "@/shared/svg";
 import { RightArrowSVG } from "@/shared/svg/RightArrowSVG";
 import { useScrollCardsState } from "../store";
-import { colors } from "@/shared/enums";
 
 export const Title = () => {
   const scrollRef = useScrollCardsState((state) => state.scrollRef);

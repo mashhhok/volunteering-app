@@ -1,10 +1,8 @@
 "use client";
 import { colors } from "@/shared/enums";
-import { NavLink } from "@/shared/ui";
+import { LinkBtn } from "@/shared/ui";
 import { Box, Card, Title } from "@mantine/core";
 import React from "react";
-
-const NavItem = () => {};
 
 const navItems = [
   { text: "Edit details", href: "/settings/details" },
@@ -23,12 +21,12 @@ export const Nav = () => {
       <Card radius={"lg"} style={{ border: "1px solid" }} p={20}>
         {navItems.map((item, index) => (
           <Box p={"16px 20px"} key={index}>
-            <NavLink
+            <LinkBtn
               activeProps={{ style: { color: colors.violet } }}
               href={item.href}
             >
               {item.text}
-            </NavLink>
+            </LinkBtn>
           </Box>
         ))}
       </Card>

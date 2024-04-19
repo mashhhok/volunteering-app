@@ -73,16 +73,14 @@ export const MainBlock = () => {
           maw={600}
           w={"100%"}
           h={440}
-          direction={{ base: "column", lg: "row" }}
           style={{ borderRadius: "16px" }}
-          p={{ base: 20, lg: 70 }}
-          align={{ base: "center", lg: "stretch" }}
+          p={{ base: 50, lg: 70 }}
         >
-          <Box w={"100%"} maw={500} h={{base: "85%", lg: '100%'}}>
+          <Box w={"100%"} maw={500} h={'100%'} flex='0 1 70%'>
             <Spline scene="https://prod.spline.design/wPLNCjmuKjsa3ejv/scene.splinecode" />
           </Box>
 
-          <Flex direction={"column"} flex="1 1 auto" ml={{ base: 0, lg: -20 }}>
+          <Flex direction={"column"} flex="1 1 30%" ml={{ base: -55, lg: -20 }}>
             <Text size="xs" flex={"1 1 auto"} color={colors.white}>
               Only together we collect funds, helping people
             </Text>
