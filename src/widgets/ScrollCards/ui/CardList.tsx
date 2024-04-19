@@ -12,6 +12,7 @@ export const CardList = (props: any) => {
   React.useEffect(() => {
     console.log(scrollRefNode);
     setScrollRef(scrollRefNode);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -34,19 +35,13 @@ export const CardList = (props: any) => {
                 <RequestCard
                   companyName="Company Name"
                   requestTitle="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum ea fugiat eum accusamus pariatur"
-                  avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
-                  requestDescription={
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque modi voluptas ipsam velit provident voluptate quod facilis nisi, amet adipisci. Dicta, consequatur repudiandae. Consequuntur fugiat, qui eligendi error libero recusandae."
-                  }
+                  requestDescription={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque modi voluptas ipsam velit provident voluptate quod facilis nisi, amet adipisci. Dicta, consequatur repudiandae. Consequuntur fugiat, qui eligendi error libero recusandae."}
                   requestStatus={"closed"}
                   needMoney={10000}
                   collectedMoney={3200}
                   categories={[]}
-                  imageUrl={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
-                  }
-                  verifiedAndTrusted={true}
-                />
+                  imageUrl={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"}
+                  verifiedAndTrusted={true} location={""}                />
               </Box>
             ))
           )}

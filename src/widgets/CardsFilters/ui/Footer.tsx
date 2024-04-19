@@ -13,7 +13,7 @@ export const Footer = () => {
 
   React.useEffect(() => {
     function pattern(val: string | null) {
-      if (!val) return 0;
+      if (!val) return 1;
       return parseInt(val);
     }
 

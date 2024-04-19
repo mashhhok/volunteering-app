@@ -22,16 +22,17 @@ export const Footer = () => {
         <Box h={{ base: 80, sm: 152 }} />
         <Flex
           justify={"space-between"}
-          direction={{ base: "column", sm: "row" }}
+          // align={'center'}
+          direction={{ base: "column", md: "row" }}
         >
-          <Box hiddenFrom="sm" pb={10}>
+          <Box hiddenFrom="md" pb={10}>
             <Logo />
           </Box>
           <LeftSection />
-          <Box visibleFrom="sm">
+          <Box visibleFrom="md">
             <Logo />
           </Box>
-          <Box p={8} hiddenFrom="sm">
+          <Box p={8} hiddenFrom="md">
             <LinearDivider h={"2px"} w={"40%"} color={colors.yellow} />
           </Box>
           <RightSection />
