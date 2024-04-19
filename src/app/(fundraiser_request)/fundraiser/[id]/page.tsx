@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Box, Container, Flex, Title } from "@mantine/core";
 import React from "react";
 import { BackBtn } from "../../components/BackBtn";

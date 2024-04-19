@@ -6,14 +6,14 @@ import React from "react";
 import { useReplaceSearchParams } from "@/shared/lib/hooks";
 
 export const Footer = () => {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
 
   const searchParams = useSearchParams();
   const replaceSearchParams = useReplaceSearchParams();
 
   React.useEffect(() => {
     function pattern(val: string | null) {
-      if (!val) return 0;
+      if (!val) return 1;
       return parseInt(val);
     }
 

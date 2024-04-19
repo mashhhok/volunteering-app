@@ -20,7 +20,7 @@ export const SuperTitle = (props: TitleProps & ISuperTitle) => {
         (order === 1 && fz_1) ||
         (order === 2 && fz_2) ||
         (order === 3 && fz_3) ||
-        {}
+        fz_1
       }
     />
   );

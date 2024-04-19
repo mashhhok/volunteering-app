@@ -19,7 +19,7 @@ export const Header = async () => {
         pos={"fixed"}
         style={{
           zIndex: 10,
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(10px)",
         }}
         py={10}
         w="100%"

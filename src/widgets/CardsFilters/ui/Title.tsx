@@ -19,7 +19,7 @@ export const Title = ({ pending, waitReport, closed }: IRequestInfo) => {
 
   return (
     <>
-      <Flex gap={30} justify={"space-between"} wrap={"wrap"} gap={10} align={"center"}>
+      <Flex justify={"space-between"} wrap={"wrap"} gap={10} align={"center"}>
         <TitleMant order={2}>All Fundraisings</TitleMant>
         <Box hiddenFrom="lg" onClick={toggleFilterOptionsDropdown}>
           <FiltersSVG />

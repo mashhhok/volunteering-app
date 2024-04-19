@@ -47,7 +47,7 @@ export const BlurButton = (props: typeof Button.arguments & { color: string }) =
           backgroundColor: hovered ? darken(props.color, 0.45) : "transparent",
         }}
       />
-      <Box style={{ zIndex: 10000, letterSpacing: "2px" }}>
+      <Box style={{ zIndex: 5, letterSpacing: "2px" }}>
         {props.children}
       </Box>
     </Button>

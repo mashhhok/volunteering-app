@@ -1,7 +1,6 @@
 import { colors } from "@/shared/enums";
 import { SuperTitle } from "@/shared/ui";
 import { Box, Container, Flex, Text, Title } from "@mantine/core";
-import React from "react";
 
 const Step = ({ title, text }: { title: string; text: string }) => (
   <Flex gap={20}>

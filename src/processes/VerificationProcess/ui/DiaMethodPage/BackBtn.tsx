@@ -2,6 +2,7 @@
 import { ShadowBtn } from "@/shared/ui";
 import { useRouter } from "next/navigation";
 import React from "react";
+import {Box} from '@mantine/core'
 
 export const BackBtn = () => {
   const router = useRouter();
@@ -11,8 +12,8 @@ export const BackBtn = () => {
   }
 
   return (
-    <ShadowBtn size="xl" onClick={click}>
-      Back to authorize
-    </ShadowBtn>
+    <Box onClick={click}>
+      <ShadowBtn size="xl">Back to authorize</ShadowBtn>
+    </Box>
   );
 };

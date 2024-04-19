@@ -6,7 +6,6 @@ import { NextBtn } from '@/shared/ui/NextBtn';
 import { RgbaBgLayout } from '@/shared/ui/RgbaBgLayout';
 import { Box, Title, Flex, Text } from '@mantine/core';
 import Link from 'next/link';
-import React from 'react'
 import { AmountInput } from './AmountInput';
 import { CurrencyInput } from './CurrencyInput';
 import { BackBtn } from '../../components/BackBtn';

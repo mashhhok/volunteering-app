@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import qs from "qs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

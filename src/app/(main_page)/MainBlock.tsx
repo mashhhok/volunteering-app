@@ -3,7 +3,6 @@ import { colors } from "@/shared/enums";
 import { TopRightArrowSVG } from "@/shared/svg";
 import { BlurButton, ShadowBtn, SuperTitle } from "@/shared/ui";
 import { Box, Container, Flex, Text, Title } from "@mantine/core";
-import React from "react";
 import Spline from "@splinetool/react-spline";
 
 export const MainBlock = () => {

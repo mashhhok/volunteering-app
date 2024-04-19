@@ -1,6 +1,5 @@
 import { colors } from "@/shared/enums";
 import { Box, Container, Flex, Text, Title } from "@mantine/core";
-import React from "react";
 
 export const Numbers = () => {
   const statistic = [
