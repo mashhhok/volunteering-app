@@ -1,0 +1,1 @@
+export interface CardsFiltersProps { companyId?: number | null }

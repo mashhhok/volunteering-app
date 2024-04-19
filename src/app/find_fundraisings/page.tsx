@@ -1,10 +1,9 @@
-import { Box, Container, Flex, Text, Title } from "@mantine/core";
-import React from "react";
+import { Box, Container } from "@mantine/core";
 import { Search } from "./Search";
 import { Categories } from "./Categories";
 import { CardsFilters } from "@/widgets/CardsFilters";
 
-const FindFundraisingsPage = () => {
+const FindFundraisingsPage = async () => {
   return (
     <Container mt={40} size="xl">
       <Search />

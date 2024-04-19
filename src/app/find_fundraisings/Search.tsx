@@ -6,10 +6,6 @@ import React from "react";
 export const Search = () => {
   const [value, setValue] = React.useState("");
 
-  React.useEffect(() => {
-    console.log(value);
-  }, [value]);
-
   return (
     <Flex
       wrap={{ base: "wrap", md: "nowrap" }}

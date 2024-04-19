@@ -23,6 +23,7 @@ export const AddDescription = () => {
             category={"Wallet"}
             walletType={"Payoneer"}
             cardNum={"0000 0000 0000 0000"}
+            copy={false}
           />
         </Box>
       </Flex>

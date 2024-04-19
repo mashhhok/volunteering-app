@@ -1,6 +1,5 @@
 import { RequestCard } from "@/entities/DonationRequest";
 import { Box, Flex } from "@mantine/core";
-import React from "react";
 
 export const CardsList = () => {
   return (

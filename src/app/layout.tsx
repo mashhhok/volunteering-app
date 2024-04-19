@@ -9,13 +9,11 @@ import type { Metadata } from "next";
 import { Box, ColorSchemeScript, Flex, MantineProvider } from "@mantine/core";
 import { theme } from "@/shared/config/mantine.config";
 import { Header } from "@/widgets/Header";
-import { Montserrat } from "next/font/google";
 import { Cursor } from "../shared/ui/Cursor";
 import { Footer } from "@/widgets/Footer";
 import { HideWhen } from "@/shared/ui";
 import { MantineHiddThemeSwitch } from "./(main_page)/MantineHiddThemeSwitch";
 
-const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
 export const metadata: Metadata = {
   title: "Home page",

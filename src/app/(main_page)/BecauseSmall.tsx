@@ -1,6 +1,7 @@
 import { colors } from "@/shared/enums";
-import { SuperTitle } from "@/shared/ui";
+
 import { Box, Container, Flex, Text, Title } from "@mantine/core";
+import { SuperTitle } from "@/shared/ui";
 import React from "react";
 
 export const BecauseSmall = () => {

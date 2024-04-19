@@ -3,7 +3,6 @@ import { TopRightArrowSVG } from "@/shared/svg";
 import { BlurButton, SuperTitle } from "@/shared/ui";
 import { Box, Container, Flex } from "@mantine/core";
 import Link from "next/link";
-import React from "react";
 
 export const SignOffer = () => {
   return (

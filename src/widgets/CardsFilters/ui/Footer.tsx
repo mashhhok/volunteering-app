@@ -6,7 +6,7 @@ import React from "react";
 import { useReplaceSearchParams } from "@/shared/lib/hooks";
 
 export const Footer = () => {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
 
   const searchParams = useSearchParams();
   const replaceSearchParams = useReplaceSearchParams();
