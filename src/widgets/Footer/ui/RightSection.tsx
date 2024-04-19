@@ -11,7 +11,7 @@ export const RightSection = () => {
         Convert your hatred into donations
       </Text>
       <ShadowBtn rightSection={<TopRightArrowSVG />} size="xl">
-        Donate
+        Find fundraising
       </ShadowBtn>
     </Box>
   );

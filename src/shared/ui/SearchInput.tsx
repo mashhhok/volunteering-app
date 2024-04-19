@@ -23,6 +23,7 @@ export const SearchInput = (
 
   React.useEffect(() => {
     if (props.setValue) props.setValue(value);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   function onChange(e: ChangeEvent<HTMLInputElement>) {
