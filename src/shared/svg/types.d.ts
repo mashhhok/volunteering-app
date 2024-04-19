@@ -3,4 +3,5 @@ interface ISVG {
   width?: number;
   height?: number;
   bg?: string;
+  style?: any;
 }

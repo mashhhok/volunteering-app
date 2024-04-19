@@ -27,7 +27,7 @@ export const Footer = () => {
   }, [page]);
 
   return (
-    <Flex justify={"space-between"}>
+    <Flex justify={"space-between"} wrap={'wrap'} gap={15} >
       <ShadowBtn>Show more</ShadowBtn>
       <Pagination
         total={10}

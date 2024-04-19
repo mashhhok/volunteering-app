@@ -13,6 +13,7 @@ export const TopRightArrowSVG = (props: ISVG) => {
       viewBox="0 0 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={props.style}
     >
       <path
         fillRule="evenodd"

@@ -5,13 +5,19 @@ import { LinearDivider, Logo } from "@/shared/ui";
 import { RightSection } from "./RightSection";
 import { BlurText } from "./BlurText";
 import { colors } from "@/shared/enums";
+import { Anchor } from "./Anchor";
 
 export const Footer = () => {
+  
+
   return (
     <Box>
       <Container size={"xl"} mt={100}>
         <Flex justify={"center"}>
           <LinearDivider h={"2px"} w={"647px"} color={colors.violet} />
+        </Flex>
+        <Flex justify={"flex-end"} mt={5}>
+          <Anchor/>
         </Flex>
         <Box h={{ base: 80, sm: 152 }} />
         <Flex

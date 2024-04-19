@@ -14,7 +14,7 @@ export const ThemeSwitcher = () => {
   React.useEffect(() => {
     setIsDark(colorScheme === "dark");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [colorScheme]);
 
   function click() {
     firstLoad.current = false;

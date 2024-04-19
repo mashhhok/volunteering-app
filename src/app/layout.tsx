@@ -1,15 +1,19 @@
 /* eslint-disable @next/next/no-page-custom-font */
+import "@/shared/styles/globals.css";
+import "@mantine/core/styles.css";
+import "@mantine/carousel/styles.css";
+import "@mantine/dates/styles.css";
+import "@mantine/dates/styles.layer.css";
+import "@mantine/tiptap/styles.css";
 import type { Metadata } from "next";
-import "../shared/styles/globals.css";
 import { Box, ColorSchemeScript, Flex, MantineProvider } from "@mantine/core";
 import { theme } from "@/shared/config/mantine.config";
-import "@mantine/core/styles.css";
 import { Header } from "@/widgets/Header";
 import { Montserrat } from "next/font/google";
 import { Cursor } from "../shared/ui/Cursor";
 import { Footer } from "@/widgets/Footer";
 import { HideWhen } from "@/shared/ui";
-import { MantineHiddThemeSwitch } from "./MantineHiddThemeSwitch";
+import { MantineHiddThemeSwitch } from "./(main_page)/MantineHiddThemeSwitch";
 
 const mont = Montserrat({ subsets: ["cyrillic", "latin"] });
 
@@ -23,6 +27,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headAndFootHiddened = [
+    "/auth/",
+    "/create_fundraiser/names",
+    "/create_fundraiser/amount",
+    "/donation_method",
+  ];
+
   return (
     <html lang="en">
       <head>
@@ -34,17 +45,17 @@ export default async function RootLayout({
         <MantineProvider theme={theme} defaultColorScheme="light">
           <Box maw={"100%"} w={"100%"} style={{ overflow: "hidden" }}>
             <Flex mih={"100vmin"} direction={"column"}>
-              <HideWhen routes={["auth"]}>
+              <HideWhen routes={headAndFootHiddened}>
                 <Header />
               </HideWhen>
               <Cursor />
               <Box flex={"1 1 auto"}>{children}</Box>
-              <HideWhen routes={["auth"]}>
+              <HideWhen routes={headAndFootHiddened}>
                 <Footer />
               </HideWhen>
             </Flex>
           </Box>
-          <MantineHiddThemeSwitch/>
+          <MantineHiddThemeSwitch />
         </MantineProvider>
       </body>
     </html>

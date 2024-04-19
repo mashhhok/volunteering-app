@@ -5,8 +5,6 @@ import { devtools } from "zustand/middleware";
 interface IScrollCardsState {
   scrollRef: RefObject<HTMLDivElement> | null;
   setScrollRef: (val: RefObject<HTMLDivElement> | null) => void;
-  scroll: number;
-  onScroll: (val: number) => void;
 }
 
 export const useScrollCardsState = create<IScrollCardsState>()(
@@ -16,10 +14,5 @@ export const useScrollCardsState = create<IScrollCardsState>()(
       set({
         scrollRef: val,
       }),
-    onScroll: (val) =>
-      set({
-        scroll: val,
-      }),
-    scroll: 60,
   }))
 );

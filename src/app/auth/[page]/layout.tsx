@@ -1,10 +1,10 @@
-import { Wrapper } from "@/processes/AuthProcess";
+import { RgbaBgLayout } from "@/shared/ui/RgbaBgLayout";
 import React from "react";
 
 const layout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
-  return <Wrapper>{children}</Wrapper>;
+  return <RgbaBgLayout>{children}</RgbaBgLayout>;
 };
 
 export default layout

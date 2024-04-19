@@ -33,7 +33,6 @@ export const FilterOptions = () => {
   const [elderly, setЕlderly] = React.useState(false);
   const [volunteering, setVolunteering] = React.useState(false);
 
-  const typeValues = ["All", "Verified"];
   const [location, setLocation] = React.useState<string | null>(null);
 
   const checkboxStateArray = [
@@ -69,12 +68,6 @@ export const FilterOptions = () => {
     function parseBool(val: unknown) {
       if (!val) return false;
       return val === "true" ? true : false;
-    }
-
-    function typeValidate(val: string | null) {
-      if (!val) return typeValues[0];
-      if (typeValues.includes(val)) return val;
-      return typeValues[0];
     }
 
     setEmergency(parseBool(searchParams.get("emergency")));
@@ -115,10 +108,7 @@ export const FilterOptions = () => {
     <>
       <Flex
         justify={"space-between"}
-        maw={300}
-        w={"100%"}
-        flex="0 0 auto"
-        visibleFrom="md"
+        w={'100%'}
       >
         <Box w={"100%"}>
           <Flex gap={12} align={"center"} mb={40}>
@@ -169,66 +159,6 @@ export const FilterOptions = () => {
           deg={180}
           color={colors.lightGray}
         />
-      </Flex>
-      <Flex hiddenFrom="md" justify={"center"}>
-        <Menu width={"300px"} shadow="xl">
-          <Menu.Target>
-            <Button>Filter Options</Button>
-          </Menu.Target>
-          <Menu.Dropdown>
-            <ScrollArea h={500} scrollbarSize={5} type="always">
-              <Flex
-                justify={"space-between"}
-                maw={300}
-                w={"100%"}
-                flex="0 0 auto"
-                p={10}
-              >
-                <Box w={"100%"}>
-                  <Flex gap={12} align={"center"} mb={40}>
-                    <FiltersSVG />
-                    <Text fz="20px">Filters</Text>
-                  </Flex>
-
-                  <Title order={4} mb={20}>
-                    Fundraise for
-                  </Title>
-                  <Flex gap={15} direction={"column"} mb={40}>
-                    {fundraiseArray.map((item, index) => (
-                      <Flex
-                        gap={12}
-                        align={"center"}
-                        key={index}
-                        onClick={() => item.setValue((prev) => !prev)}
-                        style={{ cursor: "pointer", userSelect: "none" }}
-                      >
-                        <Checkbox radius={"xs"} checked={item.value} />
-                        <Text fz="16px">{item.text}</Text>
-                      </Flex>
-                    ))}
-                  </Flex>
-
-                  <Select
-                    label={<Title order={4}>Location</Title>}
-                    radius={"md"}
-                    description={<Text size="sm">Choose the city</Text>}
-                    placeholder="Input location"
-                    maw={280}
-                    w={"100%"}
-                    value={location}
-                    onChange={(value, option) => setLocation(value)}
-                  />
-                </Box>
-                <LinearDivider
-                  h={"100%"}
-                  w={"2px"}
-                  deg={180}
-                  color={colors.lightGray}
-                />
-              </Flex>
-            </ScrollArea>
-          </Menu.Dropdown>
-        </Menu>
       </Flex>
     </>
   );

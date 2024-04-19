@@ -16,20 +16,21 @@ import { useMediaQuery } from "@mantine/hooks";
 
 export interface IRequestCard {
   companyName: string;
-  avatarUrl: string;
   requestTitle: string;
   requestDescription: string;
   requestStatus: "pending" | "open" | "closed";
-  imageUrl: string;
+  imageUrl?: string;
   verifiedAndTrusted: boolean;
 
   needMoney: number;
   collectedMoney: number;
+  small?: boolean;
+  location: string;
+  categories: string[];
 }
 
 export const RequestCard: React.FC<IRequestCard> = ({
   companyName,
-  avatarUrl,
   requestTitle,
   requestDescription,
   requestStatus,
@@ -37,6 +38,9 @@ export const RequestCard: React.FC<IRequestCard> = ({
   collectedMoney,
   imageUrl,
   verifiedAndTrusted,
+  small,
+  location,
+  categories,
 }) => {
   const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
@@ -52,7 +56,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
       radius={"xl"}
       maw={440}
       w={"100%"}
-      h={555}
+      h={small ? 400 : 555}
       bg={"transparent"}
       {...(isPhone
         ? {
@@ -65,7 +69,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
       style={{ border: `2px solid ${colors.black}` }}
     >
       <Flex
-        gap={12}
+        gap={small ? 12 : 24}
         direction={"column"}
         style={{
           position: "absolute",
@@ -75,35 +79,37 @@ export const RequestCard: React.FC<IRequestCard> = ({
           transition: "0.3s",
         }}
         w={"100%"}
-        p={24}
+        p={16}
         h={"100%"}
       >
         {/* FRONT CARD */}
-        <Flex direction={"column"} gap={4}>
-          <Box style={blurOption}>
-            <CardImg imageUrl={imageUrl} />
+        <Flex direction={"column"} gap={small ? 4 : 16}>
+          <Box style={blurOption} mb={12}>
+            <CardImg small={small} />
           </Box>
           <Box style={blurOption}>
-            <Location>Kyiv, Ukraine</Location>
+            <Location small={small}>{location}</Location>
           </Box>
 
-          <CardTitle>{requestTitle}</CardTitle>
+          <CardTitle small={small}>{requestTitle}</CardTitle>
         </Flex>
 
         <Box style={blurOption}>
           <CompanyInfo
+            small={small}
             companyName={companyName}
             verifiedAndTrusted={verifiedAndTrusted}
           />
         </Box>
         <Box style={blurOption}>
-          <ProgressBar collected={collectedMoney} need={needMoney} />
+          <ProgressBar
+            small={small}
+            collected={collectedMoney}
+            need={needMoney}
+          />
         </Box>
 
-        <CardStatus
-          status={requestStatus}
-          tags={["🎖 Military", "🥾 Equipment"]}
-        />
+        <CardStatus small={small} status={requestStatus} tags={categories} />
       </Flex>
       <Flex
         gap={15}
@@ -122,23 +128,28 @@ export const RequestCard: React.FC<IRequestCard> = ({
       >
         {/* BACK CARD */}
         <Flex gap={4} direction={"column"}>
-          <Location>Kyiv, Ukraine</Location>
-          <CardTitle>{requestTitle}</CardTitle>
+          <Location small={small}>{location}</Location>
+          <CardTitle small={small}>{requestTitle}</CardTitle>
         </Flex>
         <CompanyInfo
+          small={small}
           companyName={companyName}
           verifiedAndTrusted={verifiedAndTrusted}
         />
         <CardDescription>{requestDescription}</CardDescription>
-        <ProgressBar collected={collectedMoney} need={needMoney} />
+        <ProgressBar
+          small={small}
+          collected={collectedMoney}
+          need={needMoney}
+        />
         <CardStatus
           status={requestStatus}
           isTextHidden={true}
           tags={["🎖 Military", "🥾 Equipment"]}
         />
-        <Box style={{ flexGrow: "1" }} />
+        {/* <Box style={{ flexGrow: "1" }} /> */}
         <Flex justify="flex-end" align={"center"} gap={16}>
-          <BlurButton size="xl" color={colors.violet}>
+          <BlurButton size={small ? "md" : "xl"} color={colors.violet}>
             Donate
           </BlurButton>
           <Image src={arrow_top_right_violet} width={30} height={30} alt={""} />

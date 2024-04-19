@@ -9,7 +9,6 @@ import { Logo } from "@/shared/ui";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
-import { LogoSVG } from "@/shared/svg";
 
 export const Header = async () => {
   const session = await getSession();
@@ -32,15 +31,15 @@ export const Header = async () => {
               <Flex gap={20} align={"center"}>
                 <Info />
               </Flex>
-              <Search />
+              {/* <Search /> */}
             </Flex>
 
             <Flex hiddenFrom="lg" align="center" gap={20} w={"47%"}>
               <DropBox />
-              <Search />
+              {/* <Search /> */}
             </Flex>
 
-            <LogoSVG />
+            <Logo/>
             <Flex
               gap={40}
               align={"center"}

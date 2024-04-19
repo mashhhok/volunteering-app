@@ -1,0 +1,65 @@
+.WaveBlock {
+  transition: 1s;
+  overflow: hidden;
+
+
+
+  .img {
+    transition: 1s;
+    position: absolute;
+    top: 100%;
+    left: 100%;
+  }
+  &:hover .img {
+    animation-name: WaveBlock;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+  }
+
+  .emoji {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotate(-40deg) translate(0, 130%);
+  }
+  &:hover .emoji {
+    animation-name: Emoji;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes WaveBlock {
+  0% {
+  }
+  30% {
+    transform: rotate(90deg);
+    top: 60%;
+    left: 70%;
+  }
+  // 60% {
+  //   transform: scale(3) rotate(180deg);
+  //   top: 55%;
+  //   left: 55%;
+  // }
+
+  100% {
+    top: 0%;
+    left: 0%;
+    transform: scale(6) rotate(250deg);
+  }
+}
+
+@keyframes Emoji {
+  0% {
+  }
+  70% {
+    transform: translate(-10%, -20%);
+  }
+  98% {
+  }
+  100% {
+    transform: translate(-10%, -20%) rotate(0deg);
+  }
+}

@@ -26,19 +26,40 @@ const VerifiedIcon = ({ color }: { color: "green" | "blue" }) => (
   />
 );
 
-export const IsVerified = ({ isVerified }: { isVerified: boolean }) => {
+export const IsVerified = ({
+  isVerified,
+  small,
+  short,
+}: {
+  isVerified: boolean;
+  small?: boolean;
+  short?: boolean;
+}) => {
   if (isVerified)
     return (
       <Flex gap={8} wrap={"wrap"}>
-        <Flex align="center" gap={2}>
-          <TrustedIcon color={"green"} />
-          <Title style={{ color: colors.green }} order={6}>
-            Trusted
-          </Title>
-        </Flex>
-        <Flex align="center" gap={2} color={colors.green}>
+        {!short && (
+          <Flex align="center" gap={4}>
+            <TrustedIcon color={"green"} />
+            <Title
+              style={{ color: colors.green }}
+              fz={12}
+              order={6}
+              {...(small && { fz: 10 })}
+            >
+              Trusted
+            </Title>
+          </Flex>
+        )}
+
+        <Flex align="center" gap={4} color={colors.green}>
           <VerifiedIcon color={"green"} />
-          <Title style={{ color: colors.green }} order={6}>
+          <Title
+            style={{ color: colors.green }}
+            order={6}
+            fz={12}
+            {...(small && { fz: 10 })}
+          >
             Verified
           </Title>
         </Flex>
@@ -48,8 +69,8 @@ export const IsVerified = ({ isVerified }: { isVerified: boolean }) => {
   if (!isVerified)
     return (
       <Flex align="center" gap={5}>
-        <FaceSVG />
-        <Text size="sm" color={colors.orange}>
+        <FaceSVG width={small ? 10 : 16} height={small ? 10 : 16} />
+        <Text size="xs" color={colors.orange} {...(small && { fz: 10 })}>
           Not yet verified
         </Text>
       </Flex>

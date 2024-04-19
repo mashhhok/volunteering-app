@@ -27,7 +27,6 @@ export const ThirdPage = ({
     useAuthStore((state) => state)
   );
   const [state, formAction] = useFormState(action, null);
-  const router = useRouter();
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {}
   useConditionalRedirect();
 
