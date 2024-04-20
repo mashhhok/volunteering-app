@@ -13,7 +13,6 @@ const HomePage = async () => {
       <MainBlock />
       <Box h={{ base: 40, md: 100 }} />
       <CardsFilters />
-      {/* <Footer/> */}
       <Box h={{ base: 40, md: 100 }} />
       <Box visibleFrom="md">
         <Because />

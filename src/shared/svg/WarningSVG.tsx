@@ -10,7 +10,7 @@ export const WarningSVG = ({ fill, width, height, bg }: ISVG) => {
     <svg
       width={width ? width : "77"}
       height={height ? height : "74"}
-      viewBox={`0 0 ${width ? width : 77} ${height ? height : 74}`}
+      viewBox={`0 0 77 74`}
       fill={bg ? bg : "none"}
       xmlns="http://www.w3.org/2000/svg"
     >

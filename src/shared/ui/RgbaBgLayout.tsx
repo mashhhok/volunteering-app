@@ -5,10 +5,8 @@ import {
   ScrollArea,
   Text,
   Title,
-  Box,
 } from "@mantine/core";
 import React from "react";
-import { LogoSVG } from "@/shared/svg";
 import { colors } from "@/shared/enums";
 import Image from "next/image";
 import auth_bg from "@/public/auth_bg/default.png";
@@ -18,16 +16,16 @@ export const RgbaBgLayout = ({
   children,
 }: {
   children: React.ReactNode;
-  title?: string;
 }) => {
   return (
     <Flex
-      miw={"100vw"}
+      maw={"100vw"}
       mih={"100vh"}
       justify={"center"}
       align={"center"}
       bg={"rgba(5, 1, 49, 1)"}
       pos={"relative"}
+      style={{overflow: 'hidden'}}
     >
       <Flex
         pos={"absolute"}

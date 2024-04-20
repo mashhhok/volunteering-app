@@ -3,23 +3,25 @@ import { colors } from "@/shared/enums";
 import { CrossSVG, RightSVG } from "@/shared/svg";
 import { Box, TextInput, Flex, Text, TextInputProps } from "@mantine/core";
 import React, { ChangeEvent } from "react";
-import { useInput } from "../lib/hooks";
+import { IInputRules, useInput } from "../lib/hooks";
 
 interface IPassword {
   rightSectionError?: React.ReactNode;
   leftSectionError?: React.ReactNode;
-  password: ReturnType<typeof useInput>;
+  password?: ReturnType<typeof useInput>;
+  rules?: IInputRules;
 }
 
 export const PasswordField = (props: IPassword & TextInputProps) => {
-  const { leftSectionError, rightSectionError, password, ...inputProps } =
-    props;
+  const { leftSectionError, rightSectionError, ...inputProps } = props;
+  const password_inner = useInput("", props.rules ? props.rules : {});
+  const password = props.password ? props.password : password_inner;
 
   const passwordColor = password.isValid
     ? colors.green
     : password.isShowError
-    ? colors.red
-    : colors.gray;
+      ? colors.red
+      : colors.gray;
 
   return (
     <Box>

@@ -9,7 +9,7 @@ import {
 import { useHover } from "@mantine/hooks";
 import React from "react";
 
-export const BlurButton = (props: typeof Button.arguments & { color: string }) => {
+export const BlurButton = (props: ButtonProps & { color: string }) => {
   const { hovered, ref } = useHover<HTMLButtonElement>();
   const {
     leftSection: LeftSection,

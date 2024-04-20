@@ -11,7 +11,7 @@ export const Footer = () => {
   
 
   return (
-    <Box>
+    <Box style={{backgroundColor: 'var(--mantine-color-body)'}}>
       <Container size={"xl"} mt={100}>
         <Flex justify={"center"}>
           <LinearDivider h={"2px"} w={"647px"} color={colors.violet} />

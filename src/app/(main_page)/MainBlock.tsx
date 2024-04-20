@@ -13,14 +13,12 @@ export const MainBlock = () => {
         direction={{ base: "column", lg: "row" }}
       >
         <Flex direction={"column"}>
-          <SuperTitle mb={30}>
-            Unitary Aid
-          </SuperTitle>
+          <SuperTitle mb={30}>Unitary Aid</SuperTitle>
           <Text maw={300} size="md">
             A reportable platform for everyday people to fundraise.
           </Text>
           <Box flex="1 1 auto" mih={30} />
-          <Flex gap={20} mb={28} wrap={'wrap'} >
+          <Flex gap={20} mb={28} wrap={"wrap"}>
             <BlurButton
               color={colors.violet}
               size="xl"
@@ -73,13 +71,23 @@ export const MainBlock = () => {
           w={"100%"}
           h={440}
           style={{ borderRadius: "16px" }}
-          p={{ base: 50, lg: 70 }}
+          p={{ base: 20, md: 40, lg: 70 }}
         >
-          <Box w={"100%"} maw={500} h={'100%'} flex='0 1 70%'>
-            <Spline scene="https://prod.spline.design/wPLNCjmuKjsa3ejv/scene.splinecode" />
+          <Box
+            w={"100%"}
+            maw={500}
+            h={"100%"}
+            flex={{ base: "0 1 80%", sm: "0 1 70%" }}
+          >
+            <Spline scene="https://prod.spline.design/d8W8sXdNUgjlSO1h/scene.splinecode" />
           </Box>
 
-          <Flex direction={"column"} flex="1 1 30%" ml={{ base: -55, lg: -20 }}>
+          <Flex
+            direction={"column"}
+            // pos="absolute"
+            flex="1 1 30%"
+            ml={{ base: -100, lg: -20 }}
+          >
             <Text size="xs" flex={"1 1 auto"} color={colors.white}>
               Only together we collect funds, helping people
             </Text>
