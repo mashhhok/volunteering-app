@@ -3,6 +3,7 @@ import { devtools } from "zustand/middleware";
 
 interface ICreateFundraiserStore {
   name: string;
+  nameError: boolean;
   categories: string[];
   amount: string;
   currency: string;
@@ -13,6 +14,8 @@ interface ICreateFundraiserStore {
 
 interface ICreateFundraiserActions {
   setName: (val: string) => void;
+  setNameError: (val: boolean) => void;
+
   setCategories: (val: string[]) => void;
   setAmount: (val: string) => void;
   setCurrency: (val: string) => void;
@@ -27,9 +30,14 @@ export const useCreateFundraiserStore = create<
   devtools(
     (set) => ({
       name: "",
-      setName: (val) =>
-        set((store) => ({
+      nameError: true,
+      setName: (val: string) =>
+        set((set) => ({
           name: val,
+        })),
+        setNameError: (val: boolean) =>
+        set((set) => ({
+          nameError: val,
         })),
 
       categories: [],

@@ -12,11 +12,8 @@ import { BackBtn } from "../../components/BackBtn";
 
 const NamesPage = () => {
   const { name, categories } = useCreateFundraiserStore((store) => store);
-  const isValid =
-    name.length < 80 &&
-    name.length > 10 &&
-    categories.length > 0 &&
-    categories.length < 4;
+  const isNameError = useCreateFundraiserStore((store) => store.nameError);
+  const isDisabled = isNameError || categories.length > 3 || categories.length < 1;
 
   return (
     <RgbaBgLayout>
@@ -30,7 +27,7 @@ const NamesPage = () => {
         <Box h={12} />
         <SelectInput />
         <Box h={65} />
-        <NextBtn disabled={!isValid} />
+        <NextBtn disabled={isDisabled} />
       </Box>
     </RgbaBgLayout>
   );

@@ -1,6 +1,6 @@
 "use client";
 import { colors } from "@/shared/enums";
-import { CrossSVG, RightSVG } from "@/shared/svg";
+import { CrossSVG, EyeOffSVG, EyeSVG, RightSVG } from "@/shared/svg";
 import { Box, TextInput, Flex, Text, TextInputProps } from "@mantine/core";
 import React, { ChangeEvent } from "react";
 import { IInputRules, useInput } from "../lib/hooks";
@@ -23,22 +23,49 @@ export const PasswordField = (props: IPassword & TextInputProps) => {
       ? colors.red
       : colors.gray;
 
+  const [show, setShow] = React.useState(false);
+
   return (
     <Box>
       <TextInput
         {...(password.isValid && {
           styles: {
             input: {
-              borderColor: colors.green,
-              color: colors.green,
+              borderColor: passwordColor,
+              color: passwordColor,
             },
           },
         })}
+        type={show ? 'text' : 'password'}
+        rightSection={
+          show ? (
+            <Flex
+              align={"center"}
+              style={{ cursor: "pointer" }}
+              onClick={() => setShow(false)}
+            >
+              <EyeOffSVG />
+            </Flex>
+          ) : (
+            <Flex
+              align={"center"}
+              style={{ cursor: "pointer" }}
+              onClick={() => setShow(true)}
+            >
+              <EyeSVG />
+            </Flex>
+          )
+        }
         error={password.isShowError}
         {...password.handlers}
         {...inputProps}
       />
-      <Flex justify={"space-between"} mx={10} mt={4}>
+      <Flex
+        justify={"space-between"}
+        mx={10}
+        mt={4}
+        style={{ userSelect: "none" }}
+      >
         <Flex align={"center"} gap={10}>
           <Text color={passwordColor} size="xs">
             {leftSectionError}

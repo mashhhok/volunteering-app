@@ -10,6 +10,7 @@ import { BecauseSmall } from "./BecauseSmall";
 const HomePage = async () => {
   return (
     <Box>
+
       <MainBlock />
       <Box h={{ base: 40, md: 100 }} />
       <CardsFilters />
