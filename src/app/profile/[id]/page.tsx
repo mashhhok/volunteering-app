@@ -1,6 +1,4 @@
 import { OrganizationInfo } from "@/entities/Organization";
-import { UserInfoColumn } from "@/entities/User";
-import { getUserById } from "@/entities/User/repository";
 import { colors } from "@/shared/enums";
 import { BackBtn } from "@/shared/ui";
 import { LinearDivider } from "@/shared/ui/LinearDivider";
@@ -16,7 +14,7 @@ interface IProps {
 }
 
 const ProfilePage = async ({ params }: IProps) => {
-
+  
   
   return (
     <Container size={"xl"}>
@@ -33,11 +31,11 @@ const ProfilePage = async ({ params }: IProps) => {
           <LinearDivider h={"auto"} w={2} color={colors.violet} deg={180} />
         </Flex>
         <Box flex="1 0 auto" w='100%' maw={{base: '100%', lg: 640}}>
-          <ScrollCards  />
+          <ScrollCards userId={parseInt(params.id)}  />
         </Box>
       </Flex>
       <Box h={100} />
-      <CardsFilters companyId={null} />
+      <CardsFilters companyId={parseInt(params.id)} />
     </Container>
   );
 };

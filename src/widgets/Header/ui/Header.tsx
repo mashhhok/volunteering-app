@@ -58,7 +58,7 @@ export const Header = async () => {
                 <UserInfoRow
                   firstName={session?.firstName}
                   lastName={session?.lastName}
-                  avatar={null}
+                  id={session?.id}
                 />
               ) : (
                 <AuthBtns />

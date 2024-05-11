@@ -26,7 +26,7 @@ export const EmptyCard = () => {
         no fundraisings yet
       </Title>
       <CompanyInfo
-        companyName={"Veronika Herasymchuk"}
+        companyName={"User"}
         verifiedAndTrusted={false}
       />
       <Box flex="1 1 auto" />

@@ -85,7 +85,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
         {/* FRONT CARD */}
         <Flex direction={"column"} gap={small ? 4 : 16}>
           <Box style={blurOption} mb={12}>
-            <CardImg small={small} />
+            <CardImg imageUrl={imageUrl} small={small} />
           </Box>
           <Box style={blurOption}>
             <Location small={small}>{location}</Location>

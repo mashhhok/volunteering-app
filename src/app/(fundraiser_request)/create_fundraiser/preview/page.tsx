@@ -9,6 +9,8 @@ import { RequestInfo } from "./RequestInfo/RequestInfo";
 import { AddDescription } from "./AddDescription/AddDescription";
 import { useCreateFundraiserStore } from "../store";
 import { CollectedGraphic } from "../../components/CollectedGraphic/CollectedGraphic";
+import { Metadata } from "next";
+
 
 const PreviewPage = () => {
   const isVerified = false;

@@ -7,7 +7,7 @@ import { BlurText } from "./BlurText";
 import { colors } from "@/shared/enums";
 import { Anchor } from "./Anchor";
 
-export const Footer = () => {
+export const Footer = async () => {
   
 
   return (

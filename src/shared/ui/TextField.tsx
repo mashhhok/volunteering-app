@@ -1,3 +1,4 @@
+"use client";
 import { Box, Text, TextInput, TextInputProps } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";
@@ -9,6 +10,7 @@ export const TextField = (
     bottomSection?: React.ReactNode;
     rules?: IInputRules;
     input?: ReturnType<typeof useInput>;
+    noColors?: boolean;
   }
 ) => {
   const {
@@ -21,12 +23,11 @@ export const TextField = (
 
   const input_inner = useInput("", props.rules ? props.rules : {});
   const input = propsInput ? propsInput : input_inner;
-
-  const inputColor = input.isValid
-    ? colors.green
-    : input.isShowError
-      ? colors.red
-      : colors.gray;
+  const inputColor =
+    (props.noColors && colors.gray) ||
+    (input.isValid && colors.green) ||
+    (input.isShowError && colors.red) ||
+    colors.gray;
   return (
     <Box>
       <Text size="xs" color={colors.gray} mb={2} ml={10} lh={2.2}>

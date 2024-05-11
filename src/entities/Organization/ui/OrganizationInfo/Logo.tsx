@@ -15,7 +15,7 @@ export const Logo = ({ avatarUrl, companyName }: ILogo) => {
     <Flex
       justify={"space-between"}
       align={"center"}
-      wrap={'wrap'}
+      wrap={"wrap"}
       gap={20}
       // style={{ borderBottom: "3px dashed" }}
     >
@@ -25,12 +25,17 @@ export const Logo = ({ avatarUrl, companyName }: ILogo) => {
         bg={colors.lightGray}
         h={100}
         radius="lg"
-        size='md'
+        size="md"
         p={16}
         style={{
           backgroundSize: "cover",
           flexShrink: 0,
           // borderTop: "3px dashed",
+        }}
+        styles={{
+          image: {
+            borderRadius: 10,
+          },
         }}
         alt={"logo"}
       />
@@ -38,7 +43,7 @@ export const Logo = ({ avatarUrl, companyName }: ILogo) => {
         order={2}
         style={{ textTransform: "uppercase", wordBreak: "break-all" }}
       >
-        {companyName}asd asds adda
+        {companyName}
       </Title>
     </Flex>
   );

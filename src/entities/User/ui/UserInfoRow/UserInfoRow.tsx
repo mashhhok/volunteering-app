@@ -2,31 +2,31 @@ import React from "react";
 import { UserInfoMenu } from "./UserInfoMenu";
 import { UserInfoTable } from "./UserInfoTable";
 import { capitalizeStr } from "../../lib/utils/capitalizeStr";
-import { getSession, logout } from "@/shared/auth";
+import { logout } from "@/shared/auth";
+import { getProfile } from "@/app/api/profile/getProfile";
 
 interface IUserInfoRow {
   firstName: string | null;
   lastName: string | null;
-  avatar: string | null | undefined;
+  id: number | null;
 }
 
 export const UserInfoRow = async (props: IUserInfoRow) => {
-  const session = await getSession();
   const firstName = props.firstName ? capitalizeStr(props.firstName) : "~";
   const lastName = props.lastName ? capitalizeStr(props.lastName) : "~";
-
+  const profile = await getProfile()
   return (
     <UserInfoMenu
       firstName={firstName}
       lastName={lastName}
-      avatar={props.avatar}
+      avatar={profile?.avatar}
       logOutFn={logout}
-      profilLink={`/profile/${session?.id}`}
+      profilLink={`/profile/${props?.id}`}
       userInfo={
         <UserInfoTable
           firstName={firstName}
           lastName={lastName}
-          avatar={props.avatar}
+          avatar={profile?.avatar}
         />
       }
     />

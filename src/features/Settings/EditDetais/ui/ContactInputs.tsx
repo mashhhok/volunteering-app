@@ -9,21 +9,30 @@ export const ContactInputs = () => {
         Contact
       </Text>
       <Flex mb={16} gap={20}>
-        <Box flex='1 1 auto'>
-          <TextField title="Email" placeholder="User`s email" />
+        <Box flex="1 1 auto">
+          <TextField noColors title="Email" placeholder="User`s email" />
         </Box>
-        <Box flex='1 1 auto'>
-          <TextField title="Extra email" placeholder="User`s extra email" />
+        <Box flex="1 1 auto">
+          <TextField
+            title="Extra email"
+            placeholder="User`s extra email"
+            noColors
+          />
         </Box>
       </Flex>
       <Flex gap={20}>
-        <Box flex='1 1 auto'>
-          <TextField title="Phone number" placeholder="User`s phone number" />
+        <Box flex="1 1 auto">
+          <TextField
+            title="Phone number"
+            placeholder="User`s phone number"
+            noColors
+          />
         </Box>
-        <Box flex='1 1 auto'>
+        <Box flex="1 1 auto">
           <TextField
             title="Extra phone number"
             placeholder="User`s extra phone number"
+            noColors
           />
         </Box>
       </Flex>

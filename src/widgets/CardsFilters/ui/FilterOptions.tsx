@@ -1,18 +1,11 @@
 "use client";
-import {
-  Box,
-  Checkbox,
-  Flex,
-  Select,
-  Text,
-  Title,
-} from "@mantine/core";
-import React from "react";
+import { Box, Checkbox, Flex, Select, Text, Title } from "@mantine/core";
+import React, { RefObject } from "react";
 import { LinearDivider } from "@/shared/ui";
 import { colors } from "@/shared/enums";
 import { FiltersSVG } from "@/shared/svg/FiltersSVG";
 import { useSearchParams } from "next/navigation";
-import { useReplaceSearchParams } from "@/shared/lib/hooks";
+import { useDebounce, useReplaceSearchParams } from "@/shared/lib/hooks";
 
 export const FilterOptions = () => {
   const searchParams = useSearchParams();
@@ -30,7 +23,21 @@ export const FilterOptions = () => {
   const [elderly, setЕlderly] = React.useState(false);
   const [volunteering, setVolunteering] = React.useState(false);
 
+  const [locations, setLocations] = React.useState<string[]>([]);
   const [location, setLocation] = React.useState<string | null>(null);
+  const [status, setStatus] = React.useState<string | null>(null);
+  const debounce = useDebounce();
+
+  const statuses = ["open", "pending", "close"];
+
+  React.useEffect(() => {
+    async function Do() {
+      const locs = await fetch("/api/locations");
+      const data = await locs.json();
+      setLocations(data);
+    }
+    Do();
+  }, []);
 
   const checkboxStateArray = [
     emergency,
@@ -45,7 +52,9 @@ export const FilterOptions = () => {
     elderly,
     volunteering,
     location,
+    status,
   ];
+
 
   const fundraiseArray = [
     { text: "🔥 Emergency", value: emergency, setValue: setEmergency },
@@ -62,51 +71,45 @@ export const FilterOptions = () => {
   ];
 
   React.useEffect(() => {
-    function parseBool(val: unknown) {
-      if (!val) return false;
-      return val === "true" ? true : false;
-    }
-
-    setEmergency(parseBool(searchParams.get("emergency")));
-    setMilitarCars(parseBool(searchParams.get("militarCars")));
-    setEquipment(parseBool(searchParams.get("equipment")));
-    setMilitary(parseBool(searchParams.get("military")));
-    Drones(parseBool(searchParams.get("drones")));
-    setMedical(parseBool(searchParams.get("medical")));
-    setEducation(parseBool(searchParams.get("education")));
-    setAnimals(parseBool(searchParams.get("animals")));
-    setСhildren(parseBool(searchParams.get("children")));
-    setЕlderly(parseBool(searchParams.get("elderly")));
-    setVolunteering(parseBool(searchParams.get("volunteering")));
+    setEmergency(Boolean(searchParams.get("emergency")));
+    setMilitarCars(Boolean(searchParams.get("militarCars")));
+    setEquipment(Boolean(searchParams.get("equipment")));
+    setMilitary(Boolean(searchParams.get("military")));
+    Drones(Boolean(searchParams.get("drones")));
+    setMedical(Boolean(searchParams.get("medical")));
+    setEducation(Boolean(searchParams.get("education")));
+    setAnimals(Boolean(searchParams.get("animals")));
+    setСhildren(Boolean(searchParams.get("children")));
+    setЕlderly(Boolean(searchParams.get("elderly")));
+    setVolunteering(Boolean(searchParams.get("volunteering")));
     setLocation(searchParams.get("location"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
     replaceSearchParams({
-      emergency,
-      militarCars,
-      equipment,
-      military,
-      drones,
-      medical,
-      education,
-      animals,
-      children,
-      elderly,
-      volunteering,
-
-      location,
+      emergency: emergency ? emergency : "",
+      militarCars: militarCars ? militarCars : "",
+      equipment: equipment ? equipment : "",
+      military: military ? military : "",
+      drones: drones ? drones : "",
+      medical: medical ? medical : "",
+      education: education ? education : "",
+      animals: animals ? animals : "",
+      children: children ? children : "",
+      elderly: elderly ? elderly : "",
+      volunteering: volunteering ? volunteering : "",
+      location: location ? location : "",
+      status: status ? status : "",
+      page: 1,
     });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, checkboxStateArray);
 
   return (
     <>
-      <Flex
-        justify={"space-between"}
-        w={'100%'}
-      >
+      <Flex justify={"space-between"} w={"100%"}>
         <Box w={"100%"}>
           <Flex gap={12} align={"center"} mb={40}>
             <FiltersSVG />
@@ -122,7 +125,10 @@ export const FilterOptions = () => {
                 gap={12}
                 align={"center"}
                 key={index}
-                onClick={() => item.setValue((prev) => !prev)}
+                onClick={() => {
+                  item.setValue((prev) => !prev);
+                  scrollTop();
+                }}
                 style={{
                   cursor: "pointer",
                   userSelect: "none",
@@ -145,9 +151,34 @@ export const FilterOptions = () => {
             description={"Choose the city"}
             placeholder="Input location"
             maw={280}
+            data={locations}
+            searchable={true}
             w={"100%"}
             value={location}
-            onChange={(value, option) => setLocation(value)}
+            mb={25}
+            onChange={(value, option) => {
+              setLocation(value);
+              scrollTop();
+            }}
+          />
+          <Select
+            label={
+              <Title order={4} mb={5}>
+                Status
+              </Title>
+            }
+            radius={"md"}
+            description={"Choose the city"}
+            placeholder="Input location"
+            maw={280}
+            data={statuses}
+            searchable={true}
+            w={"100%"}
+            value={status}
+            onChange={(value, option) => {
+              setStatus(value);
+              scrollTop();
+            }}
           />
         </Box>
         <LinearDivider

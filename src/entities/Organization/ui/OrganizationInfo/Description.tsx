@@ -6,7 +6,7 @@ export const Description = () => {
   return (
     <Box>
       <Title fz={20} mb={24}>
-        About (User name)
+        About
       </Title>
       <ScrollArea h={190} scrollbars="y" color={colors.gray} fz={16}>
         <p>

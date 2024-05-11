@@ -9,6 +9,9 @@ import { NameInput } from "./NameInput";
 import { SelectInput } from "./SelectInput";
 import { RgbaBgLayout } from "@/shared/ui/RgbaBgLayout";
 import { BackBtn } from "../../components/BackBtn";
+import { Metadata } from "next";
+
+
 
 const NamesPage = () => {
   const { name, categories } = useCreateFundraiserStore((store) => store);
