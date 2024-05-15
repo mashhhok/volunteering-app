@@ -13,7 +13,7 @@ export const verifiyAction = async (formData: FormData) => {
   if (verificationBy && !verifyMethods.includes(String(verificationBy)))
     return null;
 
-  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
+  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
     (res) => res.json()
   );
   const profile = profiles.find((item: any) => item.userId === session.id);

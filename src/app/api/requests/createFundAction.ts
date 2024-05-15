@@ -12,7 +12,7 @@ export const createFundAction = async (formData: FormData) => {
   const sessionCookie = cookies().get("session")?.value;
   const session = await getSession(sessionCookie);
 
-  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
+  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
     (res) => res.json()
   );
   const profile = profiles.find((item: any) => item.userId === session?.id);
@@ -35,12 +35,12 @@ export const createFundAction = async (formData: FormData) => {
   const imagesLength = parseInt(imagesLengthRes ? imagesLengthRes : "0");
   const imgPaths: string[] = [];
   for (let i = 0; i < imagesLength; i++) {
-    const img: File | null = formData.get("image_" + i);
-    if (img) {
+    const img: File | null | string = formData.get("image_" + i);
+    if (img instanceof File) {
       let path = "";
       const bytes = await img.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const id = randomId() + "." + img.name
+      const id = randomId() + "." + img.name;
       path = `./public/requests_img_db/${id}`;
       await writeFile(path, buffer);
       imgPaths.push(id);
@@ -85,6 +85,5 @@ export const createFundAction = async (formData: FormData) => {
       tags: tags,
     }),
   }).then((res) => res.json());
-  redirect('/')
-
+  redirect("/");
 };

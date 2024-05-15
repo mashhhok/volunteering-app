@@ -43,7 +43,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
   small,
   location,
   categories,
-  id
+  id,
 }) => {
   const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
@@ -155,7 +155,12 @@ export const RequestCard: React.FC<IRequestCard> = ({
             Donate
           </BlurButton>
           <Link href={`/fundraiser/${id}`}>
-          <Image src={arrow_top_right_violet} width={30} height={30} alt={""} />
+            <Image
+              src={arrow_top_right_violet}
+              width={30}
+              height={30}
+              alt={""}
+            />
           </Link>
         </Flex>
       </Flex>

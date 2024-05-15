@@ -3,7 +3,7 @@ import { Box, Card, Flex, Text, Title } from "@mantine/core";
 import React from "react";
 import { CompanyInfo } from "../CompanyInfo";
 
-export const EmptyCard = async () => {
+export const EmptyCard = () => {
   return (
     <Card
       bg={"transparent"}

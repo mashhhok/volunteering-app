@@ -21,7 +21,7 @@ const FundraiserPage = async ({ params }: IFundraiserPage) => {
   const id = parseInt(params.id);
   if (!id) redirect("/not-found");
   const { requestData: request, userData: user } = await getRequestById(id);
-  console.log(request);
+
   let resolvedImages;
   if (request.imageUrl) {
     resolvedImages = request.imageUrl.map((item: string) => {
@@ -56,6 +56,7 @@ const FundraiserPage = async ({ params }: IFundraiserPage) => {
               title={request?.title}
               status={request?.status}
               date={request?.createdAt}
+              location={request?.location}
             />
           </Flex>
           <CollectedGraphic

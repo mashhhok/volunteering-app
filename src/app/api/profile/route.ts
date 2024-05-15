@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     const session = cookies().get("session")?.value;
     const user = await getSession(session);
     if (!user) return null;
-    let res = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
+    let res = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
       (res) => res.json()
     );
     res = res.filter((item: any) => item.userId === user?.id);

@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     if (!session) return NextResponse.json({}, { status: 405 });
     const user = await getSession(session);
 
-    let getUser = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
+    let getUser = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
       (res) => res.json()
     );
     getUser = getUser.filter((item: any) => item.userId === user?.id);
