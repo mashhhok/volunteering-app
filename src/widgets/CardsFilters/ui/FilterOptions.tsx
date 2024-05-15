@@ -2,7 +2,7 @@
 import { Box, Checkbox, Flex, Select, Text, Title } from "@mantine/core";
 import React, { RefObject } from "react";
 import { LinearDivider } from "@/shared/ui";
-import { colors } from "@/shared/enums";
+import { cardTags, colors } from "@/shared/enums";
 import { FiltersSVG } from "@/shared/svg/FiltersSVG";
 import { useSearchParams } from "next/navigation";
 import { useDebounce, useReplaceSearchParams } from "@/shared/lib/hooks";
@@ -26,9 +26,9 @@ export const FilterOptions = () => {
   const [locations, setLocations] = React.useState<string[]>([]);
   const [location, setLocation] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<string | null>(null);
-  const debounce = useDebounce();
 
-  const statuses = ["open", "pending", "close"];
+  const statuses = ["open", "pending", "closed"];
+
 
   React.useEffect(() => {
     async function Do() {
@@ -54,20 +54,18 @@ export const FilterOptions = () => {
     location,
     status,
   ];
-
-
   const fundraiseArray = [
-    { text: "🔥 Emergency", value: emergency, setValue: setEmergency },
-    { text: "🚗 Military cars", value: militarCars, setValue: setMilitarCars },
-    { text: "🥾 Equipment", value: equipment, setValue: setEquipment },
-    { text: "🪖 Military", value: military, setValue: setMilitary },
-    { text: "🦅 Drones", value: drones, setValue: Drones },
-    { text: "💊 Medical", value: medical, setValue: setMedical },
-    { text: "📚 Education", value: education, setValue: setEducation },
-    { text: "🐾 Animals", value: animals, setValue: setAnimals },
-    { text: "👧🏻 Сhildren", value: children, setValue: setСhildren },
-    { text: "👨🏼‍🦳 Еlderly", value: elderly, setValue: setЕlderly },
-    { text: "🙋🏼‍♂️ Volunteering", value: volunteering, setValue: setVolunteering },
+    { text: cardTags.emergency, value: emergency, setValue: setEmergency },
+    { text: cardTags.militaryCars, value: militarCars, setValue: setMilitarCars },
+    { text: cardTags.equipment, value: equipment, setValue: setEquipment },
+    { text: cardTags.military, value: military, setValue: setMilitary },
+    { text: cardTags.drones, value: drones, setValue: Drones },
+    { text: cardTags.medical, value: medical, setValue: setMedical },
+    { text: cardTags.education, value: education, setValue: setEducation },
+    { text: cardTags.animals, value: animals, setValue: setAnimals },
+    { text: cardTags.children, value: children, setValue: setСhildren },
+    { text: cardTags.elderly, value: elderly, setValue: setЕlderly },
+    { text: cardTags.volunteering, value: volunteering, setValue: setVolunteering },
   ];
 
   React.useEffect(() => {
@@ -127,7 +125,6 @@ export const FilterOptions = () => {
                 key={index}
                 onClick={() => {
                   item.setValue((prev) => !prev);
-                  scrollTop();
                 }}
                 style={{
                   cursor: "pointer",
@@ -158,7 +155,6 @@ export const FilterOptions = () => {
             mb={25}
             onChange={(value, option) => {
               setLocation(value);
-              scrollTop();
             }}
           />
           <Select
@@ -177,7 +173,6 @@ export const FilterOptions = () => {
             value={status}
             onChange={(value, option) => {
               setStatus(value);
-              scrollTop();
             }}
           />
         </Box>

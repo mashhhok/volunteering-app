@@ -18,6 +18,8 @@ export const CollectedGraphic = ({
   currency,
   remains,
 }: ICollectedGraphic) => {
+  currency = currency.toUpperCase();
+
   return (
     <Flex
       bg={colors.black}

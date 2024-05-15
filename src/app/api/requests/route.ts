@@ -3,12 +3,11 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  console.log(12312321312321312321312321) 
 
   const pageParam = searchParams.get("page");
   let page = pageParam ? parseInt(pageParam) : 1;
-
-  let userId = searchParams.get("userId") ? searchParams.get("userId") : "";
+  const userIdRes = searchParams.get("userId");
+  let userId = userIdRes ? userIdRes : "";
   let noPages = searchParams.get("noPages") ? searchParams.get("noPages") : "";
   let _location = searchParams.get("location")
     ? searchParams.get("location")
@@ -28,10 +27,12 @@ export async function GET(req: NextRequest) {
   const elderly = Boolean(searchParams.get("elderly"));
   const volunteering = Boolean(searchParams.get("volunteering"));
 
-  const res = await fetch(
-    `${process.env.MOCKAPI_URL}/requests?userId=${userId}&location=${_location}&status=${status}`
-  );
+  const res = await fetch(`${process.env.MOCKAPI_URL}/requests`);
+
   let data: any[] = await res.json();
+  if (userId) data = data.filter((item) => item.userId === +userId);
+  if (_location) data = data.filter((item) => item.location === _location);
+  if (status) data = data.filter((item) => item.status === status);
   if (typeof data !== "object") {
     return Response.json(
       {
@@ -68,23 +69,20 @@ export async function GET(req: NextRequest) {
     return true;
   });
 
+  const users = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then((res) =>
+    res.json()
+  );
 
-  const users = await fetch(
-    `${process.env.MOCKAPI_URL}/profiles`
-  ).then(res => res.json())
-
-  const mappedData = []
+  const mappedData = [];
   for (let item of data) {
-    const user = users.filter((user: any) => user.userId === item.userId)
+    const user = users.find((user: any) => user.userId === item.userId);
     mappedData.push({
       requestData: item,
-      userData: user[0],
+      userData: user,
     });
   }
 
-
-
-  if(noPages){
+  if (noPages) {
     return Response.json(
       {
         res: mappedData,
@@ -101,7 +99,6 @@ export async function GET(req: NextRequest) {
     (page - 1) * interval + interval
   );
   let pageCount = Math.ceil(mappedData.length / interval);
-
   return Response.json(
     {
       res: paginatedData,
@@ -112,8 +109,6 @@ export async function GET(req: NextRequest) {
     }
   );
 }
-
-// currency, location, description
 
 export async function POST(req: NextRequest) {
   const { session, donateCategory, needMoney, collectedMoney, title } =

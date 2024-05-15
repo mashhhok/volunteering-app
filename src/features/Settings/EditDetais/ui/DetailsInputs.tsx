@@ -23,7 +23,7 @@ export const DetailsInputs = ({
             title={"First name"}
             placeholder="User`s name"
             radius={"md"}
-            name="first_name"
+            name="firstName"
             noColors
             defaultValue={firstName}
           />
@@ -33,19 +33,19 @@ export const DetailsInputs = ({
             title={"Last name"}
             placeholder="User`s last name"
             radius={"md"}
-            name="last_name"
+            name="lastName"
             noColors
             defaultValue={lastName}
           />
         </Box>
       </Flex>
       <AreaField
-        defaultValue={description}
+        defaultValue={description ? description : ''}
         title={"About me"}
         maxLen={551}
         w={"100%"}
         styles={{ input: { height: 140 } }}
-        name="about_me"
+        name="description"
       />
     </Box>
   );

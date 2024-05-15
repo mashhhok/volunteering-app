@@ -33,8 +33,8 @@ export const LinkBtn = ({
       <Text
         ref={ref}
         {...props}
-        {...(active && { ...activeProps })}
-        {...{ style: hovered && { ...activeProps } }}
+        {...(active && activeProps )}
+        {...( hovered && activeProps )}
       >
         {children}
       </Text>

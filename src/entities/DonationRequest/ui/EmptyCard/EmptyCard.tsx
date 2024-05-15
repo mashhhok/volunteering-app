@@ -3,7 +3,7 @@ import { Box, Card, Flex, Text, Title } from "@mantine/core";
 import React from "react";
 import { CompanyInfo } from "../CompanyInfo";
 
-export const EmptyCard = () => {
+export const EmptyCard = async () => {
   return (
     <Card
       bg={"transparent"}
@@ -25,10 +25,7 @@ export const EmptyCard = () => {
       <Title order={3} mb={18}>
         no fundraisings yet
       </Title>
-      <CompanyInfo
-        companyName={"User"}
-        verifiedAndTrusted={false}
-      />
+      <CompanyInfo companyName={"User"} verifiedAndTrusted={false} />
       <Box flex="1 1 auto" />
       <Text mb={20} size="sm" color={colors.gray}>
         The user has not yet created any fundraisers.

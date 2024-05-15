@@ -1,4 +1,3 @@
-"use client";
 import { colors } from "@/shared/enums";
 import { BlurButton, Info, LinearDivider } from "@/shared/ui";
 import { Avatar, Box, Card, Flex, Title } from "@mantine/core";
@@ -9,17 +8,11 @@ import { SocialInputs } from "./SocialInputs";
 import { SiteInput } from "./SiteInput";
 import { SettingsWrapper } from "../../SettingsWrapper";
 import { AvatarEl } from "./Avatar";
+import { getProfile } from "@/app/api/profile/getProfile";
+import { editDetailsAction } from "@/app/api/settings/editDetails/editDetailsAction";
 
-export const EditDetails = () => {
-  const [profile, setProfile] = React.useState<any>();
-  React.useEffect(() => {
-    (async () => {
-      const profile = await fetch(`/api/profile`, {
-        cache: "no-store",
-      }).then((res) => res.json());
-      setProfile(profile);
-    })();
-  }, []);
+export const EditDetails = async () => {
+  const profile = await getProfile();
   return (
     <Box>
       <Info title={"Please,"} subtitle={"Fill in the required fields."} />
@@ -44,18 +37,23 @@ export const EditDetails = () => {
         <Box w={"100%"}>
           <LinearDivider h={2} w={"100%"} color={colors.violet} />
           <Box h={40} />
-          <form action="">
+          <form action={editDetailsAction}>
             <DetailsInputs
               firstName={profile?.firstName}
               lastName={profile?.lastName}
               description={profile?.description}
             />
             <Box h={40} />
-            <ContactInputs />
+            <ContactInputs email={profile?.email} phone={profile?.phone} />
             <Box h={40} />
-            <SocialInputs />
+            <SocialInputs
+              instagram={profile?.sites?.instagram}
+              facebook={profile?.sites?.facebook}
+              google={profile?.sites?.google}
+              telegram={profile?.sites?.telegram}
+              whatsapp={profile?.sites?.whatsapp}
+            />
             <Box h={48} />
-            <SiteInput />
             <Box h={40} />
             <BlurButton color={colors.violet}>Save changes</BlurButton>
           </form>

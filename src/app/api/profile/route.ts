@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   try {
     const session = cookies().get("session")?.value;
     const user = await getSession(session);
-    if (!user) return NextResponse.json({}, { status: 405 });
+    if (!user) return null;
     let res = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
       (res) => res.json()
     );

@@ -28,7 +28,7 @@ export const Footer = async () => {
           <Box hiddenFrom="md" pb={10}>
             <Logo />
           </Box>
-          <LeftSection />
+          {/* <LeftSection /> */}
           <Box visibleFrom="md">
             <Logo />
           </Box>
@@ -39,9 +39,9 @@ export const Footer = async () => {
         </Flex>
         <Box h={110} />
       </Container>
-      <Container size="2000px" p={0}>
+      {/* <Container size="2000px" p={0}>
         <BlurText />
-      </Container>
+      </Container> */}
     </Box>
   );
 };

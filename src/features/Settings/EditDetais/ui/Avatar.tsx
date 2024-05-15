@@ -18,7 +18,6 @@ export const AvatarEl = ({ src }: { src: string }) => {
     if (!files) return;
     const reader = await toBase64(files[0], (val) => {});
     reader.onload = async () => {
-      console.log(reader.result);
       formData.append("avatar", String(reader.result));
       const data = await fetch(`/api/profile/avatar`, {
         method: "post",

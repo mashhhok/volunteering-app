@@ -38,7 +38,7 @@ export const Footer = ({
   }, [page]);
 
   function onPaginationClick() {
-    debounce(scrollTop, 1500);
+    debounce(scrollTop, 300);
   }
 
   return (

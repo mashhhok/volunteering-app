@@ -11,12 +11,12 @@ import { useSearchParams } from "next/navigation";
 import { useCardsFiltersStore } from "../store";
 import { useDebounce } from "@/shared/lib/hooks";
 
-export const CardsFiltersInner = (props: CardsFiltersProps) => {
+export const  CardsFiltersInner = (props: CardsFiltersProps) => {
   const searchParams = useSearchParams();
-  const ref = React.useRef<HTMLDivElement>(null)
-  const [cards, setCards] = React.useState([])
-  const {setTotalPages} = useCardsFiltersStore()
-  const debounce = useDebounce()
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [cards, setCards] = React.useState([]);
+  const { setTotalPages } = useCardsFiltersStore();
+  const debounce = useDebounce();
 
   async function Filter() {
     const emergency = Boolean(searchParams.get("emergency"));
@@ -36,29 +36,27 @@ export const CardsFiltersInner = (props: CardsFiltersProps) => {
 
     const companyId = props.companyId ? props.companyId : "";
     const res = await fetch(
-      `/api/requests?userId=${companyId ? companyId : ""}&emergency=${emergency ? emergency : ""}&militarCars=${militarCars ? militarCars : ""}&equipment=${equipment ? equipment : ""}&military=${military ? military : ""}&drones=${drones ? drones : ""}&medical=${medical ? medical : ""}&education=${education ? education : ""}&animals=${animals ? animals : ""}&children=${children ? children : ""}&elderly=${elderly ? elderly : ""}&volunteering=${volunteering ? volunteering : ""}&location=${_location ? _location : ""}&status=${status ? status : ""}&page=${page ? page : ''}`,
+      `/api/requests?userId=${companyId ? companyId : ""}&emergency=${emergency ? emergency : ""}&militarCars=${militarCars ? militarCars : ""}&equipment=${equipment ? equipment : ""}&military=${military ? military : ""}&drones=${drones ? drones : ""}&medical=${medical ? medical : ""}&education=${education ? education : ""}&animals=${animals ? animals : ""}&children=${children ? children : ""}&elderly=${elderly ? elderly : ""}&volunteering=${volunteering ? volunteering : ""}&location=${_location ? _location : ""}&status=${status ? status : ""}&page=${page ? page : ""}`,
       {
         cache: "no-store",
       }
     );
 
     const data = await res.json();
-    console.log(data);
-    setCards(data.res)
-    setTotalPages(data.pageCount)
-
+    setCards(data.res);
+    setTotalPages(data.pageCount);
   }
 
   React.useEffect(() => {
-    debounce(Filter, 4000)
-  }, [searchParams])
+    debounce(Filter, 2000);
+  }, [searchParams]);
   return (
-    <Container ref={ref} size={"xl"} style={{scrollMarginTop: 100}} >
+    <Container ref={ref} size={"xl"} style={{ scrollMarginTop: 100 }}>
       <Title pending={""} waitReport={""} closed={""} />
       <Box h={42} />
-      {props.companyId === null ? (
+      {/* {!cards.length ? (
         <Text color={colors.gray}>No fundraifings yet.</Text>
-      ) : (
+      ) : ( */}
         <Flex gap={40} direction={{ base: "column", lg: "row" }}>
           <Flex maw={300} w={"100%"} flex="0 0 auto" visibleFrom="lg">
             <FilterOptions />
@@ -66,13 +64,13 @@ export const CardsFiltersInner = (props: CardsFiltersProps) => {
           <Box flex="1 1 auto">
             <Flex mih="100%" direction={"column"}>
               <Box flex="1 1 auto" mb={24}>
-                <CardsList  list={cards} />
+                <CardsList list={cards} />
               </Box>
-              <Footer parentRef={ref}  />
+              <Footer parentRef={ref} />
             </Flex>
           </Box>
         </Flex>
-      )}
+        {/* )} */}
     </Container>
   );
 };

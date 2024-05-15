@@ -6,15 +6,31 @@ import { Location } from "./Location";
 import { Tags } from "./Tags";
 import { ProfileInfo } from "../../components/ProfileInfo";
 
-export const RequestInfo = () => {
+export const RequestInfo = ({
+  tags,
+  names,
+  isVerified,
+  avatar,
+  title,
+  status,
+  date
+}: {
+  tags: string[];
+  names: string;
+  isVerified: boolean;
+  avatar: string;
+  title: string;
+  status: string
+  date: number
+}) => {
   return (
     <Flex direction={"column"} gap={20}>
-      <Header />
-      <Published />
+      <Header title={title} />
+      <Published status={status} date={date}  />
       <Location />
-      <Tags tags={["🔥 Emergency", "🪖 Military", "🚗 Military cars"]} />
+      <Tags tags={tags} />
       <Box flex="1 1 auto" />
-      <ProfileInfo avatarUrl={""} names={"Veronika Herasymchuk"} />
+      <ProfileInfo avatarUrl={avatar} names={names} isVerified={isVerified} />
     </Flex>
   );
 };

@@ -1,5 +1,5 @@
 "use client";
-import { Button, ButtonProps, rgba, useMantineColorScheme } from "@mantine/core";
+import { Button, ButtonProps, rgba } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";
 import { useThemeStore } from "@/app/store";

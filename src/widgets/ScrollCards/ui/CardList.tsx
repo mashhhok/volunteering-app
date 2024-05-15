@@ -45,14 +45,15 @@ export const CardList = (props: any) => {
             list.map((item, index) => (
               <Box key={item.id} w={440}>
                 <RequestCard
+                id={item?.requestData?.id}
                   companyName={item?.userData?.firstName}
                   requestTitle={item?.requestData?.title}
                   requestDescription={item?.requestData?.description}
                   requestStatus={item?.requestData?.status}
                   imageUrl={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"
+                    item?.requestData?.imageUrl[0]
                   }
-                  verifiedAndTrusted={true}
+                  verifiedAndTrusted={item?.userData?.verifiedBy}
                   needMoney={item?.requestData?.needMoney}
                   collectedMoney={item?.requestData?.collectedMoney}
                   location={item?.requestData?.location}

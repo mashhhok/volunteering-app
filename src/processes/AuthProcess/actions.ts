@@ -48,6 +48,27 @@ export async function registerAction(
     );
     const res = await register(formDataValidate);
     if (res === null) return { issues: { isExist: "Account creation error" } };
+    const createMockapiAcc = fetch(`${process.env.MOCKAPI_URL}/profiles`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: res.id,
+        email: res.email,
+
+        avatar: "",
+        description: "",
+        sites: {},
+        phone: "",
+        isShowFundsCount: true,
+        isShowProfilePhoto: true,
+        isShowRequestsCount: true,
+        firstName: "",
+        lastName: "",
+        verifiedBy: null,
+      }),
+    }).then((res) => res.json());
     return null;
   } catch (err) {
     const _err = err as IZodIssues;
