@@ -13,21 +13,23 @@ export const RequestInfo = ({
   avatar,
   title,
   status,
-  date
+  date,
+  location,
 }: {
   tags: string[];
   names: string;
   isVerified: boolean;
   avatar: string;
   title: string;
-  status: string
-  date: number
+  status: string;
+  date: number;
+  location: string;
 }) => {
   return (
     <Flex direction={"column"} gap={20}>
       <Header title={title} />
-      <Published status={status} date={date}  />
-      <Location />
+      <Published status={status} date={date} />
+      <Location>{location}</Location>
       <Tags tags={tags} />
       <Box flex="1 1 auto" />
       <ProfileInfo avatarUrl={avatar} names={names} isVerified={isVerified} />

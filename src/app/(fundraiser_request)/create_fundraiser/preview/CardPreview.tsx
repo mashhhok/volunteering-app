@@ -5,7 +5,6 @@ import { InfoSVG } from "@/shared/svg";
 import { Box, Flex, Text } from "@mantine/core";
 import React from "react";
 import { useCreateFundraiserStore } from "../store";
-
 export const CardPreview = ({
   companyName,
   verifiedAndTrusted,
@@ -13,7 +12,7 @@ export const CardPreview = ({
   companyName: string;
   verifiedAndTrusted: boolean;
 }) => {
-  const { name: regTitle, categories } = useCreateFundraiserStore(
+  const { name: regTitle, categories,amount, description, location } = useCreateFundraiserStore(
     (store) => store
   );
 
@@ -29,16 +28,13 @@ export const CardPreview = ({
         companyName={companyName}
         requestTitle={regTitle}
         categories={categories}
-        requestDescription={
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptas sint iure facere dolorem ratione dicta rem veniam, quaerat amet ipsam maxime praesentium! Distinctio explicabo nisi optio adipisci maxime rerum!"
-        }
+        requestDescription={description}
         requestStatus={"pending"}
         verifiedAndTrusted={verifiedAndTrusted}
-        needMoney={1}
+        needMoney={0}
         collectedMoney={0}
         small
-        location={"Kiiv Dnipro"}
-      />
+        location={location ? location : ''} id={""}      />
     </Box>
   );
 };

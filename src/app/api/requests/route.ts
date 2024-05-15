@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
   const elderly = Boolean(searchParams.get("elderly"));
   const volunteering = Boolean(searchParams.get("volunteering"));
 
-  const res = await fetch(`${process.env.MOCKAPI_URL}/requests`);
+  const res = await fetch(`${process.env.MOCKAPI_URL}/requests`, {cache: 'no-store'});
 
   let data: any[] = await res.json();
   if (userId) data = data.filter((item) => item.userId === +userId);
@@ -69,7 +69,7 @@ export async function GET(req: NextRequest) {
     return true;
   });
 
-  const users = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then((res) =>
+  const users = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then((res) =>
     res.json()
   );
 

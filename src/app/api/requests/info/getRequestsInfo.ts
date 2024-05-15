@@ -13,7 +13,7 @@ export const getRequestsInfo = async (userId?: number) => {
       yearsWork: "-",
     };
 
-  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
+  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
     (res) => res.json()
   );
   const profile = profiles.filter((item: any) => item.userId === userId)[0];
@@ -23,14 +23,14 @@ export const getRequestsInfo = async (userId?: number) => {
   const isShowRequestsCount = isOwner ? true : profile?.isShowRequestsCount;
   const isShowYearsWork = isOwner ? true : profile?.isShowYearsWork;
 
-  const requests = await fetch(`${process.env.MOCKAPI_URL}/requests`).then(
+  const requests = await fetch(`${process.env.MOCKAPI_URL}/requests`, {cache: 'no-store'}).then(
     (res) => res.json()
   );
   let requestsCount = 0;
   let fundsCount = 0;
 
   requests.forEach((item: any) => {
-    if (item.userId === +userId) {
+    if (item.userId === userId) {
       requestsCount++;
       fundsCount += item?.collectedMoney;
     }

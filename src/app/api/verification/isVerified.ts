@@ -7,10 +7,10 @@ export const isVerified = async () => {
 
   if (!session) return false;
 
-  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`).then(
+  const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
     (res) => res.json()
   );
-  const profile = profiles.find((item) => item.userId === session?.id);
+  const profile = profiles.find((item: any) => item.userId === session?.id);
 
   return profile?.verifiedBy;
 };
