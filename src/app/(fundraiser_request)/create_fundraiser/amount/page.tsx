@@ -10,6 +10,8 @@ import { AmountInput } from './AmountInput';
 import { CurrencyInput } from './CurrencyInput';
 import { BackBtn } from '../../components/BackBtn';
 import { useRouter } from 'next/navigation';
+import { Metadata } from 'next';
+
 
 const AmountPage = () => {
   const { amount, currency } = useCreateFundraiserStore((store) => store);

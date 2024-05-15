@@ -4,8 +4,8 @@ import React from "react";
 import { colors } from "../enums";
 import { useThemeStore } from "@/app/store";
 export const LogoSVG = (props: ISVG) => {
-  const theme = useThemeStore(state => state.theme)
-
+  const theme = useThemeStore((state) => state.theme);
+  return null;
   return (
     <svg
       width={props.width ? props.width : 35}
@@ -22,8 +22,8 @@ export const LogoSVG = (props: ISVG) => {
           props.fill
             ? props.fill
             : theme === "dark"
-            ? colors.lightGray
-            : colors.black
+              ? colors.lightGray
+              : colors.black
         }
       />
       <path
@@ -32,8 +32,8 @@ export const LogoSVG = (props: ISVG) => {
           props.fill
             ? props.fill
             : theme === "dark"
-            ? colors.lightGray
-            : colors.black
+              ? colors.lightGray
+              : colors.black
         }
       />
     </svg>

@@ -49,7 +49,7 @@ export const CardStatus = ({
           ✅ {isTextHidden ? "" : "Successfully reported"}
         </Button>
       )}
-      {tags.map((item, index) => (
+      {tags && tags.map((item, index) => (
         <Button
           px={12}
           h={25}

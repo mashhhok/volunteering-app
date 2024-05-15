@@ -19,7 +19,9 @@ export const AuthProcess = ({ pageId }: { pageId: number }) => {
       prevState,
       formData
     );
-    if (res === null) redirect("/auth/3");
+    if (res === null) {
+      const res = await authAction(prevState, formData);
+    }
     return res;
   }
 

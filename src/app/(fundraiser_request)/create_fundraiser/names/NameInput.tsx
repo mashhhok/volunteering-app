@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { TextField } from "@/shared/ui";
 import React from "react";
@@ -9,20 +10,25 @@ import { useInput } from "@/shared/lib/hooks";
 export const NameInput = () => {
   const setName = useCreateFundraiserStore((store) => store.setName);
   const name = useCreateFundraiserStore((store) => store.name);
+  const error = useCreateFundraiserStore((store) => store.nameError);
+  const setError = useCreateFundraiserStore((store) => store.setNameError);
 
+  const input = useInput(name, { maxWidth: 75, minWidth: 10 });
+
+  React.useEffect(() => {
+    setName(input.value);
+    setError(!input.isValid);
+  }, [input.value]);
   return (
     <Box>
-      <Textarea
+      <TextField
         w={"100%"}
         placeholder="Name your fundraiser"
-        onChange={e => setName(e.target.value)}
-        value={name}
         mb={5}
-        minRows={1}
+        input={input}
+        bottomSection={`Up to ${75 - input.value.length} characters`}
       />
-      <Text color={colors.gray} size="xs">
-        Up to 75 characters
-      </Text>
+      <Text color={colors.gray} size="xs"></Text>
     </Box>
   );
 };

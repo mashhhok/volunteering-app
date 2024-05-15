@@ -24,7 +24,7 @@ export const Title = ({ pending, waitReport, closed }: IRequestInfo) => {
         <Box hiddenFrom="lg" onClick={toggleFilterOptionsDropdown}>
           <FiltersSVG />
         </Box>
-        <Flex gap={5} wrap={"wrap"}>
+        <Flex w={{ base: "100%", lg: "auto" }} gap={5} wrap={"wrap"}>
           <Button size="xs" fz="md" color="violet">
             ⚠️ {pending} current fundraisings
           </Button>
@@ -37,6 +37,7 @@ export const Title = ({ pending, waitReport, closed }: IRequestInfo) => {
         </Flex>
       </Flex>
       <Drawer opened={filtersOptions} onClose={() => setFiltersOptions(false)}>
+        <Box h={50} />
         <FilterOptions />
       </Drawer>
     </>

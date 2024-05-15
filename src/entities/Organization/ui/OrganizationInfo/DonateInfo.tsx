@@ -18,32 +18,29 @@ export const DonateInfo = ({
   funds,
   workYear,
 }: {
-  donors: number | "-";
-  funds: number | "-";
-  workYear: number | "-";
+  donors: number | string;
+  funds: number | string;
+  workYear: number | string;
 }) => {
-  const colorScheme = useThemeStore(state => state.theme)
+  const colorScheme = useThemeStore((state) => state.theme);
 
   function correctNum(num: number | string) {
     if (typeof num !== "number") return num;
-    if (num > 1000) {
-      const res = Math.round(num / 1000);
-      return res + "K+";
-    } else if (num > 1000000) {
+    if (num >= 1000000) {
       const res = Math.round(num / 1000000);
       return res + "M+";
+    } else if (num >= 1000) {
+      const res = Math.round(num / 1000);
+      return res + "K+";
     } else {
       return `${num}`;
     }
   }
 
   return (
-    <Flex gap={19} wrap={'wrap'} >
+    <Flex gap={19} wrap={"wrap"}>
       <Box flex={"1 1 auto"}>
-        <ShadowBox
-          title={correctNum(donors)}
-          subtitle={"Donors and volunteers"}
-        />
+        <ShadowBox title={correctNum(donors)} subtitle={"Requests"} />
       </Box>
 
       <Box flex={"1 1 auto"}>

@@ -1,9 +1,19 @@
-import { Input, InputProps, PolymorphicComponentProps } from "@mantine/core";
+import {
+  Input,
+  InputProps,
+  TextInputProps,
+  TextInput,
+  __InputStylesNames,
+  MantineComponent,
+} from "@mantine/core";
 import React from "react";
 
-export const HiddenInput = (props: any) => {
+export const HiddenInput = (
+  props: TextInputProps & { ref?: React.Ref<HTMLInputElement> }
+) => {
+  const { ref, ...inputProps } = props;
   return (
-    <Input
+    <TextInput
       style={{
         opacity: "0",
         position: "absolute",
@@ -12,7 +22,8 @@ export const HiddenInput = (props: any) => {
         h: 0,
         pointerEvents: "none",
       }}
-      {...props}
+      {...inputProps}
+      ref={ref}
     />
   );
 };

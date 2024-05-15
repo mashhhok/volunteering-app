@@ -1,11 +1,12 @@
 import { colors } from "@/shared/enums";
 import { TopRightArrowSVG } from "@/shared/svg";
-import { BlurButton } from "@/shared/ui";
+import { BlurButton, HiddenInput } from "@/shared/ui";
 import { Flex, Title, Box, Text } from "@mantine/core";
 import React from "react";
 import { Bordered } from "../Bordered";
 import bank_id_img from "@/public/bank_id.png";
 import Image from "next/image";
+import { verifiyAction } from "@/app/api/verification/verifiyAction";
 
 const BankIdImg = () => <Image src={bank_id_img} alt={""} />;
 
@@ -24,13 +25,16 @@ export const LeftSection = () => {
           Sense Bank and more than 35 other banks.
         </Text>
         <Box>
-          <BlurButton
-            size="xl"
-            color={colors.violet}
-            rightSection={<TopRightArrowSVG />}
-          >
-            Authorizе
-          </BlurButton>
+          <form action={verifiyAction}>
+            <BlurButton
+              size="xl"
+              color={colors.violet}
+              rightSection={<TopRightArrowSVG />}
+            >
+              Authorizе
+            </BlurButton>
+            <HiddenInput name='verificationBy' value='bankId' />
+          </form>
         </Box>
       </Bordered>
     </Flex>

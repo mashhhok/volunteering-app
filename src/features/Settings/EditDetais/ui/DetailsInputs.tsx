@@ -2,7 +2,15 @@ import { AreaField, TextField } from "@/shared/ui";
 import { Box, Flex, Text } from "@mantine/core";
 import React from "react";
 
-export const DetailsInputs = () => {
+export const DetailsInputs = ({
+  firstName,
+  lastName,
+  description,
+}: {
+  firstName: string;
+  lastName: string;
+  description: string;
+}) => {
   return (
     <Box>
       <Text fw={500} mb={15} ml={10}>
@@ -15,7 +23,9 @@ export const DetailsInputs = () => {
             title={"First name"}
             placeholder="User`s name"
             radius={"md"}
-            name='first_name'
+            name="firstName"
+            noColors
+            defaultValue={firstName}
           />
         </Box>
         <Box flex={"1 1 auto"}>
@@ -23,11 +33,20 @@ export const DetailsInputs = () => {
             title={"Last name"}
             placeholder="User`s last name"
             radius={"md"}
-            name='last_name'
+            name="lastName"
+            noColors
+            defaultValue={lastName}
           />
         </Box>
       </Flex>
-      <AreaField title={"About me"} maxLen={551} w={'100%'} styles={{input: {height: 140}}} name='about_me'  />
+      <AreaField
+        defaultValue={description ? description : ''}
+        title={"About me"}
+        maxLen={551}
+        w={"100%"}
+        styles={{ input: { height: 140 } }}
+        name="description"
+      />
     </Box>
   );
 };

@@ -19,7 +19,7 @@ export const SearchInput = (
   const { hovered, ref } = useHover<HTMLInputElement>();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [clicked, setClicked] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(props.value ? props.value : '');
 
   React.useEffect(() => {
     if (props.setValue) props.setValue(value);

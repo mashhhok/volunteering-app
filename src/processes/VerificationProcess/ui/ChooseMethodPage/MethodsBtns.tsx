@@ -1,6 +1,7 @@
+import { verifiyAction } from "@/app/api/verification/verifiyAction";
 import { colors } from "@/shared/enums";
 import { TopRightArrowSVG } from "@/shared/svg";
-import { BlurButton } from "@/shared/ui";
+import { BlurButton, HiddenInput } from "@/shared/ui";
 import { Box } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
@@ -8,7 +9,7 @@ import React from "react";
 export const MethodsBtns = () => {
   return (
     <>
-      <Link href="/verification/dia">
+      <form action={verifiyAction}>
         <BlurButton
           size={"xl"}
           visibleFrom="sm"
@@ -18,6 +19,8 @@ export const MethodsBtns = () => {
         >
           Authorizе with Дія.Підпис
         </BlurButton>
+        <HiddenInput name="verificationBy" value="dia" />
+
         <BlurButton
           size={"lg"}
           hiddenFrom="sm"
@@ -27,11 +30,11 @@ export const MethodsBtns = () => {
         >
           Authorizе with Дія.Підпис
         </BlurButton>
-      </Link>
+      </form>
       {/*  */}
       <Box h={16} />
       {/*  */}
-      <Link href="/verification/file_key">
+      <form action={verifiyAction}>
         <BlurButton
           size="xl"
           visibleFrom="sm"
@@ -50,7 +53,8 @@ export const MethodsBtns = () => {
         >
           File key
         </BlurButton>
-      </Link>
+        <HiddenInput name="verificationBy" value="fileKey" />
+      </form>
     </>
   );
 };

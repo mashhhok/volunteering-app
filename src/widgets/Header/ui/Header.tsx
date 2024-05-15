@@ -9,16 +9,17 @@ import { Logo } from "@/shared/ui";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
+import { getProfile } from "@/app/api/profile/getProfile";
 
 export const Header = async () => {
-  const session = await getSession();
-
+  const profile = await getProfile();
+  console.log(profile)
   return (
     <Box h={70} pos={"relative"}>
       <Box
         pos={"fixed"}
         style={{
-          zIndex: 10,
+          zIndex: 1000,
           backdropFilter: "blur(10px)",
         }}
         py={10}
@@ -54,11 +55,11 @@ export const Header = async () => {
                 <LanguageSelect />
               </Box>
 
-              {session ? (
+              {profile ? (
                 <UserInfoRow
-                  firstName={session?.firstName}
-                  lastName={session?.lastName}
-                  avatar={null}
+                  firstName={profile?.firstName}
+                  lastName={profile?.lastName}
+                  id={profile?.userId}
                 />
               ) : (
                 <AuthBtns />

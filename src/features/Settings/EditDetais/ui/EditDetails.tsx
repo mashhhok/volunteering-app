@@ -2,15 +2,17 @@ import { colors } from "@/shared/enums";
 import { BlurButton, Info, LinearDivider } from "@/shared/ui";
 import { Avatar, Box, Card, Flex, Title } from "@mantine/core";
 import React from "react";
-import user_img from "@/public/user_2.svg";
 import { DetailsInputs } from "./DetailsInputs";
 import { ContactInputs } from "./ContactInputs";
 import { SocialInputs } from "./SocialInputs";
 import { SiteInput } from "./SiteInput";
 import { SettingsWrapper } from "../../SettingsWrapper";
+import { AvatarEl } from "./Avatar";
+import { getProfile } from "@/app/api/profile/getProfile";
+import { editDetailsAction } from "@/app/api/settings/editDetails/editDetailsAction";
 
-export const EditDetails = () => {
-  const avatarUrl = "";
+export const EditDetails = async () => {
+  const profile = await getProfile();
   return (
     <Box>
       <Info title={"Please,"} subtitle={"Fill in the required fields."} />
@@ -18,22 +20,7 @@ export const EditDetails = () => {
 
       <SettingsWrapper>
         <Flex direction={"column"} justify="center" align={"center"}>
-          <Avatar
-            src={avatarUrl ? avatarUrl : user_img.src}
-            w={100}
-            bg={colors.lightGray}
-            h={100}
-            radius="lg"
-            size="md"
-            p={16}
-            style={{
-              backgroundSize: "cover",
-              flexShrink: 0,
-              // borderTop: "3px dashed",
-            }}
-            mb={28}
-            alt={"logo"}
-          />
+          <AvatarEl src={profile?.avatar} />
           <Title
             order={2}
             mb={28}
@@ -44,20 +31,29 @@ export const EditDetails = () => {
             }}
             lh={1}
           >
-            Veronika Herasymchuk
+            {profile?.firstName} {profile?.lastName}
           </Title>
         </Flex>
         <Box w={"100%"}>
           <LinearDivider h={2} w={"100%"} color={colors.violet} />
           <Box h={40} />
-          <form action="">
-            <DetailsInputs />
+          <form action={editDetailsAction}>
+            <DetailsInputs
+              firstName={profile?.firstName}
+              lastName={profile?.lastName}
+              description={profile?.description}
+            />
             <Box h={40} />
-            <ContactInputs />
+            <ContactInputs email={profile?.email} phone={profile?.phone} />
             <Box h={40} />
-            <SocialInputs />
+            <SocialInputs
+              instagram={profile?.sites?.instagram}
+              facebook={profile?.sites?.facebook}
+              google={profile?.sites?.google}
+              telegram={profile?.sites?.telegram}
+              whatsapp={profile?.sites?.whatsapp}
+            />
             <Box h={48} />
-            <SiteInput />
             <Box h={40} />
             <BlurButton color={colors.violet}>Save changes</BlurButton>
           </form>

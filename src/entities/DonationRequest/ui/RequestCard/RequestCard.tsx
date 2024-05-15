@@ -13,6 +13,7 @@ import arrow_top_right_violet from "@/public/arrow_top_right_violet.svg";
 import Image from "next/image";
 import { CardDescription } from "./CardDescription";
 import { useMediaQuery } from "@mantine/hooks";
+import Link from "next/link";
 
 export interface IRequestCard {
   companyName: string;
@@ -21,6 +22,7 @@ export interface IRequestCard {
   requestStatus: "pending" | "open" | "closed";
   imageUrl?: string;
   verifiedAndTrusted: boolean;
+  id: string | number;
 
   needMoney: number;
   collectedMoney: number;
@@ -41,6 +43,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
   small,
   location,
   categories,
+  id
 }) => {
   const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
@@ -85,7 +88,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
         {/* FRONT CARD */}
         <Flex direction={"column"} gap={small ? 4 : 16}>
           <Box style={blurOption} mb={12}>
-            <CardImg small={small} />
+            <CardImg imageUrl={imageUrl} small={small} />
           </Box>
           <Box style={blurOption}>
             <Location small={small}>{location}</Location>
@@ -108,7 +111,6 @@ export const RequestCard: React.FC<IRequestCard> = ({
             need={needMoney}
           />
         </Box>
-
         <CardStatus small={small} status={requestStatus} tags={categories} />
       </Flex>
       <Flex
@@ -145,14 +147,16 @@ export const RequestCard: React.FC<IRequestCard> = ({
         <CardStatus
           status={requestStatus}
           isTextHidden={true}
-          tags={["🎖 Military", "🥾 Equipment"]}
+          tags={categories}
         />
         {/* <Box style={{ flexGrow: "1" }} /> */}
         <Flex justify="flex-end" align={"center"} gap={16}>
           <BlurButton size={small ? "md" : "xl"} color={colors.violet}>
             Donate
           </BlurButton>
+          <Link href={`/fundraiser/${id}`}>
           <Image src={arrow_top_right_violet} width={30} height={30} alt={""} />
+          </Link>
         </Flex>
       </Flex>
     </Card>

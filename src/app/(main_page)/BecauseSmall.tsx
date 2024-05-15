@@ -39,10 +39,10 @@ export const BecauseSmall = () => {
           w={"100%"}
           bg={colors.white}
         >
-          <Title mb={16} order={3}>
+          <Title mb={16} order={3} style={{color: colors.black}}>
             Social reach
           </Title>
-          <Text size="lg">
+          <Text color={colors.black} size="lg">
             Harness the power of social media to spread your story and get more
             support.
           </Text>
@@ -55,10 +55,10 @@ export const BecauseSmall = () => {
           w={"100%"}
           bg={colors.white}
         >
-          <Title mb={16} order={3}>
+          <Title mb={16} order={3} style={{color: colors.black}}>
             Simple setup
           </Title>
-          <Text size="lg">
+          <Text color={colors.black} size="lg">
             You can personalize and share your UnitaryAid fundraiser in just
             a few minutes.
           </Text>
@@ -71,10 +71,10 @@ export const BecauseSmall = () => {
           w={"100%"}
           bg={colors.white}
         >
-          <Title mb={16} order={3}>
+          <Title mb={16} order={3} style={{color: colors.black}}>
             Secure
           </Title>
-          <Text size="lg">
+          <Text color={colors.black} size="lg">
             Our UnitaryAid`s Trust & Safety team works around the clock to
             protect against fraud.
           </Text>

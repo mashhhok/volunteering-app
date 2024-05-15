@@ -1,18 +1,15 @@
 import { Box, Flex } from "@mantine/core";
 import React from "react";
 import { Title } from "./Title";
-import { getDonationRequestById } from "@/entities/DonationRequest/repository";
 import { CardList } from "./CardList";
 
-export const ScrollCards = async () => {
-
-  const cards = await getDonationRequestById(1);
+export const ScrollCards = async ({ userId }: { userId: number }) => {
 
   return (
     <Box>
       <Title />
       <Box h={26} />
-      <CardList noCards={false} cards={cards} />
+      <CardList userId={userId}  />
     </Box>
   );
 };

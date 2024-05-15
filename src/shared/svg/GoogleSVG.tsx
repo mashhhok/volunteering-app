@@ -6,7 +6,7 @@ export const GoogleSVG = (props: ISVG) => {
     <svg
     width={props.width ? props.width : 25}
     height={props.height ? props.height : 24}
-    viewBox={`0 0 ${props.width ? props.width : 25} ${props.height ? props.height : 24}`}
+    viewBox={`0 0 25 24`}
     fill={props.bg ? props.bg : "none"}
       xmlns="http://www.w3.org/2000/svg"
     >

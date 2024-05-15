@@ -7,6 +7,8 @@ import Image from "next/image";
 import { NoImgSVG } from "@/shared/svg";
 import { MdDelete } from "react-icons/md";
 import { useCreateFundraiserStore } from "../store";
+import { toBase64 } from "@/shared/lib/utils";
+import { HiddenInput } from "@/shared/ui";
 
 const SlideItem = ({ image }: { image: string }) => (
   <Box
@@ -26,18 +28,29 @@ const SlideItem = ({ image }: { image: string }) => (
 );
 
 export const Slider = () => {
-  const { setImagesUrls: setFiles, imagesUrls: files } =
-    useCreateFundraiserStore((store) => store);
+  const {
+    setImagesUrls: setFiles,
+    imagesUrls: files,
+    localFiles,
+    setLocalFiles,
+  } = useCreateFundraiserStore();
 
-  function onDrop(e: React.DragEvent<HTMLDivElement>) {
+  async function onDrop(e: React.DragEvent<HTMLDivElement>) {
     e.preventDefault();
+
+    addFiles(e.dataTransfer.files);
+
     let newFiles: string[] = [];
     if (e.dataTransfer?.files) {
       for (let i = 0; i < e.dataTransfer.files.length; i++) {
         if (!e.dataTransfer.files[i].type.includes("image")) continue;
-        newFiles.push(URL.createObjectURL(e.dataTransfer.files[i]));
+        const reader = await toBase64(e.dataTransfer.files[i], (val) => {
+          newFiles.push(String(val));
+        });
       }
-      setFiles([...newFiles, ...files]);
+      setTimeout(() => {
+        setFiles([...newFiles]);
+      }, 300);
     }
   }
 
@@ -45,101 +58,126 @@ export const Slider = () => {
     setFiles(files.filter((item, ind) => ind !== index));
   }
 
-  function onAddFilesClick(e: React.ChangeEvent<HTMLInputElement>){
-    e.preventDefault();
-    let newFiles: string[] = [];
-    if (e.target.files) {
-      for (let i = 0; i < e.target.files.length; i++) {
-        if (!e.target.files[i].type.includes("image")) continue;
-        newFiles.push(URL.createObjectURL(e.target.files[i]));
+  function addFiles(files: FileList) {
+    if (files) {
+      const fileArray: File[] = [];
+      for (let i = 0; i < files.length; i++) {
+        fileArray.push(files[i]);
       }
-      setFiles([...newFiles, ...files]);
+      setLocalFiles(fileArray);
     }
   }
 
+  async function onAddFilesClick(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+
+    let newFiles: string[] = [];
+    if (e.target.files) {
+      addFiles(e.target.files);
+
+      for (let i = 0; i < e.target.files.length; i++) {
+        if (!e.target.files[i].type.includes("image")) continue;
+        const reader = await toBase64(e.target.files[i], (val) => {
+          newFiles.push(String(val));
+        });
+      }
+      setTimeout(() => {
+        setFiles([...newFiles]);
+      }, 300);
+    }
+  }
   return (
     <Box w={"100%"} maw={480}>
-      <Carousel
-        mb={12}
-        w={"100%"}
-        h={300}
-        loop
-        withIndicators
-        style={{ borderRadius: 16, overflow: "hidden" }}
-        withKeyboardEvents
-        styles={{
-          indicator: {
-            background: colors.orange,
-          },
-          control: {
-            background: colors.white,
-          },
-        }}
-      >
-        {files.map((item, index) => (
-          <Carousel.Slide
-            // bg={colors.lightGray}
-            p={0}
-            mx={7}
-            bg={colors.lightGray}
-            style={{ overflow: "hidden", borderRadius: 16 }}
-            key={index}
-            h={"100%"}
-            draggable={true}
-            onDrop={onDrop}
-            onDragOver={(e) => e.preventDefault()}
-          >
-            <Image
-              src={item}
-              width={480}
-              height={300}
-              style={{ backgroundSize: "cover", width: '100%' }}
-              alt={""}
-            />
-          </Carousel.Slide>
-        ))}
-        {!files.length && (
-          <Carousel.Slide
-            // bg={colors.lightGray}
-            p={0}
-            draggable={true}
-            onDrop={onDrop}
-            onDragOver={(e) => e.preventDefault()}
-            mx={7}
-            bg={colors.lightGray}
-            style={{ overflow: "hidden", borderRadius: 16 }}
-            h={"100%"}
-            pos={"relative"}
-          >
-            <Center w={"100%"} h={300}>
-              <Text
-                maw={300}
-                style={{ textAlign: "center" }}
-                size="sm"
-                color={colors.gray}
-              >
-                Drag and drop or click here to upload an image that best
-                represents your fundraising theme
-              </Text>
-            </Center>
-            <input
-              type="file"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                opacity: 0,
-                width: "100%",
-                height: "100%",
-              }}
-              accept="image/*"
-              multiple
-              onChange={onAddFilesClick}
-            />
-          </Carousel.Slide>
-        )}
-      </Carousel>
-
+      <Box pos="relative">
+        <Carousel
+          mb={12}
+          w={"100%"}
+          h={300}
+          loop
+          withIndicators
+          style={{ borderRadius: 16, overflow: "hidden" }}
+          withKeyboardEvents
+          styles={{
+            indicator: {
+              background: colors.orange,
+              zIndex: 30,
+            },
+            control: {
+              background: colors.white,
+              zIndex: 30,
+            },
+          }}
+        >
+          <input
+            type="file"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              opacity: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 5,
+            }}
+            accept="image/*"
+            multiple
+            name="images"
+            onChange={onAddFilesClick}
+          />
+          {files.map((item, index) => (
+            <Carousel.Slide
+              // bg={colors.lightGray}
+              p={0}
+              mx={7}
+              bg={colors.lightGray}
+              style={{ overflow: "hidden", borderRadius: 16 }}
+              key={index}
+              h={"100%"}
+              draggable={true}
+              onDrop={onDrop}
+              onDragOver={(e) => e.preventDefault()}
+            >
+              <Image
+                src={item}
+                width={480}
+                height={300}
+                style={{ backgroundSize: "cover", width: "100%" }}
+                alt={""}
+              />
+            </Carousel.Slide>
+          ))}
+          {!files.length && (
+            <Carousel.Slide
+              // bg={colors.lightGray}
+              p={0}
+              draggable={true}
+              onDrop={onDrop}
+              onDragOver={(e) => e.preventDefault()}
+              mx={7}
+              bg={colors.lightGray}
+              style={{ overflow: "hidden", borderRadius: 16 }}
+              h={"100%"}
+              pos={"relative"}
+            >
+              <Center w={"100%"} h={300}>
+                <Text
+                  maw={300}
+                  style={{ textAlign: "center" }}
+                  size="sm"
+                  color={colors.gray}
+                >
+                  Drag and drop or click here to upload an image that best
+                  represents your fundraising theme
+                </Text>
+              </Center>
+            </Carousel.Slide>
+          )}
+        </Carousel>
+      </Box>
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
       {/* bottom section */}
       <Carousel
         height={120}

@@ -6,9 +6,11 @@ import React from "react";
 export const ProfileInfo = ({
   avatarUrl,
   names,
+  isVerified,
 }: {
   avatarUrl: string;
   names: string;
+  isVerified: boolean;
 }) => {
   return (
     <Flex justify={"space-between"} align={"center"} maw={500}>
@@ -20,7 +22,7 @@ export const ProfileInfo = ({
           {names}
         </Text>
       </Flex>
-      <IsVerified isVerified={true} short />
+      <IsVerified isVerified={isVerified} short />
     </Flex>
   );
 };

@@ -1,16 +1,24 @@
-'use client'
-import { RequestCard } from "@/entities/DonationRequest";
+"use client";
+import { IRequestCard, RequestCard } from "@/entities/DonationRequest";
 import { colors } from "@/shared/enums";
 import { InfoSVG } from "@/shared/svg";
 import { Box, Flex, Text } from "@mantine/core";
 import React from "react";
 import { useCreateFundraiserStore } from "../store";
 
-export const CardPreview = () => {
-  const {name: regTitle, categories} = useCreateFundraiserStore(store => store)
+export const CardPreview = ({
+  companyName,
+  verifiedAndTrusted,
+}: {
+  companyName: string;
+  verifiedAndTrusted: boolean;
+}) => {
+  const { name: regTitle, categories } = useCreateFundraiserStore(
+    (store) => store
+  );
 
   return (
-    <Box  w={'100%'} >
+    <Box w={"100%"}>
       <Flex gap={9} align={"center"} mb={12}>
         <InfoSVG width={19} height={19} fill={colors.blue} />
         <Text size="xs" color={colors.blue}>
@@ -18,14 +26,14 @@ export const CardPreview = () => {
         </Text>
       </Flex>
       <RequestCard
-        companyName={"Akhmed Llc."}
+        companyName={companyName}
         requestTitle={regTitle}
         categories={categories}
         requestDescription={
           "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptas sint iure facere dolorem ratione dicta rem veniam, quaerat amet ipsam maxime praesentium! Distinctio explicabo nisi optio adipisci maxime rerum!"
         }
         requestStatus={"pending"}
-        verifiedAndTrusted={false}
+        verifiedAndTrusted={verifiedAndTrusted}
         needMoney={1}
         collectedMoney={0}
         small

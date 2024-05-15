@@ -10,9 +10,10 @@ export const LocationSelect = () => {
   return (
     <Select
       onChange={(value, option) => setLocation(value)}
-      label={<Text size='xs' >Select location for your fundraising</Text>}
+      label={<Text size="xs">Select location for your fundraising</Text>}
       data={locations}
       placeholder="Location"
+      name="location"
       searchable
     ></Select>
   );

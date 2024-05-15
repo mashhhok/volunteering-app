@@ -7,6 +7,8 @@ import Link from "next/link";
 import { routes } from "@/shared/config/routes";
 import { firstLetsOfNames } from "../../lib/utils/firstLetsOfNames";
 import { MdLogout } from "react-icons/md";
+import { IoMdCreate } from "react-icons/io";
+import { redirect } from "next/navigation";
 
 interface IUserInfoMenu {
   userInfo: JSX.Element;
@@ -76,6 +78,9 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
           onClick={() => setLogoutCount((prev) => prev + 1)}
         >
           Log Out
+        </Menu.Item>
+        <Menu.Item fz={"lg"} fw={500} leftSection={<IoMdCreate />}>
+          <Link href={"/create_fundraiser"}>Create Fund</Link>
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

@@ -7,11 +7,11 @@ import { BlurText } from "./BlurText";
 import { colors } from "@/shared/enums";
 import { Anchor } from "./Anchor";
 
-export const Footer = () => {
+export const Footer = async () => {
   
 
   return (
-    <Box>
+    <Box style={{backgroundColor: 'var(--mantine-color-body)'}}>
       <Container size={"xl"} mt={100}>
         <Flex justify={"center"}>
           <LinearDivider h={"2px"} w={"647px"} color={colors.violet} />
@@ -28,7 +28,7 @@ export const Footer = () => {
           <Box hiddenFrom="md" pb={10}>
             <Logo />
           </Box>
-          <LeftSection />
+          {/* <LeftSection /> */}
           <Box visibleFrom="md">
             <Logo />
           </Box>
@@ -39,9 +39,9 @@ export const Footer = () => {
         </Flex>
         <Box h={110} />
       </Container>
-      <Container size="2000px" p={0}>
+      {/* <Container size="2000px" p={0}>
         <BlurText />
-      </Container>
+      </Container> */}
     </Box>
   );
 };

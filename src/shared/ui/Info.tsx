@@ -20,7 +20,7 @@ export const Info = ({
           <Title lh={1} fz={"18px"} mb={14} style={{ color: colors.blue }}>
             {title}
           </Title>
-          <Text lh={1}  size="sm" color={colors.blue}>
+          <Text lh={1.3}  size="sm" color={colors.blue}>
             {subtitle}
           </Text>
         </Box>

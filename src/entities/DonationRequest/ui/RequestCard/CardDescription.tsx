@@ -1,12 +1,11 @@
 import { colors } from "@/shared/enums";
 import { ScrollArea, Text } from "@mantine/core";
 import React from "react";
+import parse from "html-react-parser";
 
-export const CardDescription = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const CardDescription = ({ children }: { children: string }) => {
+  const parsed = parse(children);
+
   return (
     <ScrollArea style={{ flexGrow: "1" }}>
       <Text
@@ -20,7 +19,7 @@ export const CardDescription = ({
           "text-overflow": "ellipsis",
         }}
       >
-        {children}
+        {parsed}
       </Text>
     </ScrollArea>
   );
