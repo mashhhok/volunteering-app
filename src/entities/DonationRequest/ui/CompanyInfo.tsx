@@ -1,7 +1,7 @@
 import { Flex, Title } from "@mantine/core";
 import React from "react";
-import { IsVerified } from "@/shared/components/IsVerified";
 import { UserSVG } from "@/shared/svg/UserSVG";
+import { IsVerified } from "@/shared/ui/IsVerified";
 
 interface ICompanyInfo {
   companyName: string;

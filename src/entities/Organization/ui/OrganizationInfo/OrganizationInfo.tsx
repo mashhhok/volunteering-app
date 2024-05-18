@@ -4,7 +4,6 @@ import { Description } from "./Description";
 import { InterBtns } from "./InterBtns/InterBtns";
 import { getUserById } from "@/entities/User/repository";
 import { DonateInfo } from "./DonateInfo";
-import { IsVerified } from "@/shared/components/IsVerified";
 import { PencilSVG } from "@/shared/svg/PencilSVG";
 import { colors } from "@/shared/enums";
 import { getSession } from "@/shared/auth";
@@ -12,6 +11,7 @@ import Link from "next/link";
 import { getProfile } from "@/app/api/profile/getProfile";
 import { getRequestsInfo } from "@/app/api/requests/info/getRequestsInfo";
 import { isVerified } from "@/app/api/verification/isVerified";
+import { IsVerified } from "@/shared/ui/IsVerified";
 
 interface IOrganizationInfo {
   userId: number;

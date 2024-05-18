@@ -1,5 +1,5 @@
-import { IsVerified } from "@/shared/components/IsVerified";
 import { User2SVG } from "@/shared/svg/User2SVG";
+import { IsVerified } from "@/shared/ui/IsVerified";
 import { Avatar, Box, Flex, Text, Title } from "@mantine/core";
 import React from "react";
 
