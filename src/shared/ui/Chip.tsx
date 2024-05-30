@@ -1,4 +1,4 @@
-import { Box, Button, rgba } from "@mantine/core";
+import { Box, Button, rgba, ButtonProps } from "@mantine/core";
 import React from "react";
 import { colors } from "../enums";
 
@@ -7,7 +7,8 @@ interface IChip {
   children: React.ReactNode;
 }
 
-export const Chip = (props: IChip) => {
+export const Chip = (props: IChip & ButtonProps) => {
+  
   return (
     <Button
       style={{
@@ -16,6 +17,7 @@ export const Chip = (props: IChip) => {
         color: props.selected ? "#000" : "#fff",
         boxShadow: `inset 0 4px 4px 0 ${rgba(colors.black, 0.25)}`,
       }}
+      {...props}
     >
       {props.children}
     </Button>

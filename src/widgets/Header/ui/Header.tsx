@@ -9,20 +9,18 @@ import { Logo } from "@/shared/ui";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
-import { LogoSVG } from "@/shared/svg";
+import { getProfile } from "@/app/api/profile/getProfile";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-
-export const Header = async () => {
-
-  const session = await getSession();
-
+export const Header = async ({dict}: {dict: IDictionary}) => {
+  const profile = await getProfile();
   return (
     <Box h={70} pos={"relative"}>
       <Box
         pos={"fixed"}
         style={{
-          zIndex: 10,
-          backdropFilter: "blur(50px)",
+          zIndex: 200,
+          backdropFilter: "blur(10px)",
         }}
         py={10}
         w="100%"
@@ -31,19 +29,16 @@ export const Header = async () => {
         <Container size={"xl"} h="100%">
           <Flex justify={"space-between"} h="100%" align={"center"} gap={15}>
             <Flex visibleFrom="lg" align="center  " gap={20} w={"47%"}>
-              {" "}
               <Flex gap={20} align={"center"}>
-                <Info />{" "}
+                <Info dict={dict} />
               </Flex>
-              <Search />
             </Flex>
 
             <Flex hiddenFrom="lg" align="center" gap={20} w={"47%"}>
-              <DropBox />
-              <Search />
+              <DropBox dict={dict} />
             </Flex>
 
-            <LogoSVG />
+            <Logo/>
             <Flex
               gap={40}
               align={"center"}
@@ -55,18 +50,17 @@ export const Header = async () => {
                 <ThemeSwitcher />
               </Box>
               <Box visibleFrom="lg">
-              <LanguageSelect/>
-
+                <LanguageSelect dict={dict} />
               </Box>
 
-              {session ? (
+              {profile ? (
                 <UserInfoRow
-                  firstName={session?.firstName}
-                  lastName={session?.lastName}
-                  avatar={null}
+                  firstName={profile?.firstName}
+                  lastName={profile?.lastName}
+                  id={profile?.userId}
                 />
               ) : (
-                <AuthBtns />
+                <AuthBtns dict={dict} />
               )}
             </Flex>
           </Flex>

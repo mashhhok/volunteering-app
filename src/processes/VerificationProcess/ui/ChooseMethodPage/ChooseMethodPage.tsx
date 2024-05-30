@@ -7,12 +7,13 @@ import { TopRightArrowSVG } from "@/shared/svg";
 import { LeftSection } from "./LeftSection";
 import { MethodsBtns } from "./MethodsBtns";
 import { HowWork } from "../HowWork";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const ChooseMethodPage = () => {
+export const ChooseMethodPage = ({ dict }: { dict: IDictionary }) => {
   return (
     <Container size="xl">
       <Title style={{ textTransform: "capitalize" }} mb={40} order={1}>
-        choose an authorization method
+        {dict.verification_process.choose_mehtod_page.title}
       </Title>
       <Flex
         gap={10}
@@ -20,14 +21,14 @@ export const ChooseMethodPage = () => {
         direction={{ base: "column", md: "row" }}
       >
         <Box maw={592} w={"100%"}>
-          <LeftSection />
+          <LeftSection dict={dict} />
         </Box>
         <Box maw={592} w={"100%"}>
           <Title mb={32} order={2}>
-            Other methods of implementation:
+            {dict.verification_process.choose_mehtod_page.subtitle}
           </Title>
-          <MethodsBtns />
-          <HowWork />
+          <MethodsBtns dict={dict} />
+          <HowWork dict={dict} />
         </Box>
       </Flex>
     </Container>

@@ -1,0 +1,397 @@
+{
+  "logo_text": "Unitary Aid",
+  "main_page": {
+    "home_block": {
+      "subtitle": "A reportable platform for everyday people to fundraise.",
+      "find_fund_btn": "Find fundraising",
+      "scrolling": "Join our fight for freedom, support our projects! "
+    },
+    "because_block": {
+      "title": "Because Unitary Aid",
+      "subtitle": "has everything you need",
+      "grid": {
+        "web_platform": {
+          "title": "Web - platform",
+          "subtitle": "The UnitaryAid makes it simple to launch and manage your fundraiser on the go."
+        },
+        "social_reach": {
+          "title": "Social reach",
+          "subtitle": "Harness the power of social media to spread your story and get more support."
+        },
+        "emoji": "🦾",
+        "simple_setup": {
+          "title": "Simple setup",
+          "subtitle": "You can personalize and share your UnitaryAid fundraiser in just a few minutes."
+        },
+        "secure": {
+          "title": "Secure",
+          "subtitle": "Our UnitaryAid`s Trust & Safety team works around the clock to protect against fraud."
+        }
+      }
+    },
+    "numbers_block": {
+      "title": "the numbers of our platform",
+      "flex": {
+        "fundraisers": {
+          "title": "Fundraisers",
+          "subtitle": "100 000 000 000"
+        },
+        "users": {
+          "title": "Users",
+          "subtitle": "100 000 000 000"
+        },
+        "donation_amount": {
+          "title": "Donation amount ($)",
+          "subtitle": "100 000 000 000"
+        },
+        "total_number": {
+          "title": "Total number of donations ($)",
+          "subtitle": "100 000 000 000"
+        }
+      }
+    },
+    "working_steps": {
+      "title": "Our way of working",
+      "flex": {
+        "first": "We check incoming applications to ensure that identity documents are valid",
+        "second": "We identify the urgent needs of citizens in the territory of Ukraine",
+        "third": "We prioritise requests according to the urgency and strategic importance of the need",
+        "forth": "We carry out the project: fundraising, procurement, logistics, etc",
+        "fifth": "We receive reports and monitor the use of support"
+      }
+    },
+    "sign_offer": {
+      "title": "Ready to start fundraising?",
+      "subtitle": "Sign in to our platform and raise money for charity",
+      "sign_btn": "Sign in"
+    }
+  },
+  "widgets": {
+    "cards_filters": {
+      "filters_options": {
+        "title": "Filters",
+        "subtitle": "Fundraise for",
+        "location": {
+          "title": "Location",
+          "description": "Choose the city",
+          "placeholder": "Input location"
+        },
+        "status": {
+          "title": "Status",
+          "description": "Choose the status",
+          "placeholder": "Input status",
+          "values": {
+            "open": "open",
+            "pending": "pending",
+            "closed": "closed"
+          }
+        }
+      },
+      "footer": {
+        "show_more_btn": "Show more"
+      },
+      "title": {
+        "title": "All Fundraisings",
+        "flex": {
+          "open": "waiting for the report",
+          "pending": "current fundraisings",
+          "closed": "closed"
+        }
+      }
+    },
+    "footer": {
+      "left_section": {
+        "title": "Made with love from ukrainians",
+        "copyright": "Copyright 2024. All rights reserved",
+        "terms": "Terms & Condition",
+        "privacy": "Privacy policy"
+      },
+      "right_section": {
+        "title": "Convert your hatred into donations",
+        "find_fund_btn": "Find fundraising"
+      }
+    },
+    "header": {
+      "auth_btn": "Log In",
+      "info": {
+        "home": "Home",
+        "find_fund": "Find Fundraisings"
+      },
+      "language_select": {
+        "en": "en",
+        "uk": "uk"
+      },
+      "search": {
+        "placeholder": "Search..."
+      }
+    },
+    "scroll_cards": {
+      "title": {
+        "title": "Current fundraisings"
+      }
+    },
+    "organization_info": {
+      "edit_profile_btn": "Edit profile",
+      "donate_info": {
+        "requests": "Requests",
+        "funds": "Funds",
+        "years": "Years of work"
+      },
+      "description": {
+        "about": "About"
+      },
+      "inter_btns": {
+        "share": "Share",
+        "site": "Site",
+        "verify_account": "Verify account",
+        "send_message": "Send a message",
+        "sites_for_owner": {
+          "title": "Please, provide your contact information on your social networks/applications. You can also edit these links.",
+          "footer": "We`ll process your data as set forth in our Terms of Use, Privacy Policy and Data Processing Agreement"
+        },
+        "sites_for_all": {
+          "not_found_link": "Could not find a link to this social network",
+          "title": "The user has provided their contact information on these social networks/applications. Please choose the option you prefer.",
+          "footer": "We`ll process your data as set forth in our Terms of Use, Privacy Policy and Data Processing Agreement"
+        }
+      }
+    }
+  },
+  "ui": {
+    "is_verified": {
+      "trusted": "Trusted",
+      "verified": "Verified",
+      "not": "Not yet verified"
+    }
+  },
+
+  "profile_page": {
+    "back_btn": "Back",
+    "warning": {
+      "title": "THE SPREADSHEET DATA SERVES AN INFORMATIVE PURPOSE",
+      "subtitle": "We'd like to draw your attention to the fact that access to public information, as well as information regarding the intended use of charitable funds, is governed by the current Ukrainian legislation."
+    },
+    "table": {
+      "date": "Date, time",
+      "source": "Source",
+      "fund_name": "Name of fundraising",
+      "amount": "Amount, uAH",
+      "currency": "Currency",
+      "comment": "Comment"
+    }
+  },
+  "auth_process": {
+    "title": "We`ll sign you in or create an account if you don`t have one yet",
+    "begin_page": {
+      "continue_btns": {
+        "continue_with_email": "Continue with email",
+        "continue_with_google": "Continue with Google"
+      },
+      "email_input": {
+        "placeholder": "Your Email"
+      }
+    },
+    "authed_page": {
+      "title": "your account has been successfully registered! Now you need to log in to your account",
+      "redirect_btn": "Redirect To Login Page"
+    },
+    "register_page": {
+      "title": "Please, create a new password:",
+      "continue_btn": "Continue",
+
+      "password_field": {
+        "placeholder": "Enter password",
+        "left_section": "Use 10 or more characters"
+      },
+      "confirm_field": {
+        "placeholder": "Confirm your password",
+        "left_section": "Confirm password"
+      }
+    },
+    "auth_page": {
+      "title": "Log in to account",
+      "continue_btn": "Continue"
+    }
+  },
+  "find_fundraising_page": {
+    "search": {
+      "title": "Search fundraisers on UnitaryAid",
+      "subtitle": "Find fundraisers by category, by location, by title, by keyword, or by the name of an individual",
+      "search_field": {
+        "placeholder": "Search..."
+      }
+    },
+    "categories": {
+      "drones": {
+        "title": "Drones",
+        "subtitle": "Raising money for our military «warbirds» "
+      },
+      "military_cards": {
+        "title": "Military cars",
+        "subtitle": "Raising money for cars for our defenders"
+      },
+      "medical": {
+        "title": "Medical",
+        "subtitle": "We are fundraisers for medicines and treatment"
+      },
+      "equipment": {
+        "title": "Equipment",
+        "subtitle": "Immediate help for those in need"
+      },
+      "eldery": {
+        "title": "Elderly",
+        "subtitle": "Immediate help for those in need"
+      },
+      "volunteering": {
+        "title": "Volunteering",
+        "subtitle": "Immediate help for those in need"
+      },
+      "children": {
+        "title": "Children",
+        "subtitle": "Helping children affected by disease, war, displaced, etc."
+      },
+      "animals": {
+        "title": "Animals",
+        "subtitle": "HeWe fundraise to help those we care for"
+      },
+      "military": {
+        "title": "Military",
+        "subtitle": "Our military needs"
+      },
+      "education": {
+        "title": "Education",
+        "subtitle": "We raise money for the education of those who’re in need"
+      }
+    }
+  },
+  "verification_process": {
+    "choose_mehtod_page": {
+      "title": "choose an authorization method",
+      "subtitle": "Other methods of implementation:",
+      "left_section": {
+        "title": "Authorization with",
+        "subtitle": "This is a way to verify your identity with your bank. Select your bank from the list, enter your internet banking login and password. The NBU Bank ID system is used by: Monobank, PrivatBank, Oschadbank, Rife, Sense Bank and more than 35 other banks.",
+        "auth_btn": "Authorizе"
+      },
+      "mothod_btns": {
+        "dia": "Authorizе with Дія.Підпис",
+        "file_key": "File key"
+      },
+      "how_work": {
+        "title": "Please, create a new password:",
+        "subtitle": "You need to confirm your identity for authorization. You can do this in several ways: using the ID.GOV.UA system, the Diya application or a personal key. Choose the authorization method convenient for you and follow the instructions."
+      }
+    }
+  },
+  "settings_process": {
+    "change_password_page": {
+      "title": "Change password",
+      "old_password": {
+        "title": "Old password",
+        "placeholder": "Enter password"
+      },
+      "new_password": {
+        "title": "New password",
+        "placeholder": "Enter password"
+      },
+      "save_btn": "Save changes"
+    },
+    "edit_details_page": {
+      "detailsw_inputs": {
+        "title": "My details",
+        "first_name_field": {
+          "title": "First name",
+          "placeholder": "User`s name"
+        },
+        "last_name": {
+          "title": "Last name",
+          "placeholder": "User`s last name"
+        },
+        "description_field": {
+          "title": "About me"
+        }
+      },
+      "contact_inputs": {
+        "title": "Contact",
+        "email_field": {
+          "title": "Email",
+          "placeholder": "User`s email"
+        },
+        "extra_email_field": {
+          "title": "Extra email",
+          "placeholder": "User`s extra email"
+        },
+        "phone_number": {
+          "title": "Phone number",
+          "placeholder": "User`s phone number"
+        },
+        "extra_phone_number": {
+          "title": "Extra phone number",
+          "placeholder": "User`s extra phone number"
+        }
+      },
+      "social_inputs": {
+        "title": "Contact",
+        "instagram_field": {
+          "title": "Instagram",
+          "placeholder": "User`s Instagram link"
+        },
+        "google_field": {
+          "title": "Google",
+          "placeholder": "User`s Google link"
+        },
+        "telegram_field": {
+          "title": "Telegram",
+          "placeholder": "User`s Telegram link"
+        },
+        "facebook_field": {
+          "title": "Facebook",
+          "placeholder": "User`s Facebook link"
+        },
+        "whatsapp_field": {
+          "title": "Whatsapp",
+          "placeholder": "User`s Whatsapp link"
+        }
+      },
+      "save_btn": "Save changes"
+    },
+    "verify_account_page": {
+      "info_block": {
+        "title": "Why we need your data and what about safety?",
+        "link": "Check here"
+      },
+      "choose_method": {
+        "title": "Choose an authorization method",
+        "dia": "Authorizе with Дія.Підпис",
+        "bank_id": "Authorizе with Bank Id",
+        "file_key": "File key"
+      },
+      "how_work": {
+        "title": "How is it work?",
+        "subtitle": "You need to confirm your identity for authorization. You can do this in several ways: using the ID.GOV.UA system, the Diya application or a personal key. Choose the authorization method convenient for you and follow the instructions."
+      }
+    },
+    "edit_profile": {},
+    "show_settings": {
+      "title": "Show in my public profile",
+      "profile_photo": "Profile photo",
+      "email": "Email",
+      "phone_number": "Phone number",
+      "date_registered": "Date registered",
+      "request_count": "Request Count",
+      "funds": "Funds",
+      "years": "Years of work",
+      "other_block": {
+        "title": "Other",
+        "f_label": "Profile visible in search engines",
+        "l_label": "I want to receive occasional emails about the most intresting events and compaigns on UnitaryAid"
+      },
+      "recieve_emails_block": {
+        "title": "Please, create a new password:",
+        "subtitle": "Choose one",
+        "placeholder": "Placeholder text"
+      },
+      "save": "Save Changes"
+    }
+  }
+}

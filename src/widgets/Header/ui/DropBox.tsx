@@ -6,8 +6,9 @@ import { IoMdMenu } from "react-icons/io";
 import { Info } from "./Info";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSelect } from "./LanguageSelect";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const DropBox = () => {
+export const DropBox = ({dict}: {dict: IDictionary}) => {
   const [opened, { toggle, close }] = useDisclosure();
 
   return (
@@ -17,10 +18,10 @@ export const DropBox = () => {
         onClick={toggle}
       />
       <Drawer opened={opened} onClose={close} position="left">
-        <Flex gap={20} direction={"column"}>
-          <Info />
+        <Flex gap={20} direction={"column"} onClick={close}>
+          <Info dict={dict} />
           <ThemeSwitcher />
-          <LanguageSelect/>
+          <LanguageSelect dict={dict} />
         </Flex>
       </Drawer>
     </>

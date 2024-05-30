@@ -1,24 +1,43 @@
-import { colors } from "@/shared/enums";
+'use client'
+import { LangContext } from "@/app/[lang]/LangProvider";
 import { Box, Checkbox, Flex, Text } from "@mantine/core";
-import React from "react";
+import React, { useContext } from "react";
 
-export const ShowSettings = () => {
+export const ShowSettings =({profile}: {profile: any}) => {
+  const dict = useContext(LangContext)
+
   return (
     <Box>
       <Text fw={500} mb={24}>
-        Show in my public profile
+        {dict.settings_process.show_settings.title}
       </Text>
-      <Flex gap={20} justify={"space-between"} wrap={"wrap"}>
+      <Flex mb={20} gap={20} justify={"space-between"} wrap={"wrap"}>
         <Flex direction={"column"} gap={8}>
-          <Checkbox label="Profile photo" />
-          <Checkbox label="Email" />
-          <Checkbox label="Phone number" />
-          <Checkbox label="Date registered" />
+          <Checkbox
+            label={dict.settings_process.show_settings.profile_photo}
+            defaultChecked={profile?.isShowProfilePhoto}
+            name="profilePhoto"
+          />
+          <Checkbox label={dict.settings_process.show_settings.email} disabled />
+          <Checkbox label={dict.settings_process.show_settings.phone_number} disabled />
+          <Checkbox label={dict.settings_process.show_settings.date_registered} disabled />
         </Flex>
         <Flex direction={"column"} gap={8}>
-          <Checkbox label="Donors and volunteers" />
-          <Checkbox label="Funds" />
-          <Checkbox label="Years of work" />
+          <Checkbox
+            label={dict.settings_process.show_settings.request_count}
+            defaultChecked={profile?.isShowRequestsCount}
+            name="requestCount"
+          />
+          <Checkbox
+            label={dict.settings_process.show_settings.funds}
+            defaultChecked={profile?.isShowFundsCount}
+            name="funds"
+          />
+          <Checkbox
+            label={dict.settings_process.show_settings.years}
+            defaultChecked={profile?.isShowYearsWork}
+            name="yearsWork"
+          />
         </Flex>
       </Flex>
     </Box>

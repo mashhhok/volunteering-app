@@ -1,21 +1,28 @@
 "use client";
+import { IDictionary } from "@/shared/config/i18n.config";
+import { colors } from "@/shared/enums";
 import { LinkBtn } from "@/shared/ui";
 import { Box, Flex, Text } from "@mantine/core";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import React from "react";
 
-export const Info = () => {
+export const Info = ({ dict }: { dict: IDictionary }) => {
   return (
     <>
-      <Link href="/">
-        <LinkBtn fw={500}>Donator`s rate</LinkBtn>
-      </Link>
-      <Link href="/">
-        <LinkBtn fw={500}>About us</LinkBtn>
-      </Link>
-      <Link href="/">
-        <LinkBtn fw={500}>FAQ</LinkBtn>
-      </Link>
+      <LinkBtn
+        href="/"
+        activeProps={{ color: colors.violet }}
+        props={{ style: { fw: 500 } }}
+      >
+        {dict.widgets.header.info.home}
+      </LinkBtn>
+      <LinkBtn
+        href="/find_fundraisings"
+        activeProps={{ color: colors.violet }}
+        props={{ style: { fw: 500 } }}
+      >
+        {dict.widgets.header.info.find_fund}
+      </LinkBtn>
     </>
   );
 };

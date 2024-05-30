@@ -1,26 +1,25 @@
 import { RequestCard } from "@/entities/DonationRequest";
+import { IDictionary } from "@/shared/config/i18n.config";
 import { Box, Flex } from "@mantine/core";
-import React from "react";
 
-export const CardsList = () => {
+export const CardsList = ({ list, dict }: { list: any[], dict: IDictionary }) => {
   return (
     <Flex wrap={"wrap"} gap={25}>
-      {[...Array(5)].map((item) => (
+      {list.map((item) => (
         <RequestCard
           key={item}
-          companyName={"ASD sad"}
-          avatarUrl={""}
-          requestTitle={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          }
-          requestDescription={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae repudiandae voluptas doloremque eius provident inventore aut vel deleniti at a obcaecati voluptatum dolores, quos, asperiores dignissimos ipsa consectetur magnam. Nesciunt!"
-          }
-          requestStatus={"pending"}
-          imageUrl={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Jz0jK5APORb-ApjC0Zbn8SL-JqBTtxeyg&usqp=CAU"}
-          verifiedAndTrusted={false}
-          needMoney={1000}
-          collectedMoney={1000}
+          dict={dict}
+          id={item?.requestData?.id}
+          companyName={item?.userData?.firstName}
+          requestTitle={item?.requestData?.title}
+          requestDescription={item?.requestData?.description}
+          requestStatus={item?.requestData?.status}
+          imageUrl={item?.requestData?.imageUrl[0]}
+          verifiedAndTrusted={item?.userData?.verifiedBy}
+          needMoney={item?.requestData?.needMoney}
+          collectedMoney={item?.requestData?.collectedMoney}
+          location={item?.requestData?.location}
+          categories={item?.requestData?.tags}
         />
       ))}
     </Flex>

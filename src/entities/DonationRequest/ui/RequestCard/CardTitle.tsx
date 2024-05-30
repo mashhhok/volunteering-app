@@ -1,13 +1,19 @@
-import { Title } from '@mantine/core'
+import { Title } from "@mantine/core";
 import React from "react";
 
-export const CardTitle = ({children}: {children: React.ReactNode}) => {
+export const CardTitle = ({
+  children,
+  small,
+}: {
+  children: React.ReactNode;
+  small?: boolean;
+}) => {
   return (
     <Title
-      order={4}
+      fz={small ? 14 : 18}
       style={{
         display: "-webkit-box",
-        "font-size": "20px",
+        textTransform: "uppercase",
         "-webkit-line-clamp": "2" /* количество строк */,
         "-webkit-box-orient": "vertical",
         overflow: "hidden",

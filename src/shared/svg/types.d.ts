@@ -1,6 +1,7 @@
 interface ISVG {
   fill?: string;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   bg?: string;
+  style?: any;
 }

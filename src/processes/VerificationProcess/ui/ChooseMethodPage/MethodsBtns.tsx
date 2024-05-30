@@ -1,14 +1,16 @@
+import { verifiyAction } from "@/app/api/verification/verifiyAction";
+import { IDictionary } from "@/shared/config/i18n.config";
 import { colors } from "@/shared/enums";
 import { TopRightArrowSVG } from "@/shared/svg";
-import { BlurButton } from "@/shared/ui";
+import { BlurButton, HiddenInput } from "@/shared/ui";
 import { Box } from "@mantine/core";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import React from "react";
 
-export const MethodsBtns = () => {
+export const MethodsBtns = ({dict}: {dict: IDictionary}) => {
   return (
     <>
-      <Link href="/verification/dia">
+      <form action={verifiyAction}>
         <BlurButton
           size={"xl"}
           visibleFrom="sm"
@@ -16,8 +18,10 @@ export const MethodsBtns = () => {
           color={colors.violet}
           rightSection={<TopRightArrowSVG />}
         >
-          Authorizе with Дія.Підпис
+          {dict.verification_process.choose_mehtod_page.mothod_btns.dia}
         </BlurButton>
+        <HiddenInput name="verificationBy" value="dia" />
+
         <BlurButton
           size={"lg"}
           hiddenFrom="sm"
@@ -25,13 +29,13 @@ export const MethodsBtns = () => {
           color={colors.violet}
           rightSection={<TopRightArrowSVG />}
         >
-          Authorizе with Дія.Підпис
+          {dict.verification_process.choose_mehtod_page.mothod_btns.dia}
         </BlurButton>
-      </Link>
+      </form>
       {/*  */}
       <Box h={16} />
       {/*  */}
-      <Link href="/verification/file_key">
+      <form action={verifiyAction}>
         <BlurButton
           size="xl"
           visibleFrom="sm"
@@ -39,7 +43,7 @@ export const MethodsBtns = () => {
           rightSection={<TopRightArrowSVG />}
           mb={40}
         >
-          File key
+          {dict.verification_process.choose_mehtod_page.mothod_btns.file_key}
         </BlurButton>
         <BlurButton
           size="lg"
@@ -48,9 +52,10 @@ export const MethodsBtns = () => {
           rightSection={<TopRightArrowSVG />}
           mb={40}
         >
-          File key
+          {dict.verification_process.choose_mehtod_page.mothod_btns.file_key}
         </BlurButton>
-      </Link>
+        <HiddenInput name="verificationBy" value="fileKey" />
+      </form>
     </>
   );
 };

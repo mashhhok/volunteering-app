@@ -8,8 +8,10 @@ export enum colors {
   green = "rgba(0, 100, 55, 1)",
   blue = "rgba(22, 121, 211, 1)",
   neutral = "rgba(243, 244, 252, 1)",
-  red = "rgba(241, 61, 63, 1)",
   orange = 'rgba(255, 144, 41, 1)',
+  
+  red = "rgba(241, 61, 63, 1)",
+  lightRed = 'rgba(255, 201, 201, 1)',
 
   lightViolet = "rgba(154, 154, 255, 1)",
   violet = "#4347FF",

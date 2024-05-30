@@ -4,8 +4,13 @@ import React from "react";
 
 export const SiteInput = () => {
   return (
-    <Box >
-      <TextField w='100%' title="Site" placeholder="User`s site link" />
+    <Box>
+      <TextField
+        noColors
+        w="100%"
+        title="Site"
+        placeholder="User`s site link"
+      />
     </Box>
   );
 };

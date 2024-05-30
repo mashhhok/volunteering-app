@@ -13,7 +13,12 @@ export const AreaField = (
   props: TextareaProps & { title: string; maxLen: number }
 ) => {
   const { title, maxLen, ...inputProps } = props;
-  const input = useInput("", { maxWidth: props.maxLen });
+  const input = useInput(props?.defaultValue ? String(props.defaultValue) : '', { maxWidth: props.maxLen });
+
+  React.useEffect(() => {
+    input.setValue(String(props.defaultValue))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.defaultValue])
 
   return (
     <Box>

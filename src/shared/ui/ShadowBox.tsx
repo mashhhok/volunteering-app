@@ -1,9 +1,10 @@
 'use client'
 import { useMantineColorScheme, Card, rgba, Title, Text } from "@mantine/core";
 import { colors } from "../enums";
+import { useThemeStore } from "@/app/store";
 
 export const ShadowBox = ({ title, subtitle }: { title: string; subtitle: string }) => {
-  const { colorScheme } = useMantineColorScheme();
+  const colorScheme = useThemeStore(state => state.theme)
   const isDark = colorScheme === "dark";
 
   return (

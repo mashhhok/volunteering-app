@@ -5,30 +5,37 @@ import { LinearDivider, Logo } from "@/shared/ui";
 import { RightSection } from "./RightSection";
 import { BlurText } from "./BlurText";
 import { colors } from "@/shared/enums";
+import { Anchor } from "./Anchor";
+import { IDictionary, Locale } from "@/shared/config/i18n.config";
 
-export const Footer = () => {
+export const Footer = async ({dict}: {dict: IDictionary}) => {
+
   return (
-    <Box>
+    <Box style={{backgroundColor: 'var(--mantine-color-body)'}}>
       <Container size={"xl"} mt={100}>
         <Flex justify={"center"}>
           <LinearDivider h={"2px"} w={"647px"} color={colors.violet} />
         </Flex>
+        <Flex justify={"flex-end"} mt={5}>
+          <Anchor/>
+        </Flex>
         <Box h={{ base: 80, sm: 152 }} />
         <Flex
           justify={"space-between"}
-          direction={{ base: "column", sm: "row" }}
+          // align={'center'}
+          direction={{ base: "column", md: "row" }}
         >
-          <Box hiddenFrom="sm" pb={10}>
+          <Box hiddenFrom="md" pb={10}>
             <Logo />
           </Box>
-          <LeftSection />
-          <Box visibleFrom="sm">
+          <LeftSection dict={dict} />
+          <Box visibleFrom="md">
             <Logo />
           </Box>
-          <Box p={8} hiddenFrom="sm">
+          <Box p={8} hiddenFrom="md">
             <LinearDivider h={"2px"} w={"40%"} color={colors.yellow} />
           </Box>
-          <RightSection />
+          <RightSection dict={dict} />
         </Flex>
         <Box h={110} />
       </Container>

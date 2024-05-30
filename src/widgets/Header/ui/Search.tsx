@@ -1,4 +1,5 @@
 "use client";
+import { IDictionary } from "@/shared/config/i18n.config";
 import { colors } from "@/shared/enums";
 import { Box, Divider, Flex, Menu, TextInput } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
@@ -6,7 +7,7 @@ import React, { ChangeEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineClear } from "react-icons/md";
 
-export const Search = () => {
+export const Search = ({dict}: {dict: IDictionary}) => {
   const [isFirstClick, setIsFirstClick] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const { hovered, ref } = useHover<HTMLDivElement>();
@@ -38,7 +39,7 @@ export const Search = () => {
         leftSectionPointerEvents={isFirstClick ? "none" : "all"}
         w={isFirstClick ? "100%" : 0}
         radius={"md"}
-        placeholder="Search..."
+        placeholder={dict.widgets.header.search.placeholder}
         styles={{
           root: {
             transition: ".5s",

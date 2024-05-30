@@ -1,9 +1,10 @@
+"use client";
 import React, { ChangeEvent } from "react";
 import { useDebounce } from "./useDebounce";
 
-function validRules(rules: IRules, value: string) {
+function validRules(rules: IInputRules, value: string) {
   for (const rule in rules) {
-    const _rule = rule as keyof IRules;
+    const _rule = rule as keyof IInputRules;
     let str = "qwertyuiopasdfghjklzxcvbnm1234567890".split("");
 
     switch (_rule) {
@@ -47,7 +48,7 @@ function validRules(rules: IRules, value: string) {
   return null;
 }
 
-interface IRules {
+export interface IInputRules {
   maxWidth?: number;
   minWidth?: number;
   isEmail?: boolean;
@@ -59,7 +60,7 @@ interface IRules {
   withDebounce?: boolean;
 }
 
-export const useInput = (defValue: string, rules: IRules) => {
+export const useInput = (defValue: string, rules: IInputRules) => {
   const [value, setValue] = React.useState(defValue);
   const [isShowError, setIsShowError] = React.useState(false);
   const [errorText, setErrorText] = React.useState("Ошибка!");
@@ -110,7 +111,7 @@ export const useInput = (defValue: string, rules: IRules) => {
   React.useEffect(() => {
     const _e = {
       target: { value: value },
-    } as ChangeEvent<HTMLInputElement>;
+    } as ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
     onChange(_e);
     // eslint-disable-next-line react-hooks/exhaustive-deps

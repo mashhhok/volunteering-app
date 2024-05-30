@@ -144,3 +144,14 @@ html,
 body {
   scroll-behavior: smooth !important;
 } */
+
+@keyframes RepeatText {
+  100% {
+    transform: translate3d(-1000%, 0, 0);
+  }
+}
+
+button{
+  background-color: transparent;
+}
+
