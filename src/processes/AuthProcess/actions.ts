@@ -92,11 +92,11 @@ export async function registerAction(
 export async function isEmailExistAction(formData: FormData) {
   "use server";
   const email = formData.get("email")?.toString();
-  if (!email) redirect("/auth/1");
+  if (!email) redirect("/en-US/auth/1");
   const user = await getUserByEmail(email);
   const isExistUser = Boolean(user);
-  if (isExistUser) redirect("/auth/4");
-  else redirect("/auth/2");
+  if (isExistUser) redirect("/en-US/auth/4");
+  else redirect("/en-US/auth/2");
 }
 
 export async function authAction(
