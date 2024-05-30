@@ -36,7 +36,8 @@ export const createFundAction = async (formData: FormData) => {
   const imgPaths: string[] = [];
   for (let i = 0; i < imagesLength; i++) {
     const img: File | null | string = formData.get("image_" + i);
-    if (img instanceof File) {
+    if(!img) return
+    if (typeof img === 'object') {
       let path = "";
       const bytes = await img.arrayBuffer();
       const buffer = Buffer.from(bytes);
