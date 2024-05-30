@@ -4,8 +4,8 @@ import { colors } from "@/shared/enums";
 import { InfoSVG } from "@/shared/svg";
 import { Box, Flex, Text } from "@mantine/core";
 import React from "react";
-import { useCreateFundraiserStore } from "../../../../(fundraiser_request)/create_fundraiser/store";
 import { IDictionary } from "@/shared/config/i18n.config";
+import { useCreateFundraiserStore } from "../store";
 export const CardPreview = ({
   companyName,
   verifiedAndTrusted,

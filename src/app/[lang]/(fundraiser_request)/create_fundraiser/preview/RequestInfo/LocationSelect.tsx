@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { useCreateFundraiserStore } from "../../../../../(fundraiser_request)/create_fundraiser/store";
 import { Select, Text } from "@mantine/core";
 import { locations } from "@/shared/const";
+import { useCreateFundraiserStore } from "../../store";
 
 export const LocationSelect = () => {
   const setLocation = useCreateFundraiserStore((store) => store.setLocation);

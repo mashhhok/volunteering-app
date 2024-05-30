@@ -80,7 +80,7 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
           Log Out
         </Menu.Item>
         <Menu.Item fz={"lg"} fw={500} leftSection={<IoMdCreate />}>
-          <Link href={"/create_fundraiser"}>Create Fund</Link>
+          <Link href={"/create_fundraiser/names"}>Create Fund</Link>
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

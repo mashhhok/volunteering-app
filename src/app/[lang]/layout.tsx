@@ -32,7 +32,7 @@ export default async function RootLayout({
   };
 }>) {
   const headAndFootHiddened = [
-    "/auth/",
+    "/auth/1",
     "/create_fundraiser/names",
     "/create_fundraiser/amount",
   ];

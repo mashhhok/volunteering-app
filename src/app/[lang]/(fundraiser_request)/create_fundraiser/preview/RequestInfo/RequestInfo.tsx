@@ -7,8 +7,8 @@ import { Published } from "./Published";
 import { LocationSelect } from "./LocationSelect";
 import { ProfileInfo } from "../../../components/ProfileInfo";
 import { HiddenInput } from "@/shared/ui";
-import { useCreateFundraiserStore } from "../../../../../(fundraiser_request)/create_fundraiser/store";
 import { IDictionary } from "@/shared/config/i18n.config";
+import { useCreateFundraiserStore } from "../../store";
 
 export const RequestInfo = ({
   avatarUrl,

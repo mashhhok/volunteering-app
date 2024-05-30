@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { CollectedGraphic } from "../../components/CollectedGraphic/CollectedGraphic";
-import { useCreateFundraiserStore } from "../../../../(fundraiser_request)/create_fundraiser/store";
+import { useCreateFundraiserStore } from "../store";
 
 export const Graphic = () => {
   const { amount, currency } = useCreateFundraiserStore();

@@ -1,10 +1,10 @@
 "use client";
 import { Button, Flex } from "@mantine/core";
 import React from "react";
-import { useCreateFundraiserStore } from "../../../../../(fundraiser_request)/create_fundraiser/store";
 import { colors } from "@/shared/enums";
 import { useThemeStore } from "@/app/store";
 import { TagButton } from "@/app/[lang]/(fundraiser_request)/components/TagButton";
+import { useCreateFundraiserStore } from "../../store";
 
 
 export const Tags = () => {
