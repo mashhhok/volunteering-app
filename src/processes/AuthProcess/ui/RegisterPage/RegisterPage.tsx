@@ -31,7 +31,7 @@ export const RegisterPage = ({
   );
   const [state, formAction] = useFormState(action, null);
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {}
-  useConditionalRedirect();
+  // useConditionalRedirect();
 
   return (
     <form

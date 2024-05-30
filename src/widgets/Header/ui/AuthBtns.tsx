@@ -8,7 +8,7 @@ import React from "react";
 export const AuthBtns = ({dict}: {dict: IDictionary}) => {
   return (
     <Flex gap={15}>
-      <Link href="/auth">
+      <Link href="/auth/1">
         <BlurButton visibleFrom="md" color={colors.violet}>
           {dict.widgets.header.auth_btn}
         </BlurButton>

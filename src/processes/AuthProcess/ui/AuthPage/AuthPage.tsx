@@ -24,7 +24,7 @@ export const AuthPage = ({
   const email = useAuthStore((state) => state.email);
   const [state, formAction] = useFormState(action, null);
 
-  useConditionalRedirect();
+  // useConditionalRedirect();
   return (
     <Box maw={500} w={"100%"}>
       <Title order={2} style={{ textAlign: "center" }} mb={24}>
