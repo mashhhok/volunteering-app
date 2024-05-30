@@ -118,6 +118,6 @@ export async function authAction(
     return "Не удалось авторизоваться!";
   }
   // if (setSession === "confirm_mail") redirect("/auth/3");
-  if (setSession) redirect("/");
+  if (setSession) redirect("/en-US");
   return "Не удалось авторизоваться!";
 }
