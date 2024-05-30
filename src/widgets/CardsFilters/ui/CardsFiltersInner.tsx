@@ -11,12 +11,13 @@ import { useSearchParams } from "next/navigation";
 import { useCardsFiltersStore } from "../store";
 import { useDebounce } from "@/shared/lib/hooks";
 
-export const  CardsFiltersInner = (props: CardsFiltersProps) => {
+export const CardsFiltersInner = (props: CardsFiltersProps) => {
   const searchParams = useSearchParams();
   const ref = React.useRef<HTMLDivElement>(null);
   const [cards, setCards] = React.useState([]);
   const { setTotalPages } = useCardsFiltersStore();
   const debounce = useDebounce();
+  const dict = props.dict;
 
   async function Filter() {
     const emergency = Boolean(searchParams.get("emergency"));
@@ -52,25 +53,21 @@ export const  CardsFiltersInner = (props: CardsFiltersProps) => {
   }, [searchParams]);
   return (
     <Container ref={ref} size={"xl"} style={{ scrollMarginTop: 100 }}>
-      <Title pending={""} waitReport={""} closed={""} />
+      <Title dict={dict} />
       <Box h={42} />
-      {/* {!cards.length ? (
-        <Text color={colors.gray}>No fundraifings yet.</Text>
-      ) : ( */}
-        <Flex gap={40} direction={{ base: "column", lg: "row" }}>
-          <Flex maw={300} w={"100%"} flex="0 0 auto" visibleFrom="lg">
-            <FilterOptions />
-          </Flex>
-          <Box flex="1 1 auto">
-            <Flex mih="100%" direction={"column"}>
-              <Box flex="1 1 auto" mb={24}>
-                <CardsList list={cards} />
-              </Box>
-              <Footer parentRef={ref} />
-            </Flex>
-          </Box>
+      <Flex gap={40} direction={{ base: "column", lg: "row" }}>
+        <Flex maw={300} w={"100%"} flex="0 0 auto" visibleFrom="lg">
+          <FilterOptions dict={dict} />
         </Flex>
-        {/* )} */}
+        <Box flex="1 1 auto">
+          <Flex mih="100%" direction={"column"}>
+            <Box flex="1 1 auto" mb={24}>
+              <CardsList dict={dict} list={cards} />
+            </Box>
+            <Footer parentRef={ref} dict={dict} />
+          </Flex>
+        </Box>
+      </Flex>
     </Container>
   );
 };

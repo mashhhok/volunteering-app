@@ -12,6 +12,7 @@ import {
 import { colors } from "@/shared/enums";
 import { editSitesAction } from "@/app/api/settings/editDetails/editSitesAction";
 import { BlurButton } from "@/shared/ui";
+import { IDictionary } from "@/shared/config/i18n.config";
 
 function SocialLink({
   logo,
@@ -48,6 +49,7 @@ export const SitesModalForOwner = ({
   open,
   onClose,
   sites,
+  dict,
 }: {
   open: boolean;
   onClose: () => void;
@@ -58,9 +60,10 @@ export const SitesModalForOwner = ({
     telegram: string;
     whatsapp: string;
   };
+  dict: IDictionary;
 }) => {
   return (
-    <form action={editSitesAction} onSubmit={onClose} >
+    <form action={editSitesAction} onSubmit={onClose}>
       <Card
         p={40}
         radius={"md"}
@@ -88,11 +91,10 @@ export const SitesModalForOwner = ({
         <Flex mb={40} gap={20} direction={"column"} align={"center"}>
           <LogoSVG fill={colors.violet} />
           <Title style={{ textAlign: "center" }} order={2}>
-            UnitaryAid
+            {dict.logo_text}
           </Title>
           <Text size="sm" color={colors.gray} style={{ textAlign: "center" }}>
-            Please, provide your contact information on your social
-            networks/applications. You can also edit these links.
+            {dict.widgets.organization_info.inter_btns.sites_for_owner.title}
           </Text>
         </Flex>
         <Flex mb={44} gap={12} direction={"column"} w={"100%"}>
@@ -126,8 +128,7 @@ export const SitesModalForOwner = ({
           <BlurButton color={colors.violet}>Save changes</BlurButton>
         </Flex>
         <Text size="xs" style={{ textAlign: "center" }}>
-          We`ll process your data as set forth in our Terms of Use, Privacy
-          Policy and Data Processing Agreement
+          {dict.widgets.organization_info.inter_btns.sites_for_owner.footer}
         </Text>
       </Card>
     </form>

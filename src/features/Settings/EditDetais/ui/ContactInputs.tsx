@@ -1,6 +1,9 @@
+"use client";
+
+import { LangContext } from "@/app/[lang]/LangProvider";
 import { TextField } from "@/shared/ui";
 import { Box, Flex, Text } from "@mantine/core";
-import React from "react";
+import React, { useContext } from "react";
 
 export const ContactInputs = ({
   email,
@@ -9,25 +12,39 @@ export const ContactInputs = ({
   email: string;
   phone: string;
 }) => {
+  const dict = useContext(LangContext);
+
   return (
     <Box>
       <Text fw={500} mb={15} ml={10}>
-        Contact
+        {dict.settings_process.edit_details_page.contact_inputs.title}
       </Text>
       <Flex mb={16} gap={20}>
         <Box flex="1 1 auto">
           <TextField
             noColors
-            title="Email"
+            title={
+              dict.settings_process.edit_details_page.contact_inputs.email_field
+                .title
+            }
             defaultValue={email}
-            placeholder="User`s email"
+            placeholder={
+              dict.settings_process.edit_details_page.contact_inputs.email_field
+                .placeholder
+            }
             name="email"
           />
         </Box>
         <Box flex="1 1 auto">
           <TextField
-            title="Extra email"
-            placeholder="User`s extra email"
+            title={
+              dict.settings_process.edit_details_page.contact_inputs
+                .extra_email_field.title
+            }
+            placeholder={
+              dict.settings_process.edit_details_page.contact_inputs
+                .extra_email_field.placeholder
+            }
             noColors
             name="emailAgain"
           />
@@ -36,8 +53,14 @@ export const ContactInputs = ({
       <Flex gap={20}>
         <Box flex="1 1 auto">
           <TextField
-            title="Phone number"
-            placeholder="User`s phone number"
+            title={
+              dict.settings_process.edit_details_page.contact_inputs
+                .phone_number.title
+            }
+            placeholder={
+              dict.settings_process.edit_details_page.contact_inputs
+                .phone_number.placeholder
+            }
             noColors
             name="phone"
             defaultValue={phone}
@@ -45,8 +68,14 @@ export const ContactInputs = ({
         </Box>
         <Box flex="1 1 auto">
           <TextField
-            title="Extra phone number"
-            placeholder="User`s extra phone number"
+            title={
+              dict.settings_process.edit_details_page.contact_inputs
+                .extra_phone_number.title
+            }
+            placeholder={
+              dict.settings_process.edit_details_page.contact_inputs
+                .extra_phone_number.placeholder
+            }
             noColors
             name="phoneAgain"
           />

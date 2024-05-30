@@ -1,11 +1,22 @@
 import React from "react";
 import { SettingsWrapper } from "../../SettingsWrapper";
-import { Box, Flex, Text } from "@mantine/core";
+import { Box, Flex, Text, Button } from "@mantine/core";
 import { BlurButton, Info, LinearDivider } from "@/shared/ui";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import { colors } from "@/shared/enums";
+import { getSession } from "@/shared/auth";
+import { redirect } from "next/navigation";
+import { getAllRequestsByUserId } from "@/app/api/requests/getAllRequestsByUserId";
+import { RequestCard } from "@/entities/DonationRequest";
+import { VerifyCards } from "./VerifyCards";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const VerifyFunds = () => {
+export const VerifyFunds = async ({dict}: {dict: IDictionary}) => {
+  const session = await getSession();
+  if (!session) redirect("/auth/1");
+  const requests = await getAllRequestsByUserId(session?.id, {
+    status: "open",
+  });
   return (
     <Box>
       <Info
@@ -48,12 +59,22 @@ export const VerifyFunds = () => {
         </Flex>
         <LinearDivider h={"2px"} w={"100%"} color={colors.violet} />
         <Box h={40} />
-        <Flex direction={"column"} align={"center"} justify={"center"} gap={16}>
-          <Text fw={500} size="sm" >
-            You have not fundraisers!
-          </Text>
-          <BlurButton color={colors.violet} size='lg'>Create fundraiser</BlurButton>
-        </Flex>
+        {!requests.requestsData.length && (
+          <Flex
+            direction={"column"}
+            align={"center"}
+            justify={"center"}
+            gap={16}
+          >
+            <Text fw={500} size="sm">
+              You have not fundraisers to verify!
+            </Text>
+            <BlurButton color={colors.violet} size="lg">
+              Create fundraiser
+            </BlurButton>
+          </Flex>
+        )}
+        <VerifyCards requests={requests} dict={dict}/>
       </SettingsWrapper>
     </Box>
   );

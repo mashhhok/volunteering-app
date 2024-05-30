@@ -2,17 +2,20 @@ import { Flex, Title } from "@mantine/core";
 import React from "react";
 import { UserSVG } from "@/shared/svg/UserSVG";
 import { IsVerified } from "@/shared/ui/IsVerified";
+import { IDictionary } from "@/shared/config/i18n.config";
 
 interface ICompanyInfo {
   companyName: string;
   verifiedAndTrusted: boolean;
   small?: boolean;
+  dict: IDictionary
 }
 
 export const CompanyInfo = ({
   companyName,
   verifiedAndTrusted,
   small,
+  dict
 }: ICompanyInfo) => {
   return (
     <Flex gap={16} justify={"space-between"} wrap={"wrap"}>
@@ -22,7 +25,7 @@ export const CompanyInfo = ({
           {companyName}
         </Title>
       </Flex>
-      <IsVerified small={small} isVerified={verifiedAndTrusted} />
+      <IsVerified dict={dict} small={small} isVerified={verifiedAndTrusted} />
     </Flex>
   );
 };

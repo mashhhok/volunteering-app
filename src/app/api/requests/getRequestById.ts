@@ -4,6 +4,7 @@ export const getRequestById = async (id: string | number) => {
     const res = await fetch(`${process.env.MOCKAPI_URL}/requests/${id}`, {
       cache: "no-store",
     }).then((res) => res.json());
+    if(!res) return null
 
     const profiles = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {
       cache: "no-store",

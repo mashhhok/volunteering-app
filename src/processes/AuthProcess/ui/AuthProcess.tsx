@@ -1,18 +1,18 @@
 import React from "react";
-import { FirstPage } from "./FirstPage/FirstPage";
-import { SecondPage } from "./SecondPage/SecondPage";
-import { ThirdPage } from "./ThirdPage/ThirdPage";
+import { AuthedPage } from "./AuthedPage/AuthedPage";
+import { RegisterPage } from "./RegisterPage/RegisterPage";
 import {
   IregisterActionResponse,
   authAction,
   isEmailExistAction,
   registerAction,
 } from "../actions";
-import { ForthPage } from "./ForthPage/ForthPage";
-import { redirect } from "next/navigation";
+import { AuthPage } from "./AuthPage/AuthPage";
 import { Title } from "@mantine/core";
+import { BeginPage } from "./BeginPage/BeginPage";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const AuthProcess = ({ pageId }: { pageId: number }) => {
+export const AuthProcess = ({ pageId, dict }: { pageId: number, dict: IDictionary }) => {
   async function registerActionUpd(prevState: any, formData: FormData) {
     "use server";
     const res: IregisterActionResponse = await registerAction(
@@ -28,12 +28,12 @@ export const AuthProcess = ({ pageId }: { pageId: number }) => {
   return (
     <>
       <Title order={4} style={{ textAlign: "center" }} maw={500} mb={40}>
-        We`ll sign you in or create an account if you don`t have one yet
+        {dict.auth_process.title}
       </Title>
-      {pageId === 1 && <FirstPage action={isEmailExistAction} />}
-      {pageId === 3 && <SecondPage />}
-      {pageId === 2 && <ThirdPage action={registerActionUpd} />}
-      {pageId === 4 && <ForthPage action={authAction} />}
+      {pageId === 1 && <BeginPage dict={dict} action={isEmailExistAction} />}
+      {pageId === 3 && <AuthedPage dict={dict} />}
+      {pageId === 2 && <RegisterPage dict={dict} action={registerActionUpd} />}
+      {pageId === 4 && <AuthPage  dict={dict} action={authAction} />}
     </>
   );
 };

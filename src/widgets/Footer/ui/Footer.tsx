@@ -6,9 +6,9 @@ import { RightSection } from "./RightSection";
 import { BlurText } from "./BlurText";
 import { colors } from "@/shared/enums";
 import { Anchor } from "./Anchor";
+import { IDictionary, Locale } from "@/shared/config/i18n.config";
 
-export const Footer = async () => {
-  
+export const Footer = async ({dict}: {dict: IDictionary}) => {
 
   return (
     <Box style={{backgroundColor: 'var(--mantine-color-body)'}}>
@@ -28,20 +28,20 @@ export const Footer = async () => {
           <Box hiddenFrom="md" pb={10}>
             <Logo />
           </Box>
-          {/* <LeftSection /> */}
+          <LeftSection dict={dict} />
           <Box visibleFrom="md">
             <Logo />
           </Box>
           <Box p={8} hiddenFrom="md">
             <LinearDivider h={"2px"} w={"40%"} color={colors.yellow} />
           </Box>
-          <RightSection />
+          <RightSection dict={dict} />
         </Flex>
         <Box h={110} />
       </Container>
-      {/* <Container size="2000px" p={0}>
+      <Container size="2000px" p={0}>
         <BlurText />
-      </Container> */}
+      </Container>
     </Box>
   );
 };

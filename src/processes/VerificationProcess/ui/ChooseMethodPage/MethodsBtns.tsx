@@ -1,12 +1,13 @@
 import { verifiyAction } from "@/app/api/verification/verifiyAction";
+import { IDictionary } from "@/shared/config/i18n.config";
 import { colors } from "@/shared/enums";
 import { TopRightArrowSVG } from "@/shared/svg";
 import { BlurButton, HiddenInput } from "@/shared/ui";
 import { Box } from "@mantine/core";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import React from "react";
 
-export const MethodsBtns = () => {
+export const MethodsBtns = ({dict}: {dict: IDictionary}) => {
   return (
     <>
       <form action={verifiyAction}>
@@ -17,7 +18,7 @@ export const MethodsBtns = () => {
           color={colors.violet}
           rightSection={<TopRightArrowSVG />}
         >
-          Authorizе with Дія.Підпис
+          {dict.verification_process.choose_mehtod_page.mothod_btns.dia}
         </BlurButton>
         <HiddenInput name="verificationBy" value="dia" />
 
@@ -28,7 +29,7 @@ export const MethodsBtns = () => {
           color={colors.violet}
           rightSection={<TopRightArrowSVG />}
         >
-          Authorizе with Дія.Підпис
+          {dict.verification_process.choose_mehtod_page.mothod_btns.dia}
         </BlurButton>
       </form>
       {/*  */}
@@ -42,7 +43,7 @@ export const MethodsBtns = () => {
           rightSection={<TopRightArrowSVG />}
           mb={40}
         >
-          File key
+          {dict.verification_process.choose_mehtod_page.mothod_btns.file_key}
         </BlurButton>
         <BlurButton
           size="lg"
@@ -51,7 +52,7 @@ export const MethodsBtns = () => {
           rightSection={<TopRightArrowSVG />}
           mb={40}
         >
-          File key
+          {dict.verification_process.choose_mehtod_page.mothod_btns.file_key}
         </BlurButton>
         <HiddenInput name="verificationBy" value="fileKey" />
       </form>

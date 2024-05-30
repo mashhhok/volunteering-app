@@ -7,6 +7,7 @@ import verified_green_icon from "@/public/verified_green.svg";
 import verified_blue_icon from "@/public/verified_blue.svg";
 import Image from "next/image";
 import { FaceSVG } from "../svg";
+import { IDictionary } from "../config/i18n.config";
 const TrustedIcon = ({ color }: { color: "green" | "blue" }) => (
   <Image
     src={color === "green" ? trusted_green_icon : trusted_blue_icon}
@@ -30,10 +31,12 @@ export const IsVerified = ({
   isVerified,
   small,
   short,
+  dict,
 }: {
   isVerified: boolean;
   small?: boolean;
   short?: boolean;
+  dict: IDictionary;
 }) => {
   if (isVerified)
     return (
@@ -47,7 +50,7 @@ export const IsVerified = ({
               order={6}
               {...(small && { fz: 10 })}
             >
-              Trusted
+              {dict.ui.is_verified.trusted}
             </Title>
           </Flex>
         )}
@@ -60,7 +63,7 @@ export const IsVerified = ({
             fz={12}
             {...(small && { fz: 10 })}
           >
-            Verified
+            {dict.ui.is_verified.verified}
           </Title>
         </Flex>
       </Flex>
@@ -71,7 +74,7 @@ export const IsVerified = ({
       <Flex align="center" gap={5}>
         <FaceSVG width={small ? 10 : 16} height={small ? 10 : 16} />
         <Text size="xs" color={colors.orange} {...(small && { fz: 10 })}>
-          Not yet verified
+          {dict.ui.is_verified.not}
         </Text>
       </Flex>
     );

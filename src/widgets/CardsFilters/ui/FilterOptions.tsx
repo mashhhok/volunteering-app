@@ -6,8 +6,9 @@ import { cardTags, colors } from "@/shared/enums";
 import { FiltersSVG } from "@/shared/svg/FiltersSVG";
 import { useSearchParams } from "next/navigation";
 import { useDebounce, useReplaceSearchParams } from "@/shared/lib/hooks";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const FilterOptions = () => {
+export const FilterOptions = ({ dict }: { dict: IDictionary }) => {
   const searchParams = useSearchParams();
   const replaceSearchParams = useReplaceSearchParams();
 
@@ -27,8 +28,20 @@ export const FilterOptions = () => {
   const [location, setLocation] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<string | null>(null);
 
-  const statuses = ["open", "pending", "closed"];
-
+  const statuses = [
+    {
+      value: "open",
+      label: dict.widgets.cards_filters.filters_options.status.values.open,
+    },
+    {
+      value: "pending",
+      label: dict.widgets.cards_filters.filters_options.status.values.pending,
+    },
+    {
+      value: "closed",
+      label: dict.widgets.cards_filters.filters_options.status.values.closed,
+    },
+  ];
 
   React.useEffect(() => {
     async function Do() {
@@ -56,7 +69,11 @@ export const FilterOptions = () => {
   ];
   const fundraiseArray = [
     { text: cardTags.emergency, value: emergency, setValue: setEmergency },
-    { text: cardTags.militaryCars, value: militarCars, setValue: setMilitarCars },
+    {
+      text: cardTags.militaryCars,
+      value: militarCars,
+      setValue: setMilitarCars,
+    },
     { text: cardTags.equipment, value: equipment, setValue: setEquipment },
     { text: cardTags.military, value: military, setValue: setMilitary },
     { text: cardTags.drones, value: drones, setValue: Drones },
@@ -65,7 +82,11 @@ export const FilterOptions = () => {
     { text: cardTags.animals, value: animals, setValue: setAnimals },
     { text: cardTags.children, value: children, setValue: setСhildren },
     { text: cardTags.elderly, value: elderly, setValue: setЕlderly },
-    { text: cardTags.volunteering, value: volunteering, setValue: setVolunteering },
+    {
+      text: cardTags.volunteering,
+      value: volunteering,
+      setValue: setVolunteering,
+    },
   ];
 
   React.useEffect(() => {
@@ -111,11 +132,11 @@ export const FilterOptions = () => {
         <Box w={"100%"}>
           <Flex gap={12} align={"center"} mb={40}>
             <FiltersSVG />
-            <Text fz="20px">Filters</Text>
+            <Text fz="20px">{dict.widgets.cards_filters.filters_options.title}</Text>
           </Flex>
 
           <Title order={4} mb={20}>
-            Fundraise for
+            {dict.widgets.cards_filters.filters_options.subtitle}
           </Title>
           <Flex gap={15} direction={"column"} mb={40}>
             {fundraiseArray.map((item, index) => (
@@ -141,12 +162,12 @@ export const FilterOptions = () => {
           <Select
             label={
               <Title order={4} mb={5}>
-                Location
+                {dict.widgets.cards_filters.filters_options.location.title}
               </Title>
             }
             radius={"md"}
-            description={"Choose the city"}
-            placeholder="Input location"
+            description={dict.widgets.cards_filters.filters_options.location.description}
+            placeholder={dict.widgets.cards_filters.filters_options.location.placeholder}
             maw={280}
             data={locations}
             searchable={true}
@@ -160,12 +181,12 @@ export const FilterOptions = () => {
           <Select
             label={
               <Title order={4} mb={5}>
-                Status
+                {dict.widgets.cards_filters.filters_options.status.title}
               </Title>
             }
             radius={"md"}
-            description={"Choose the city"}
-            placeholder="Input location"
+            description={dict.widgets.cards_filters.filters_options.status.description}
+            placeholder={dict.widgets.cards_filters.filters_options.status.placeholder}
             maw={280}
             data={statuses}
             searchable={true}

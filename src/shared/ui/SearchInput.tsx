@@ -12,9 +12,10 @@ import { useHover } from "@mantine/hooks";
 import React, { ChangeEvent } from "react";
 import { IoSearch } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import { IDictionary } from "../config/i18n.config";
 
 export const SearchInput = (
-  props: TextInputProps & { value?: string; setValue?: (val: string) => void }
+  props: TextInputProps & { value?: string; setValue?: (val: string) => void, dict: IDictionary }
 ) => {
   const { hovered, ref } = useHover<HTMLInputElement>();
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -53,7 +54,7 @@ export const SearchInput = (
       // onBlur={() => setClicked(false)}
       ref={inputRef}
       radius={"md"}
-      placeholder={clicked ? "" : "Search..."}
+      placeholder={clicked ? "" : props.dict.find_fundraising_page.search.search_field.placeholder}
       rightSection={
         clicked ? (
           <IoMdClose

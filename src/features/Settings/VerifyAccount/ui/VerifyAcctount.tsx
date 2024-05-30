@@ -1,22 +1,26 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import { SettingsWrapper } from "../../SettingsWrapper";
 import { BlurButton, Info } from "@/shared/ui";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import { colors } from "@/shared/enums";
 import { Box, Card, Flex, Text } from "@mantine/core";
 import { TopRightArrowSVG } from "@/shared/svg";
+import { LangContext } from "@/app/[lang]/LangProvider";
 
 export const VerifyAcctount = () => {
+  const dict = useContext(LangContext);
+
   return (
     <Box>
       <Info
-        title={"Why we need your data and what about safety?"}
+        title={dict.settings_process.verify_account_page.info_block.title}
         subtitle={
           <Link
             style={{ color: colors.red, textDecoration: "underline" }}
             href=""
           >
-            Check here
+            {dict.settings_process.verify_account_page.info_block.link}
           </Link>
         }
       />
@@ -25,7 +29,7 @@ export const VerifyAcctount = () => {
         <Flex gap={20} wrap={"wrap"} justify={"space-between"}>
           <Box>
             <Text fw={500} mb={24}>
-              Choose an authorization method
+              {dict.settings_process.verify_account_page.choose_method.title}
             </Text>
             <Flex direction={"column"} gap={10} align={"flex-start"}>
               <BlurButton
@@ -33,21 +37,27 @@ export const VerifyAcctount = () => {
                 color={colors.violet}
                 size="md"
               >
-                Authorizе with Дія.Підпис
+                {dict.settings_process.verify_account_page.choose_method.dia}
               </BlurButton>
               <BlurButton
                 rightSection={<TopRightArrowSVG />}
                 color={colors.violet}
                 size="md"
               >
-                Authorizе with Bank Id
+                {
+                  dict.settings_process.verify_account_page.choose_method
+                    .bank_id
+                }
               </BlurButton>
               <BlurButton
                 rightSection={<TopRightArrowSVG />}
                 color={colors.violet}
                 size="md"
               >
-                File key
+                {
+                  dict.settings_process.verify_account_page.choose_method
+                    .file_key
+                }
               </BlurButton>
             </Flex>
           </Box>
@@ -59,13 +69,10 @@ export const VerifyAcctount = () => {
             w={"100%"}
           >
             <Text fw={500} size="sm" color={colors.gray} mb={16}>
-              How is it work?
+              {dict.settings_process.verify_account_page.how_work.title}
             </Text>
             <Text fw={400} size="xs" color={colors.gray} lh={1.5}>
-              You need to confirm your identity for authorization. You can do
-              this in several ways: using the ID.GOV.UA system, the Diya
-              application or a personal key. Choose the authorization method
-              convenient for you and follow the instructions.
+              {dict.settings_process.verify_account_page.how_work.subtitle}
             </Text>
           </Card>
         </Flex>

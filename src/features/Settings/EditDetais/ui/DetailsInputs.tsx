@@ -1,6 +1,8 @@
+"use client";
+import { LangContext } from "@/app/[lang]/LangProvider";
 import { AreaField, TextField } from "@/shared/ui";
 import { Box, Flex, Text } from "@mantine/core";
-import React from "react";
+import React, { useContext } from "react";
 
 export const DetailsInputs = ({
   firstName,
@@ -11,17 +13,25 @@ export const DetailsInputs = ({
   lastName: string;
   description: string;
 }) => {
+  const dict = useContext(LangContext);
+
   return (
     <Box>
       <Text fw={500} mb={15} ml={10}>
-        My details
+        {dict.settings_process.edit_details_page.detailsw_inputs.title}
       </Text>
 
       <Flex gap={20} mb={16}>
         <Box flex={"1 1 auto"}>
           <TextField
-            title={"First name"}
-            placeholder="User`s name"
+            title={
+              dict.settings_process.edit_details_page.detailsw_inputs
+                .first_name_field.title
+            }
+            placeholder={
+              dict.settings_process.edit_details_page.detailsw_inputs
+                .first_name_field.placeholder
+            }
             radius={"md"}
             name="firstName"
             noColors
@@ -30,8 +40,14 @@ export const DetailsInputs = ({
         </Box>
         <Box flex={"1 1 auto"}>
           <TextField
-            title={"Last name"}
-            placeholder="User`s last name"
+            title={
+              dict.settings_process.edit_details_page.detailsw_inputs.last_name
+                .title
+            }
+            placeholder={
+              dict.settings_process.edit_details_page.detailsw_inputs.last_name
+                .placeholder
+            }
             radius={"md"}
             name="lastName"
             noColors
@@ -40,8 +56,11 @@ export const DetailsInputs = ({
         </Box>
       </Flex>
       <AreaField
-        defaultValue={description ? description : ''}
-        title={"About me"}
+        defaultValue={description ? description : ""}
+        title={
+          dict.settings_process.edit_details_page.detailsw_inputs
+            .description_field.title
+        }
         maxLen={551}
         w={"100%"}
         styles={{ input: { height: 140 } }}

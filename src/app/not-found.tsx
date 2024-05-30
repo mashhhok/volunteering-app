@@ -5,7 +5,7 @@ import { colors } from "@/shared/enums";
 import { BlurButton } from "@/shared/ui";
 import { TopRightArrowSVG } from "@/shared/svg";
 import Spline from "@splinetool/react-spline";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 const NotFound = () => {
   return (
     <Container size="xl" mb={-250}>

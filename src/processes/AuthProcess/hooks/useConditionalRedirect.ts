@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import React from "react";
 import { useAuthStore } from "../store";
 
 export const useConditionalRedirect = () => {

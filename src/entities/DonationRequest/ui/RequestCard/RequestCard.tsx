@@ -13,7 +13,9 @@ import arrow_top_right_violet from "@/public/arrow_top_right_violet.svg";
 import Image from "next/image";
 import { CardDescription } from "./CardDescription";
 import { useMediaQuery } from "@mantine/hooks";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
+import { useDonationSlideStore } from "@/app/components/DonationSlide";
+import { IDictionary } from "@/shared/config/i18n.config";
 
 export interface IRequestCard {
   companyName: string;
@@ -29,6 +31,7 @@ export interface IRequestCard {
   small?: boolean;
   location: string;
   categories: string[];
+  dict: IDictionary
 }
 
 export const RequestCard: React.FC<IRequestCard> = ({
@@ -44,6 +47,7 @@ export const RequestCard: React.FC<IRequestCard> = ({
   location,
   categories,
   id,
+  dict
 }) => {
   const [hovered, setHovered] = React.useState(false);
   const moneyPercent = Math.round((collectedMoney / needMoney) * 100);
@@ -53,117 +57,126 @@ export const RequestCard: React.FC<IRequestCard> = ({
     filter: moneyPercent === 100 ? "blur(3.5px)" : "blur(0px)",
   };
 
+  const { setRequestId, setIsOpen } = useDonationSlideStore();
+
+  function onDonateClick() {
+    setRequestId(id);
+    setIsOpen(true);
+  }
+
   return (
-    <Card
-      // p={24}
-      radius={"xl"}
-      maw={440}
-      w={"100%"}
-      h={small ? 400 : 555}
-      bg={"transparent"}
-      {...(isPhone
-        ? {
-            onClick: () => setHovered((prev) => !prev),
-          }
-        : {
-            onMouseEnter: () => setHovered(true),
-            onMouseLeave: () => setHovered(false),
-          })}
-      style={{ border: `2px solid ${colors.black}` }}
-    >
-      <Flex
-        gap={small ? 12 : 24}
-        direction={"column"}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          opacity: hovered ? "0" : "1",
-          transition: "0.3s",
-        }}
+    <>
+      <Card
+        // p={24}
+        radius={"xl"}
+        maw={small ? 300 : 440}
         w={"100%"}
-        p={16}
-        h={"100%"}
+        h={small ? 400 : 555}
+        bg={"transparent"}
+        {...(isPhone
+          ? {
+              onClick: () => setHovered((prev) => !prev),
+            }
+          : {
+              onMouseEnter: () => setHovered(true),
+              onMouseLeave: () => setHovered(false),
+            })}
+        style={{ border: `2px solid ${colors.black}` }}
       >
-        {/* FRONT CARD */}
-        <Flex direction={"column"} gap={small ? 4 : 16}>
-          <Box style={blurOption} mb={12}>
-            <CardImg imageUrl={imageUrl} small={small} />
+        <Flex
+          gap={small ? 12 : 24}
+          direction={"column"}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            opacity: hovered ? "0" : "1",
+            transition: "0.3s",
+          }}
+          w={"100%"}
+          p={16}
+          h={"100%"}
+        >
+          {/* FRONT CARD */}
+          <Flex direction={"column"} gap={small ? 4 : 16}>
+            <Box style={blurOption} mb={12}>
+              <CardImg imageUrl={imageUrl} small={small} />
+            </Box>
+            <Box style={blurOption}>
+              <Location small={small}>{location}</Location>
+            </Box>
+
+            <CardTitle small={small}>{requestTitle}</CardTitle>
+          </Flex>
+
+          <Box style={blurOption}>
+            <CompanyInfo
+              small={small}
+              companyName={companyName}
+              verifiedAndTrusted={verifiedAndTrusted} dict={dict}            />
           </Box>
           <Box style={blurOption}>
-            <Location small={small}>{location}</Location>
+            <ProgressBar
+              small={small}
+              collected={collectedMoney}
+              need={needMoney}
+            />
           </Box>
-
-          <CardTitle small={small}>{requestTitle}</CardTitle>
+          <CardStatus small={small} status={requestStatus} tags={categories} />
         </Flex>
-
-        <Box style={blurOption}>
+        <Flex
+          gap={15}
+          direction={"column"}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            opacity: hovered ? "1" : "0",
+            transition: "0.3s",
+          }}
+          w={"100%"}
+          // p={24}
+          p={24}
+          h={"100%"}
+        >
+          {/* BACK CARD */}
+          <Flex gap={4} direction={"column"}>
+            <Location small={small}>{location}</Location>
+            <CardTitle small={small}>{requestTitle}</CardTitle>
+          </Flex>
           <CompanyInfo
             small={small}
             companyName={companyName}
-            verifiedAndTrusted={verifiedAndTrusted}
-          />
-        </Box>
-        <Box style={blurOption}>
+            verifiedAndTrusted={verifiedAndTrusted} dict={dict}          />
+          <CardDescription>{requestDescription}</CardDescription>
           <ProgressBar
             small={small}
             collected={collectedMoney}
             need={needMoney}
           />
-        </Box>
-        <CardStatus small={small} status={requestStatus} tags={categories} />
-      </Flex>
-      <Flex
-        gap={15}
-        direction={"column"}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          opacity: hovered ? "1" : "0",
-          transition: "0.3s",
-        }}
-        w={"100%"}
-        // p={24}
-        p={24}
-        h={"100%"}
-      >
-        {/* BACK CARD */}
-        <Flex gap={4} direction={"column"}>
-          <Location small={small}>{location}</Location>
-          <CardTitle small={small}>{requestTitle}</CardTitle>
+          <CardStatus
+            status={requestStatus}
+            isTextHidden={true}
+            tags={categories}
+          />
+          {/* <Box style={{ flexGrow: "1" }} /> */}
+          <Flex justify="flex-end" align={"center"} gap={16}>
+            <Box onClick={onDonateClick}>
+              <BlurButton size={small ? "md" : "xl"} color={colors.violet}>
+                Donate
+              </BlurButton>
+            </Box>
+            <Link href={`/fundraiser/${id}`}>
+              <Image
+                src={arrow_top_right_violet}
+                width={30}
+                height={30}
+                alt={""}
+              />
+            </Link>
+          </Flex>
         </Flex>
-        <CompanyInfo
-          small={small}
-          companyName={companyName}
-          verifiedAndTrusted={verifiedAndTrusted}
-        />
-        <CardDescription>{requestDescription}</CardDescription>
-        <ProgressBar
-          small={small}
-          collected={collectedMoney}
-          need={needMoney}
-        />
-        <CardStatus
-          status={requestStatus}
-          isTextHidden={true}
-          tags={categories}
-        />
-        {/* <Box style={{ flexGrow: "1" }} /> */}
-        <Flex justify="flex-end" align={"center"} gap={16}>
-          <BlurButton size={small ? "md" : "xl"} color={colors.violet}>
-            Donate
-          </BlurButton>
-          <Link href={`/fundraiser/${id}`}>
-            <Image
-              src={arrow_top_right_violet}
-              width={30}
-              height={30}
-              alt={""}
-            />
-          </Link>
-        </Flex>
-      </Flex>
-    </Card>
+      </Card>
+    </>
   );
 };

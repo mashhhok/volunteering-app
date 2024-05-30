@@ -4,7 +4,7 @@ import { useHover } from "@mantine/hooks";
 import React from "react";
 import { colors } from "../enums";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 
 export const LinkBtn = ({
   href,

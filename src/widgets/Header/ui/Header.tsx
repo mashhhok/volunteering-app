@@ -10,16 +10,16 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { DropBox } from "./DropBox";
 import { LanguageSelect } from "./LanguageSelect";
 import { getProfile } from "@/app/api/profile/getProfile";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const Header = async () => {
+export const Header = async ({dict}: {dict: IDictionary}) => {
   const profile = await getProfile();
-  console.log(profile)
   return (
     <Box h={70} pos={"relative"}>
       <Box
         pos={"fixed"}
         style={{
-          zIndex: 1000,
+          zIndex: 200,
           backdropFilter: "blur(10px)",
         }}
         py={10}
@@ -30,14 +30,12 @@ export const Header = async () => {
           <Flex justify={"space-between"} h="100%" align={"center"} gap={15}>
             <Flex visibleFrom="lg" align="center  " gap={20} w={"47%"}>
               <Flex gap={20} align={"center"}>
-                <Info />
+                <Info dict={dict} />
               </Flex>
-              {/* <Search /> */}
             </Flex>
 
             <Flex hiddenFrom="lg" align="center" gap={20} w={"47%"}>
-              <DropBox />
-              {/* <Search /> */}
+              <DropBox dict={dict} />
             </Flex>
 
             <Logo/>
@@ -52,7 +50,7 @@ export const Header = async () => {
                 <ThemeSwitcher />
               </Box>
               <Box visibleFrom="lg">
-                <LanguageSelect />
+                <LanguageSelect dict={dict} />
               </Box>
 
               {profile ? (
@@ -62,7 +60,7 @@ export const Header = async () => {
                   id={profile?.userId}
                 />
               ) : (
-                <AuthBtns />
+                <AuthBtns dict={dict} />
               )}
             </Flex>
           </Flex>

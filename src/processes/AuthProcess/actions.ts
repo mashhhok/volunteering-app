@@ -113,11 +113,7 @@ export async function authAction(
 
     userLogin = userLogin.toString();
     userPassword = userPassword.toString();
-    if (true) {
-      setSession = await login(userLogin, userPassword);
-    } else {
-      setSession = "confirm_mail";
-    }
+    setSession = await login(userLogin, userPassword);
   } catch (err) {
     return "Не удалось авторизоваться!";
   }

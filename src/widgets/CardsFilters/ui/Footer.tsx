@@ -5,11 +5,14 @@ import { useSearchParams } from "next/navigation";
 import React, { RefObject } from "react";
 import { useDebounce, useReplaceSearchParams } from "@/shared/lib/hooks";
 import { useCardsFiltersStore } from "../store";
+import { IDictionary } from "@/shared/config/i18n.config";
 
 export const Footer = ({
   parentRef,
+  dict
 }: {
   parentRef: RefObject<HTMLDivElement>;
+  dict: IDictionary
 }) => {
   const [page, setPage] = React.useState(1);
   const { totalPages } = useCardsFiltersStore();
@@ -43,7 +46,7 @@ export const Footer = ({
 
   return (
     <Flex justify={"space-between"} wrap={"wrap"} gap={15}>
-      <ShadowBtn>Show more</ShadowBtn>
+      <ShadowBtn>{dict.widgets.cards_filters.footer.show_more_btn}</ShadowBtn>
       <Pagination
         total={totalPages}
         color="black"

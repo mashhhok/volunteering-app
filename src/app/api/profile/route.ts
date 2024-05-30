@@ -10,10 +10,9 @@ export async function GET(req: NextRequest) {
     let res = await fetch(`${process.env.MOCKAPI_URL}/profiles`, {cache: 'no-store'}).then(
       (res) => res.json()
     );
-    res = res.filter((item: any) => item.userId === user?.id);
-    
+    res = res.find((item: any) => item.userId === user?.id);
 
-    return res[0]
+    return res
   } catch (err) {
     return NextResponse.json(err, { status: 405 });
   }

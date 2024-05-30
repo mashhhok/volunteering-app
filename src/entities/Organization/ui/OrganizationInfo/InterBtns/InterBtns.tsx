@@ -3,13 +3,15 @@ import { ShadowBtn } from "@/shared/ui";
 import { Flex, Box } from "@mantine/core";
 import React from "react";
 import { OutBoxSVG, TopRightArrowSVG } from "@/shared/svg";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import { SitesModalForOwner } from "./SitesModalForOwner";
 import { SitesModelForAll } from "./SitesModelForAll";
+import { IDictionary } from "@/shared/config/i18n.config";
 
 export const InterBtns = ({
   isMe,
   sites,
+  dict,
 }: {
   isMe: boolean;
   sites: {
@@ -19,6 +21,7 @@ export const InterBtns = ({
     telegram: string;
     whatsapp: string;
   };
+  dict: IDictionary;
 }) => {
   const [sitesModalOpen, setSitesModalOpen] = React.useState(false);
   function onShareClick() {
@@ -60,9 +63,19 @@ export const InterBtns = ({
             </ShadowBtn>
           </Box>
           {isMe ? (
-            <SitesModalForOwner sites={sites} open={sitesModalOpen} onClose={sitesClose} />
+            <SitesModalForOwner
+              dict={dict}
+              sites={sites}
+              open={sitesModalOpen}
+              onClose={sitesClose}
+            />
           ) : (
-            <SitesModelForAll sites={sites}  open={sitesModalOpen} onClose={sitesClose} />
+            <SitesModelForAll
+              dict={dict}
+              sites={sites}
+              open={sitesModalOpen}
+              onClose={sitesClose}
+            />
           )}
         </Box>
       </Box>

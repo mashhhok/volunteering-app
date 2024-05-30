@@ -3,7 +3,7 @@ import { Avatar, Divider, Flex, Menu, Text, Title } from "@mantine/core";
 import React from "react";
 import { IoMdSettings } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import { routes } from "@/shared/config/routes";
 import { firstLetsOfNames } from "../../lib/utils/firstLetsOfNames";
 import { MdLogout } from "react-icons/md";
@@ -69,7 +69,7 @@ export const UserInfoMenu: React.FC<IUserInfoMenu> = ({
           <Link href={profilLink}>Profile</Link>
         </Menu.Item>
         <Menu.Item fz={"lg"} fw={500} leftSection={<IoMdSettings />}>
-          <Link href="/settings">Settings</Link>
+          <Link href="/settings/details">Settings</Link>
         </Menu.Item>
         <Menu.Item
           fz={"lg"}

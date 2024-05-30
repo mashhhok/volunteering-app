@@ -1,10 +1,8 @@
 "use client";
 import { clearAccount } from "@/app/api/settings/profileSettings/clearAccount";
 import { colors } from "@/shared/enums";
-import { HiddenInput } from "@/shared/ui";
 import { Box, Text, Button } from "@mantine/core";
-import React, { FormEvent, FormEventHandler } from "react";
-import { useFormState } from "react-dom";
+import React from "react";
 
 export const DeleteAccount = () => {
 

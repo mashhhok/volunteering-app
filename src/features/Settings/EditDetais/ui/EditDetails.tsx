@@ -10,8 +10,9 @@ import { SettingsWrapper } from "../../SettingsWrapper";
 import { AvatarEl } from "./Avatar";
 import { getProfile } from "@/app/api/profile/getProfile";
 import { editDetailsAction } from "@/app/api/settings/editDetails/editDetailsAction";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const EditDetails = async () => {
+export const EditDetails = async ({dict}: {dict: IDictionary}) => {
   const profile = await getProfile();
   return (
     <Box>
@@ -55,7 +56,7 @@ export const EditDetails = async () => {
             />
             <Box h={48} />
             <Box h={40} />
-            <BlurButton color={colors.violet}>Save changes</BlurButton>
+            <BlurButton color={colors.violet}>{dict.settings_process.edit_details_page.save_btn}</BlurButton>
           </form>
         </Box>
       </SettingsWrapper>

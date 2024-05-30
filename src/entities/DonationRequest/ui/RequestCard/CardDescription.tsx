@@ -9,7 +9,9 @@ export const CardDescription = ({ children }: { children: string }) => {
   return (
     <ScrollArea style={{ flexGrow: "1" }}>
       <Text
+        p={5}
         color={colors.gray}
+        component="div"
         fz="16px"
         style={{
           display: "-webkit-box",

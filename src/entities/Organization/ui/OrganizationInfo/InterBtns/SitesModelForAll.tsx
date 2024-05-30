@@ -12,11 +12,13 @@ import {
   WhatsappSVG,
 } from "@/shared/svg";
 import { BlurButton } from "@/shared/ui";
+import { IDictionary } from "@/shared/config/i18n.config";
 
 export const SitesModelForAll = ({
   open,
   onClose,
   sites,
+  dict,
 }: {
   open: boolean;
   onClose: () => void;
@@ -27,15 +29,18 @@ export const SitesModelForAll = ({
     telegram: string;
     whatsapp: string;
   };
+  dict: IDictionary;
 }) => {
   function onShareClick(url: string) {
     if (url) {
       navigator.share({
-        title: "Unitary Aid",
+        title: dict.logo_text,
         url: url,
       });
     } else {
-      alert("Could not find a link to this social network");
+      alert(
+        dict.widgets.organization_info.inter_btns.sites_for_all.not_found_link
+      );
     }
   }
 
@@ -67,11 +72,10 @@ export const SitesModelForAll = ({
       <Flex mb={40} gap={20} direction={"column"} align={"center"}>
         <LogoSVG fill={colors.violet} />
         <Title style={{ textAlign: "center" }} order={2}>
-          UnitaryAid
+          {dict.logo_text}
         </Title>
         <Text size="sm" color={colors.gray} style={{ textAlign: "center" }}>
-          The user has provided their contact information on these social
-          networks/applications. Please choose the option you prefer.
+          {dict.widgets.organization_info.inter_btns.sites_for_all.title}
         </Text>
       </Flex>
 
@@ -98,8 +102,7 @@ export const SitesModelForAll = ({
         </Flex>
       </Flex>
       <Text size="xs" style={{ textAlign: "center" }}>
-        We`ll process your data as set forth in our Terms of Use, Privacy Policy
-        and Data Processing Agreement
+        {dict.widgets.organization_info.inter_btns.sites_for_all.footer}
       </Text>
     </Card>
   );

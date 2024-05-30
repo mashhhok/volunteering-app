@@ -2,7 +2,7 @@
 import React from "react";
 import { Flex, Text } from "@mantine/core";
 import { LeftArrowSVG } from "../svg";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const BackBtn = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();

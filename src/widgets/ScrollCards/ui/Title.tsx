@@ -4,8 +4,9 @@ import { Box, Flex, Title as TitleEl } from "@mantine/core";
 import { LeftArrowSVG } from "@/shared/svg";
 import { RightArrowSVG } from "@/shared/svg/RightArrowSVG";
 import { useScrollCardsState } from "../store";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const Title = () => {
+export const Title = ({dict}: {dict: IDictionary}) => {
   const scrollRef = useScrollCardsState((state) => state.scrollRef);
 
   const cardWidth = 440;
@@ -33,7 +34,7 @@ export const Title = () => {
 
   return (
     <Flex justify={"space-between"} align={"center"} ml={{ base: 0, xs: 60 }}>
-      <TitleEl fz={32}>Current fundraisings</TitleEl>
+      <TitleEl fz={32}>{dict.widgets.scroll_cards.title.title}</TitleEl>
       <Flex gap={11}>
         <Box onClick={onLeftScrollClick2}>
           <LeftArrowSVG />

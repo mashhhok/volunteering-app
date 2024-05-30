@@ -1,18 +1,19 @@
+import { IDictionary } from "@/shared/config/i18n.config";
 import { colors } from "@/shared/enums";
 import { BlurButton } from "@/shared/ui";
 import { Button, Flex } from "@mantine/core";
-import Link from "next/link";
+import { Link } from "@/shared/ui/Link";
 import React from "react";
 
-export const AuthBtns = () => {
+export const AuthBtns = ({dict}: {dict: IDictionary}) => {
   return (
     <Flex gap={15}>
       <Link href="/auth">
         <BlurButton visibleFrom="md" color={colors.violet}>
-          Log In
+          {dict.widgets.header.auth_btn}
         </BlurButton>
         <BlurButton hiddenFrom="md" size="xs" color={colors.violet}>
-          Log In
+          {dict.widgets.header.auth_btn}
         </BlurButton>
       </Link>
     </Flex>

@@ -1,9 +1,9 @@
 "use client";
+import { IDictionary } from "@/shared/config/i18n.config";
 import { Select } from "@mantine/core";
 import React from "react";
-import { PiTrademarkRegisteredDuotone } from "react-icons/pi";
 
-export const LanguageSelect = () => {
+export const LanguageSelect = ({ dict }: { dict: IDictionary }) => {
   const [language, setLanguage] = React.useState<string | null>("en");
   const firstRender = React.useRef<boolean>(true);
 
@@ -25,8 +25,8 @@ export const LanguageSelect = () => {
       wrapperProps={{ width: "auto" }}
       w={"90px"}
       data={[
-        { label: "укр", value: "ua" },
-        { label: "анг", value: "en" },
+        { label: dict.widgets.header.language_select.uk, value: "ua" },
+        { label: dict.widgets.header.language_select.en, value: "en" },
       ]}
       value={language}
       onChange={(value, option) => setLanguage(option.value)}

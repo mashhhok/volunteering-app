@@ -1,13 +1,14 @@
 import { RequestCard } from "@/entities/DonationRequest";
+import { IDictionary } from "@/shared/config/i18n.config";
 import { Box, Flex } from "@mantine/core";
 
-export const CardsList = ({ list }: { list: any[] }) => {
-  console.log(list);
+export const CardsList = ({ list, dict }: { list: any[], dict: IDictionary }) => {
   return (
     <Flex wrap={"wrap"} gap={25}>
       {list.map((item) => (
         <RequestCard
           key={item}
+          dict={dict}
           id={item?.requestData?.id}
           companyName={item?.userData?.firstName}
           requestTitle={item?.requestData?.title}

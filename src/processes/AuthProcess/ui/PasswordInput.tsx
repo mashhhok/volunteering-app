@@ -4,8 +4,9 @@ import { Box} from "@mantine/core";
 import React from "react";
 import { useAuthStore } from "../store";
 import { PasswordField } from "@/shared/ui";
+import { IDictionary } from "@/shared/config/i18n.config";
 
-export const PasswordInput = () => {
+export const PasswordInput = ({dict}: {dict: IDictionary}) => {
   const password = useInput("", { minWidth: 10 });
   const setPassword = useAuthStore((state) => state.setPassword);
 
@@ -18,10 +19,10 @@ export const PasswordInput = () => {
       <PasswordField
         password={password}
         rightSectionError={`${password.value.length}/10`}
-        leftSectionError={`Use 10 or more characters`}
+        leftSectionError={dict.auth_process.register_page.password_field.left_section}
         name="password"
         autoFocus
-        placeholder="Enter password"
+        placeholder={dict.auth_process.register_page.password_field.placeholder}
         w={"100%"}
       />
     </Box>

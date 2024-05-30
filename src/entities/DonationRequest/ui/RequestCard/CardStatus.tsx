@@ -13,7 +13,6 @@ export const CardStatus = ({
   tags: string[];
   small?: boolean;
 }) => {
-
   return (
     <Flex wrap={"wrap"} gap={8}>
       {status === "pending" && (
@@ -49,19 +48,20 @@ export const CardStatus = ({
           ✅ {isTextHidden ? "" : "Successfully reported"}
         </Button>
       )}
-      {tags && tags.map((item, index) => (
-        <Button
-          px={12}
-          h={25}
-          key={index}
-          {...(small && { fz: 10 })}
-          variant="outline"
-          color={colors.gray}
-          style={{ alignContent: "center" }}
-        >
-          {isTextHidden ? item.slice(0, 2) : item}
-        </Button>
-      ))}
+      {tags &&
+        tags.map((item, index) => (
+          <Button
+            px={12}
+            h={25}
+            key={index}
+            {...(small && { fz: 10 })}
+            variant="outline"
+            color={colors.gray}
+            style={{ alignContent: "center" }}
+          >
+            {isTextHidden ? item.slice(0, 2) : item}
+          </Button>
+        ))}
     </Flex>
   );
 };
