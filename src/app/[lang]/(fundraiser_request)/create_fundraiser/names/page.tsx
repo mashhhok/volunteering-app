@@ -8,8 +8,8 @@ import { useCreateFundraiserStore } from "../store";
 import { NameInput } from "./NameInput";
 import { SelectInput } from "./SelectInput";
 import { RgbaBgLayout } from "@/shared/ui/RgbaBgLayout";
-import { BackBtn } from "../../../[lang]/(fundraiser_request)/components/BackBtn";
 import { Metadata } from "next";
+import { BackBtn } from "../../components/BackBtn";
 
 
 
