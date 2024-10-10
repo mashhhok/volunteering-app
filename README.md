@@ -1,4 +1,4 @@
-This is a thesis project ofr bachelor's degree. The goal of the project is to create a web application for the centralization of donations in Ukraine and to create a system in it that makes it possible to help injured citizens and animals as a result of the war, as well as to optimize the reporting process, which will make it possible to reduce the risk of spending money that is not worth it.
+This is a thesis project for bachelor's degree. The goal of the project is to create a web application for the centralization of donations in Ukraine and to create a system in it that makes it possible to help injured citizens and animals as a result of the war, as well as to optimize the reporting process, which will make it possible to reduce the risk of spending money that is not worth it.
 Crowdfunding platforms are websites that provide interaction between fundraisers and the crowd.
 Sometimes when government and nonprofit funding is in short supply, getting the help you need can be difficult. This is why crowdfunding can be such a valuable resource. It allows people to connect with their support community in a simple and accessible way.
 The main principle of crowdfunding is that people can help each other.
@@ -28,7 +28,7 @@ Steps:
 
 
 ## Versel doesn't work properly yet
-
+## In order to run a project, please, install in locally :)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
