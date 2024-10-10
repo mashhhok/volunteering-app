@@ -15,20 +15,20 @@ Steps:
 5. The I was using Figma to make simple prototypes and to make a comparison with other web apps.
    <img width="642" alt="Screenshot 2024-09-02 at 13 02 13" src="https://github.com/user-attachments/assets/b92989dd-5b00-4b3a-9f51-f1624d1297bf">
 
-6. Architecture
+6. Architecture.
    <img width="955" alt="Screenshot 2024-09-02 at 13 04 06" src="https://github.com/user-attachments/assets/d910d71e-9f69-46e8-a620-910ac2b70f49">
 
-7. Technologies
+8. Technologies.
    <img width="851" alt="Screenshot 2024-09-02 at 13 04 34" src="https://github.com/user-attachments/assets/63c5f4ab-15ef-4d1b-a5d9-ebd7be9f7e9e">
 
-8. A few screenshoots:
+9. A few screenshoots:
    <img width="1004" alt="Screenshot 2024-09-02 at 13 05 17" src="https://github.com/user-attachments/assets/a90fdd46-74e5-4606-8599-2452acde801d">
    <img width="879" alt="Screenshot 2024-09-02 at 13 05 44" src="https://github.com/user-attachments/assets/fc51f9d2-5a8a-464b-9d5e-9fa4bd8a6012">
    <img width="822" alt="Screenshot 2024-09-02 at 13 06 00" src="https://github.com/user-attachments/assets/365708b9-134c-4b57-b63a-4ea5e0c1f6e4">
 
 
 ## Versel doesn't work properly yet
-## In order to run a project, please, install in locally :)
+## In order to run a project, please, install it locally :)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
